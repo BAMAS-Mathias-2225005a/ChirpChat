@@ -19,7 +19,7 @@
             <input id="email" type="text" name="email" value=" "> <br> <!-- L'utilisateur rentre son e-mail ici -->
 
             <label for="password">Mot de passe</label> <br>
-            <input id="password" type="text" name="password" value=" "> <br> <!-- L'utilisateur rentre son mot de passe ici -->
+            <input id="password" type="password" name="password" value=" "> <br> <!-- L'utilisateur rentre son mot de passe ici -->
 
             <label class="switch">
                 <input type="checkbox">

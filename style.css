@@ -5,6 +5,7 @@ margin: auto;
 h1 {
 font-family: 'League Spartan';
 font-size: 45px;
+text-align: center;
 }
 
 label {
@@ -15,6 +16,7 @@ font-size: 20px;
 p {
 font-family: 'League Spartan';
 font-size: 18px;
+text-align: center;
 }
 
 .switch {

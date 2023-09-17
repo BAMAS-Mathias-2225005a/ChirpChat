@@ -1,8 +1,9 @@
 <?php
-    require 'navbar.php';
-    startPage('Accueil');
+
+    require '_assets/utils/autoloader.php';
+
+    if(!isset($_GET['action'])){
+        (new \ChirpChat\Controllers\Homepage)->execute();
+    }
 ?>
-
-<p style="margin-top: 500px;"><a href="modules/chirpChat/views/inscription1.php">Inscription</a></p>
-
 

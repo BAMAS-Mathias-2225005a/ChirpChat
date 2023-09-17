@@ -50,13 +50,20 @@ nav #backgroundImage {
 /* ------ PAGE INSCRIPTION ------ */
 
 main {
-    margin-top: 10vh;
+    margin-top: 8vh;
     display: flex;
     flex-direction: column;
     gap: 5vh;
-    width: 60vw;
+    width: 50vw;
     margin-left: auto;
     margin-right: auto;
+}
+
+svg{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
 }
 
 main * {
@@ -68,7 +75,8 @@ main h2{
     color: #383838;
     text-align: center;
     font-family: League Spartan;
-    font-size: 30px;
+    width: 55vw;
+    font-size: 7.30vw;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -86,10 +94,11 @@ main h2{
 }
 
 .champ-saisie input[type=text], .champ-saisie input[type=password] {
-    border-radius: 4px;
+    border-radius: 8px;
     outline: none;
     border: none;
-    box-shadow: 0px 4px 4px 3px rgba(104, 135, 212, 0.25);
+    border-bottom: 0px solid rgba(221, 221, 221, 0.33);
+    box-shadow: 0px 3px 3px 2px rgba(104, 135, 212, 0.25);
     width: 100%;
     height: 5vh;
     padding-left: 2%;
@@ -104,6 +113,7 @@ main h2{
     border-color: transparent;
     border-bottom: 4px solid #758cc9;
     box-shadow: none;
+    transition: border-bottom-color 0.3s;
 }
 
 
@@ -137,6 +147,11 @@ form{
     cursor: pointer;
 }
 
+#btnSuivant:hover{
+    background-color: #5653b4;
+    transition: background-color 0.3s ease-in-out;
+}
+
 #loginPageLink {
     color: #758cc9;
     font-family: League Spartan;
@@ -151,6 +166,7 @@ form{
     nav h1 {
         font-size: 6.5vw;
     }
+
 }
 
 @media (max-width: 600px) {

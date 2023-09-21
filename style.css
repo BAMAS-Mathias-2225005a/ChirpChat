@@ -13,15 +13,12 @@ text-align: center;
 label { /* Description des champs à renseigner */
 font-family: 'League Spartan';
 font-size: 20px;
+display: block;
+text-align: center;
+line-height: 150%;
 }
 
 p { /* Partie centrale de la page */
-font-family: 'League Spartan';
-font-size: 18px;
-text-align: center;
-}
-
-h2 { /* Fonction du slider */
 font-family: 'League Spartan';
 font-size: 18px;
 text-align: center;

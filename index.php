@@ -21,11 +21,16 @@
             <label for="password">Mot de passe</label> <br>
             <input id="password" type="password" name="password" value=" "> <br> <!-- L'utilisateur rentre son mot de passe ici -->
 
-            <label class="switch"> <!-- Slider -->
-                <input type="checkbox">
-                <span class="slider round"></span>
-            </label>
-            <h2> Se souvenir de moi </h2><br>
+            <div class="form-group">
+                <label class="toggle-switch">
+                    <input class="toggle-switch-check" type="checkbox" />
+                    <span class="toggle-switch-label">Se souvenir de moi</span>
+                    <span aria-hidden="true" class="toggle-switch-bar">
+			    <span class="toggle-switch-handle" data-label-off="" data-label-on="ON">
+			    </span>
+		    </span>
+                </label>
+            </div>
 
             <a href="menu.php">SE CONNECTER</a><br> <!-- Bouton pour valider la connexion -->
             <a href="inscription1.php">S'INSCRIRE</a><br> <!-- Bouton pour aller a la page d'inscription  -->

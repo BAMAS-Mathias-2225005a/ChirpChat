@@ -1,40 +1,40 @@
-img {
+img { /* Logo */
 margin: auto;
 display: block;
 margin: 0 auto;
 }
 
-h1 {
+h1 { /* Titre de la page */
 font-family: 'League Spartan';
 font-size: 45px;
 text-align: center;
 }
 
-label {
+label { /* Description des champs à renseigner */
 font-family: 'League Spartan';
 font-size: 20px;
 }
 
-p {
+p { /* Fonctionalité slider */
 font-family: 'League Spartan';
 font-size: 18px;
 text-align: center;
 }
 
-.switch {
+.switch { /* Slider partie 1 */
 position: relative;
 display: inline-block;
 width: 60px;
 height: 34px;
 }
 
-.switch input {
+.switch input { /* Slider partie 2 */
 opacity: 0;
 width: 0;
 height: 0;
 }
 
-.slider.round {
+.slider.round { /* Slider partie 3 */
 border-radius: 34px;
 position: absolute;
 cursor: pointer;
@@ -47,7 +47,7 @@ background-color: #ccc;
 transition: .4s;
 }
 
-.slider.round:before {
+.slider.round:before { /* Slider partie 4 */
 border-radius: 50%;
 position: absolute;
 content: "";
@@ -60,21 +60,21 @@ background-color: white;
 transition: .4s;
 }
 
-input:checked + .slider {
+input:checked + .slider { /* Slider partie 5 */
 background-color: #2196F3;
 }
 
-input:focus + .slider {
+input:focus + .slider { /* Slider partie 6 */
 box-shadow: 0 0 1px #2196F3;
 }
 
-input:checked + .slider:before {
+input:checked + .slider:before { /* Slider partie 7 */
 -webkit-transform: translateX(26px);
 -ms-transform: translateX(26px);
 transform: translateX(26px);
 }
 
-a {
+a { /* Liens cliquables */
 font-family: 'League Spartan';
 font-size: 20px;
 display: block;

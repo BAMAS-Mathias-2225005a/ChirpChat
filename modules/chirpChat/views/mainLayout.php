@@ -8,13 +8,14 @@ class MainLayout {
 
     public function show() : void {
 ?><!doctype html>
-    <html lang="en">
+    <html lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport"
               content="width=device-width, user-scalable=1">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="../../../_assets/styles/styles.css">
+        <link rel="icon" type="favicon" href="/favicon.png">
         <title><?= $this->title?></title>
     </head>
     <body>

@@ -8,6 +8,7 @@ class HomePage {
         ob_start();
 
 ?><h1>Dernier commentaire : </h1>
+<h2><a href="index.php?action=inscription">INSCRIPTION</a></h2>
 <div id="postList">
     <?php for($i = 0; $i < 15; $i++){
 ?>  <div class="post">

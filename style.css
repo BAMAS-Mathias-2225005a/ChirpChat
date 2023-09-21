@@ -15,7 +15,13 @@ font-family: 'League Spartan';
 font-size: 20px;
 }
 
-p { /* Fonctionalité slider */
+p { /* Partie centrale de la page */
+font-family: 'League Spartan';
+font-size: 18px;
+text-align: center;
+}
+
+h2 { /* Fonction du slider */
 font-family: 'League Spartan';
 font-size: 18px;
 text-align: center;

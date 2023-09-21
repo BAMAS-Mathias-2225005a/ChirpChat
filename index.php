@@ -25,7 +25,7 @@
                 <input type="checkbox">
                 <span class="slider round"></span>
             </label>
-            <p> Se souvenir de moi </p><br>
+            <h2> Se souvenir de moi </h2><br>
 
             <a href="menu.php">SE CONNECTER</a><br>
             <a href="inscription1.php">S'INSCRIRE</a><br>

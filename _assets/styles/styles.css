@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+/* ------ NAVBAR ------ */
+
+nav {
+    width: 90vw;
+    padding: 0 5vw;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav * {
+    align-self: center;
+    z-index: 1;
+}
+
+nav h1 {
+    font-family: 'League Spartan';
+    font-weight: 700;
+    font-size: 3em;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+nav img {
+    position:  relative;
+    width: 5.25vh;
+    height: 5.25vh;
+}
+
+nav #backgroundImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 13vh;
+    z-index: 0;
+}
+
+#loupeImage {
+    transform: rotateY(180deg);
+}
+
+/* ------ PAGE INSCRIPTION ------ */
+
+main {
+    margin-top: 8vh;
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    width: 50vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+svg{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+}
+
+main * {
+    align-self: center;
+    overflow: hidden;
+}
+
+main h2{
+    color: #383838;
+    text-align: center;
+    font-family: League Spartan;
+    width: 55vw;
+    font-size: 7.30vw;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+
+.champ-saisie h3 {
+    color: #383838;
+    font-family: League Spartan;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 1px;
+    align-self: start;
+}
+
+.champ-saisie input[type=text], .champ-saisie input[type=password] {
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    border-bottom: 0px solid rgba(221, 221, 221, 0.33);
+    box-shadow: 0px 3px 3px 2px rgba(104, 135, 212, 0.25);
+    width: 100%;
+    height: 5vh;
+    padding-left: 2%;
+    background: rgba(221, 221, 221, 0.33);
+    font-family: League Spartan;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 1.6px;
+}
+
+.champ-saisie input:focus {
+    border-color: transparent;
+    border-bottom: 4px solid #758cc9;
+    box-shadow: none;
+    transition: border-bottom-color 0.3s;
+}
+
+
+.champ-saisie {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 10px;
+    width: 55vw;
+    max-width: 500px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vh;
+}
+
+#btnSuivant {
+    background-color: #6887D4;
+    border: none;
+    width: 55vw;
+    max-width: 500px;
+    height: 5vh;
+    border-radius: 5px;
+    color: white;
+    font-family: League Spartan;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    margin-top: 3vh;
+    cursor: pointer;
+}
+
+#btnSuivant:hover{
+    background-color: #5653b4;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#loginPageLink {
+    color: #758cc9;
+    font-family: League Spartan;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1.8px;
+}
+
+
+@media (max-width: 1000px) {
+
+    nav h1 {
+        font-size: 6.5vw;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .champ-saisie h3{
+        font-size:1.2em;
+    }
+}
+
+/* ------ Posts ------ */
+
+#postList {
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    margin-top: 3%;
+    border-left: solid;
+    border-right: solid;
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px;
+    align-items: center;
+}
+.post{
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    width: 600px;
+    border-radius: 30px;
+    box-shadow: 0px 4px 4px 0px rgba(104, 135, 212, 0.25);
+    background: rgba(255, 255, 255, 0.15);
+    height: fit-content;
+}
+.post #postHeader{
+    display: flex;
+    padding-left: 2%;
+    padding-top: 2%;
+    gap: 3.5%;
+}
+
+.post #profilePicture{
+    width: 8%;
+    height: 8%;
+    border-radius: 25px;
+}
+
+.post h2, .post h3, .post #postFooter p {
+    font-family: League Spartan;
+}
+
+.post h2{
+    color: #383838;
+    font-weight: 700;
+    font-size: 2.3em;
+}
+
+.post h3 {
+    color: #555454;
+    font-weight: 400;
+    font-size: 1.5em;
+}
+
+.post #authorInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.post #postContent {
+    padding-left: 2%;
+    font-size: 1.4em;
+    font-weight: 400;
+    font-family: 'Heebo';
+}
+
+.post #postFooter{
+    display: flex;
+    width: 30%;
+    padding-bottom: 2%;
+    padding-left: 2%;
+    gap: 20%;
+}
+
+.post #postFooter div {
+    display: flex;
+    gap: 15%;
+}
+
+.post #postFooter * {
+    align-self: center;
+}
+
+.post #postFooter p {
+    font-size: 1.1em;
+}
+
+.post #postFooter img{
+    width: 30px;
+    height: 30px;
+}
+
+@media (max-width: 1200px) {
+
+    .post #postContent p {
+        font-size: 1.6rem;
+    }
+
+    .post #postFooter p {
+        font-size: 1.5em;
+    }
+
+    .post #postFooter img{
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .post #postContent p {
+        font-size: 1.8rem;
+    }
+
+    .post #postFooter p {
+        font-size: 1.8em;
+    }
+
+    .post #postFooter img{
+        width: 40px;
+        height: 40px;
+    }
+}
+

@@ -10,7 +10,7 @@
     </head>
 
     <body>
-    <img src="Images/Logo.png" alt="Logo" style="width:100px;height:75px;">
+    <img src="Images/Logo.png" alt="Logo" style="width:100px;height:75px;"> <!-- Logo -->
     <h1> CONNEXION </h1>
 
     <form id="form" action="mailto:matteo.sciacca@etu.univ-amu.fr" method="post" enctype="text/plain"> <!-- Mail a laquelle seront envoyées les informations -->
@@ -21,16 +21,16 @@
             <label for="password">Mot de passe</label> <br>
             <input id="password" type="password" name="password" value=" "> <br> <!-- L'utilisateur rentre son mot de passe ici -->
 
-            <label class="switch">
+            <label class="switch"> <!-- Slider -->
                 <input type="checkbox">
                 <span class="slider round"></span>
             </label>
             <h2> Se souvenir de moi </h2><br>
 
-            <a href="menu.php">SE CONNECTER</a><br>
-            <a href="inscription1.php">S'INSCRIRE</a><br>
+            <a href="menu.php">SE CONNECTER</a><br> <!-- Bouton pour valider la connexion -->
+            <a href="inscription1.php">S'INSCRIRE</a><br> <!-- Bouton pour aller a la page d'inscription  -->
 
-            <a href="recovery.php">Mot de passe oublié?</a>
+            <a href="recovery.php">Mot de passe oublié?</a> <!-- Bouton pour aller vers la page pour récupérer le mot de passe -->
 
         </p>
     </form>

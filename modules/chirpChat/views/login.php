@@ -10,7 +10,7 @@
     </head>
 
     <body>
-    <img src="Images/Logo.png" alt="Logo" style="width:100px;height:75px;"> <!-- Logo -->
+    <img src="/_assets/images/Logo.png" alt="Logo" style="width:100px;height:75px;"> <!-- Logo -->
     <h1 id="connectionTitle"> CONNEXION </h1>
 
     <form id="loginForm" action="mailto:matteo.sciacca@etu.univ-amu.fr" method="post" enctype="text/plain"> <!-- Mail a laquelle seront envoyées les informations -->

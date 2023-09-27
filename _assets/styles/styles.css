@@ -8,6 +8,7 @@
 }
 
 body {
+    overflow-x: hidden;
     background-color: #F0F0F0;
 }
 
@@ -208,14 +209,14 @@ form{
     border-right: solid;
     margin-left: auto;
     margin-right: auto;
-    width: 700px;
+    width: 1000px;
     align-items: center;
 }
 .post{
     display: flex;
     flex-direction: column;
     gap: 3vh;
-    width: 600px;
+    width: 700px;
     border-radius: 30px;
     box-shadow: 0px 4px 4px 0px rgba(104, 135, 212, 0.25);
     background: rgba(255, 255, 255, 0.15);
@@ -257,7 +258,7 @@ form{
 
 .post #postContent {
     padding-left: 2%;
-    font-size: 1.4em;
+    font-size: 17px;
     font-weight: 400;
     font-family: 'Heebo';
 }
@@ -290,10 +291,6 @@ form{
 
 @media (max-width: 1200px) {
 
-    .post #postContent p {
-        font-size: 1.6rem;
-    }
-
     .post #postFooter p {
         font-size: 1.5em;
     }
@@ -305,10 +302,6 @@ form{
 }
 
 @media (max-width: 800px) {
-
-    .post #postContent p {
-        font-size: 1.8rem;
-    }
 
     .post #postFooter p {
         font-size: 1.8em;

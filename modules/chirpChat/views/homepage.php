@@ -9,7 +9,8 @@ class HomePage {
 
 ?><h1>Dernier commentaire : </h1>
 <h2><a href="index.php?action=inscription">INSCRIPTION</a></h2>
-<div id="postList">
+<h2><a href="index.php?action=connexion">LOGIN</a></h2>
+        <div id="postList">
     <?php for($i = 0; $i < 15; $i++){
 ?>  <div class="post">
         <div id="postHeader">

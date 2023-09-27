@@ -6,6 +6,9 @@
         if($_GET['action'] === 'inscription'){
             (new \ChirpChat\Controllers\Inscription())->execute();
         }
+        else if($_GET['action'] === 'connexion'){
+            (new \ChirpChat\Controllers\Login())->execute();
+        }
     }else{
         (new \ChirpChat\Controllers\Homepage)->execute();
     }

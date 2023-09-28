@@ -365,3 +365,9 @@ form{
 #submit:hover {
     background-color:darkviolet;
 }
+
+/* ------ Main Layout ------ */
+#Logo {
+    width:10%;
+    height:100%;
+}

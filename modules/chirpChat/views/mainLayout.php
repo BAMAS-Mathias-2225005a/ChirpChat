@@ -21,7 +21,7 @@ class MainLayout {
     <body>
         <nav>
             <img alt="photo de profil" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
-            <h1>Chirp Chat</h1>
+            <img id="Logo" src="/_assets/images/Logo.png">
             <img id="loupeImage" alt="image d'une loupe" src="https://cdn-icons-png.flaticon.com/512/1280/1280594.png">
             <img id="backgroundImage" alt="arrière plan image de vague" src="/_assets/images/NavBarBackground.png">
         </nav>

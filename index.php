@@ -1,6 +1,6 @@
 <?php
 
-    require '_assets/utils/autoloader.php';
+    require './autoloader.php';
 
     if(filter_input(INPUT_GET, 'action')) {
         if ($_GET['action'] === 'inscription') {

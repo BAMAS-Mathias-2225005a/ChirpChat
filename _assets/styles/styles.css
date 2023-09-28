@@ -349,3 +349,8 @@ form{
     text-align: center;
 }
 
+#submit { /* Bouton pour envoyer */
+    font-family: 'League Spartan';
+    width:50px;
+    margin:auto;
+}

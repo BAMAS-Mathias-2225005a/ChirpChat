@@ -385,6 +385,23 @@ form{
 
 #submit { /* Bouton pour envoyer */
     font-family: 'League Spartan';
-    width:50px;
     margin:auto;
+    padding: 16px 64px;
+    font-size: 20px;
+    display:block;
+    text-align:center;
+    font-weight:bold;
+    background-color: #6887D4;
+    border:black;
+    color:white;
+}
+
+#submit:hover {
+    background-color:darkviolet;
+}
+
+/* ------ Main Layout ------ */
+#Logo {
+    max-width: 100%;
+    height: auto;
 }

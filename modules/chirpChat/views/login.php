@@ -25,7 +25,7 @@ class Login {
                 </label>
             </div>
 
-            <input id="submit" type="submit"> <!-- Bouton pour valider la connexion -->
+            <input id="submit" type="submit" value="SE CONNECTER"><br> <!-- Bouton pour valider la connexion -->
 
             <a href="index.php?action=inscription">S'INSCRIRE</a><br> <!-- Bouton pour aller a la page d'inscription  -->
 

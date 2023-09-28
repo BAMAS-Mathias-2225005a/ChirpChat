@@ -25,7 +25,8 @@ class Login {
                 </label>
             </div>
 
-            <input type="submit"> <!-- Bouton pour valider la connexion -->
+            <input id="submit" type="submit"> <!-- Bouton pour valider la connexion -->
+
             <a href="index.php?action=inscription">S'INSCRIRE</a><br> <!-- Bouton pour aller a la page d'inscription  -->
 
             <a href="recovery.php">Mot de passe oublié?</a> <!-- Bouton pour aller vers la page pour récupérer le mot de passe -->

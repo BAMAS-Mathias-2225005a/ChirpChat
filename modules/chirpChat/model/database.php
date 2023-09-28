@@ -4,7 +4,7 @@ namespace ChirpChat\Model;
 
 class Database {
 
-    private static Database $_instance;
+    private static $_instance = null;
     private string $host = 'mysql-devchirpchat.alwaysdata.net';
     private string $username = '327978_raph';
     private string $password = 'Raphael123!';
@@ -13,7 +13,7 @@ class Database {
 
     public function __construct()
     {
-        $this->connection = new \PDO($this->host, $this->username, $this->password, $this->db)  or die(mysqli_error($this->connection));
+        $this->connection = new \PDO('mysql:host=mysql-devchirpchat.alwaysdata.net;dbname=devchirpchat_db;charset=utf8', $this->username, $this->password)  or die(mysqli_error($this->connection));
     }
 
     public static function getInstance(): Database

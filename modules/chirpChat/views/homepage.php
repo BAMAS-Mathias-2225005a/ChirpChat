@@ -4,14 +4,14 @@ namespace ChirpChat\Views;
 
 class HomePage {
 
-    public function show() : void {
+    public function show(array $postList) : void {
         ob_start();
 
 ?><h1>Dernier commentaire : </h1>
 <h2><a href="index.php?action=inscription">INSCRIPTION</a></h2>
 <h2><a href="index.php?action=connexion">LOGIN</a></h2>
         <div id="postList">
-    <?php for($i = 0; $i < 15; $i++){
+    <?php foreach($postList as $post){
 ?>  <div class="post">
         <div id="postHeader">
             <img alt="author profile picture" id="profilePicture" src="https://cdn-icons-png.flaticon.com/512/436/436299.png" />
@@ -22,11 +22,7 @@ class HomePage {
         </div>
         <div id="postContent">
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                <?php echo $post->message?>
             </p>
         </div>
         <div id="postFooter">

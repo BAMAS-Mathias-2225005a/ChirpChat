@@ -8,8 +8,8 @@ class HomePage {
 
 
     public function execute() : void{
-        //(new \ChirpChat\Views\HomePage())->show();
-
+        $postList = (new \ChirpChat\Model\PostRepository(Database::getInstance()))->getPost();
+        (new \ChirpChat\Views\HomePage())->show($postList);
         echo (new \ChirpChat\Model\User(\ChirpChat\Model\Database::getInstance()))->isAlreadyRegistered("test");
     }
 

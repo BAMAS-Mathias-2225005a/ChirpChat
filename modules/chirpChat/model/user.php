@@ -16,9 +16,13 @@ class User{
 
     public function register($username, $pseudonyme, $email, $password, $birthdate) {
         if(!$statement = $this->connection->getConnection()->query("INSERT INTO Utilisateur (id_utilisateur, username, pseudonyme, email, mot_passe, date_naissance) 
-        VALUES (uuid(), '$username', '$pseudonyme', '$email', '$password', '$birthdate')")){
+        VALUES (uuid(), '$username', '$pseudonyme', '$email', '$password', '$birthdate'")){
             throw new \PDOException('erreur sql');
         }
+    }
+
+    public function getUserName($uuid){
+
     }
 
 

@@ -9,6 +9,9 @@
         else if($_GET['action'] === 'connexion'){
             (new \ChirpChat\Controllers\Login())->execute();
         }
+        else if($_GET['action'] === 'recuperation'){
+            (new \ChirpChat\Controllers\Recovery())->execute();
+        }
     }else{
         (new \ChirpChat\Controllers\Homepage)->execute();
     }

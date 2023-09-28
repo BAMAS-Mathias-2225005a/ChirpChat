@@ -362,12 +362,12 @@ form{
     color:white;
 }
 
-#submit:hover {
+#submit:hover { /* Changement de couleur du bouton pour envoyer quand on passe le curseur dessus */
     background-color:darkviolet;
 }
 
 /* ------ Main Layout ------ */
-#Logo {
+#Logo { /* Logo qui s'affiche en haut de toutes les pages */
     max-width: 100%;
     height: auto;
 }

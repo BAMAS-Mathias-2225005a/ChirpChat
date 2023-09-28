@@ -209,7 +209,7 @@ form{
     border-right: solid;
     margin-left: auto;
     margin-right: auto;
-    width: 1000px;
+    width: 100vw;
     align-items: center;
 }
 .post{
@@ -230,8 +230,8 @@ form{
 }
 
 .post #profilePicture{
-    width: 8%;
-    height: 8%;
+    width: 50px;
+    height: 50px;
     border-radius: 25px;
 }
 
@@ -257,8 +257,9 @@ form{
 }
 
 .post #postContent {
-    padding-left: 2%;
-    font-size: 17px;
+    padding-left: 90px;
+    padding-right: 30px;
+    font-size: 15px;
     font-weight: 400;
     font-family: 'Heebo';
 }
@@ -266,14 +267,14 @@ form{
 .post #postFooter{
     display: flex;
     width: 30%;
+    padding-left: 90px;
     padding-bottom: 2%;
-    padding-left: 2%;
-    gap: 20%;
+    gap: 30px;
 }
 
 .post #postFooter div {
     display: flex;
-    gap: 15%;
+    gap: 10px;
 }
 
 .post #postFooter * {
@@ -281,35 +282,68 @@ form{
 }
 
 .post #postFooter p {
-    font-size: 1.1em;
+    font-size: 0.95em;
 }
 
 .post #postFooter img{
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
 }
 
 @media (max-width: 1200px) {
 
-    .post #postFooter p {
+    .post {
+        width: 80vw;
+    }
+
+    .post #postFooter{
+        gap: 20px;
+    }
+
+    .post h2{
+        font-size: 1.7em;
+    }
+
+    .post h3 {
         font-size: 1.5em;
     }
 
-    .post #postFooter img{
-        width: 35px;
-        height: 35px;
+    .post #profilePicture{
+        width: 45px;
+        height: 45px;
     }
 }
 
 @media (max-width: 800px) {
 
-    .post #postFooter p {
-        font-size: 1.8em;
+    .post h2{
+        color: #383838;
+        font-weight: 700;
+        font-size: 1.4em;
     }
 
-    .post #postFooter img{
+    .post h3 {
+        color: #555454;
+        font-weight: 400;
+        font-size: 1.2em;
+    }
+
+    .post {
+        width: 100vw;
+    }
+
+    .post #profilePicture{
         width: 40px;
         height: 40px;
+    }
+
+    .post #postContent{
+        padding-left: 60px;
+        padding-right: 20px;
+    }
+
+    .post #postFooter{
+        padding-left: 60px;
     }
 }
 

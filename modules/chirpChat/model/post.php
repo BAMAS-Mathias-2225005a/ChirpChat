@@ -9,6 +9,5 @@ class PostRepository{
     public function __construct(private \Includes\DatabaseConnection $connection){ }
 
     public function getPost(){
-        // TODO Recupérer les post dans la base de données
     }
 }

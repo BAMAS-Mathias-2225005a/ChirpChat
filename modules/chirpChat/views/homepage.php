@@ -31,7 +31,7 @@ class HomePage {
         </div>
         <div id="postFooter">
             <div>
-                <img alt="hearth image" src="https://image.freepik.com/icones-gratis/como-simbolo-do-coracao-de-ios-interface-de-7_318-36651.jpg"/>
+                <img alt="hearth image" src="https://static-00.iconduck.com/assets.00/heart-icon-512x441-zviestnn.png"/>
                 <p>500</p>
             </div>
             <div><img alt="comment image" src="https://icon-library.com/images/speech-bubble-icon/speech-bubble-icon-13.jpg"/>

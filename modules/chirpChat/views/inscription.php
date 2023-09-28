@@ -8,7 +8,7 @@ class Inscription{
         ob_start();
         ?><main>
 
-            <form action="index.php?action=inscription" method="post">
+            <form action="index.php?action=registerUser" method="post">
 
                 <h2 id="inscriptionTitle">INSCRIPTION</h2>
 

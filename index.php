@@ -9,7 +9,9 @@
         else if($_GET['action'] === 'connexion'){
             (new \ChirpChat\Controllers\Login())->execute();
         }
-    }else{
+        else if($_GET['action'] === 'registerUser'){
+            (new \ChirpChat\Controllers\User)->registerUser();
+        }    }else{
         (new \ChirpChat\Controllers\Homepage)->execute();
     }
 

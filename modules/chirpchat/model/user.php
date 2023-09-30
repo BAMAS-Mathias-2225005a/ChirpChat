@@ -4,51 +4,19 @@ namespace ChirpChat\Model;
 
 class User{
 
-    public function __construct(private \PDO $connection){ }
+    public function __construct(private string $id, private string $username, private string $email){}
 
-    public function doesUserExist(string $email) : bool{
-        $statement = $this->connection->prepare("SELECT * FROM Utilisateur WHERE EMAIL= ?");
-        $statement->execute([$email]);
-        return $statement->fetch();
+    public function getID(){
+        return $this->id;
     }
 
-    public function isUserIdValid(string $email, string $password) : bool{
-        if(!$this->doesUserExist($email)) return false;
-        $statement = $this->connection->prepare("SELECT password FROM Utilisateur WHERE EMAIL = ?");
-        $statement->execute([$email]);
-        return password_verify($password, $statement->fetch());
+    public function getUsername(){
+        return $this->username;
     }
 
-    public function register($username, $pseudonyme, $email, $password, $birthdate) : void{
-        $statement = $this->connection->prepare("INSERT INTO Utilisateur VALUES (?, ?, ?, ?, ?, ?, NULL, NULL, ?, ? )" );
-        $statement->execute([uniqid(),$email,$username, $pseudonyme, password_hash($password,PASSWORD_BCRYPT), $birthdate,  date('l F d, Y'),  date('l F d, Y')]);
+    public function getEmail(){
+        return $this->email;
     }
-
-    public function getID(string $email, $password) : string{
-        if(!$this->isUserIdValid($email, $password)){
-            require '_assets/exception/UserDoesNotExistException.php';
-        }
-
-        $statement = $this->connection->prepare("SELECT ID FROM Utilisateur WHERE EMAIL = ? AND PASSWORD = ?");
-        $statement->execute([$email, $password]);
-
-        return $statement->fetch()['ID'];
-
-    }
-
-    public function getUserName($uuid){
-
-    }
-
-
-
 
 
 }
-
-
-
-
-
-
-

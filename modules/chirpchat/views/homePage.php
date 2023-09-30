@@ -2,6 +2,10 @@
 
 namespace ChirpChat\Views;
 
+use Chirpchat\Model\Database;
+use ChirpChat\Model\User;
+use ChirpChat\Model\UserRepository;
+
 class HomePage {
 
     public function show(array $postList) : void {
@@ -11,9 +15,10 @@ class HomePage {
 <h2><a href="index.php?action=inscription">INSCRIPTION</a></h2>
 <h2><a href="index.php?action=connexion">LOGIN</a></h2>
         <?php if(isset($_SESSION['ID'])){
-            echo "<h2>" . $_SESSION['ID'] . "</h2>";
-        }?>
-        <div id="postList">
+            $user =  (new UserRepository(Database::getInstance()->getConnection()))->getUser($_SESSION['ID']);
+            echo "<h2> Bonjour " . $user->getUsername() . "</h2>";
+        }
+        ?><div id="postList">
     <?php foreach($postList as $post){
 ?>  <div class="post">
         <div id="postHeader">

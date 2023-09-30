@@ -2,6 +2,8 @@
 
     require '_assets/includes/autoloader.php';
 
+    session_start();
+
     if(filter_input(INPUT_GET, 'action')) {
         if ($_GET['action'] === 'inscription') {
             (new \ChirpChat\Controllers\Inscription())->execute();

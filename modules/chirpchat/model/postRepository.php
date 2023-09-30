@@ -10,7 +10,7 @@ class Post{
 
 class PostRepository{
 
-    public function __construct(private \ChirpChat\Model\Database $connection){ }
+    public function __construct(private \chirpchat\model\Database $connection){ }
 
     public function getPost(){
         $statement =  $this->connection->getConnection()->prepare("SELECT * FROM Post");

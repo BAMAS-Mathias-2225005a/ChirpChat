@@ -1,18 +1,25 @@
 <?php
 
-namespace ChirpChat\Views;
+namespace Chirpchat\Views\auth;
 
 class Login {
 
+    public function __construct(private string $errorMessage = '') {}
+
     public function show() : void {
         ob_start();
-        ?><form id="loginForm" action="mailto:matteo.sciacca@etu.univ-amu.fr" method="post" enctype="text/plain"> <!-- Mail a laquelle seront envoyées les informations -->
+        if(!empty($this->errorMessage)){?>
+            <div class="errorMessage">
+                <h2><?= $this->errorMessage ?></h2>
+            </div><?php
+        }
+        ?><form id="loginForm" action="index.php?action=loginUser" method="post"> <!-- Mail a laquelle seront envoyées les informations -->
             <p>
                 <label for="email">E-mail</label> <br>
-                <input id="email" type="text" name="email" value=" "> <br> <!-- L'utilisateur rentre son e-mail ici -->
+                <input id="email" type="text" name="email"> <br> <!-- L'utilisateur rentre son e-mail ici -->
 
                 <label for="password">Mot de passe</label> <br>
-                <input id="password" type="password" name="password" value=""> <br> <!-- L'utilisateur rentre son mot de passe ici -->
+                <input id="password" type="password" name="password"> <br> <!-- L'utilisateur rentre son mot de passe ici -->
 
             <div class="form-group">
                 <label class="toggle-switch">

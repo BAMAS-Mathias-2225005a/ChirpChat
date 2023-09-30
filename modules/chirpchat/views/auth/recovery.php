@@ -1,6 +1,6 @@
 <?php
 
-namespace chirpChat\views;
+namespace chirpchat\views\auth;
 
 class Recovery {
 

@@ -405,3 +405,26 @@ form{
     max-width: 100%;
     height: auto;
 }
+
+/* ------ Error Message ------ */
+
+.errorMessage {
+    display: flex;
+    width: 30vw;
+    height: 5vh;
+    background-color: #fd4f4f;
+    justify-content: center;
+    padding: 0 2vw;
+    align-items: center;
+    margin: 5vh auto;
+}
+
+.errorMessage h2 {
+    font-size: 1.05em;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: 'League Spartan';
+    justify-self: flex-start;
+}

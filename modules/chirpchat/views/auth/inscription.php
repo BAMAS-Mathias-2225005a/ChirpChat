@@ -1,6 +1,6 @@
 <?php
 
-namespace ChirpChat\Views;
+namespace chirpchat\views\auth;
 
 class Inscription{
 

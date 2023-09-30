@@ -1,6 +1,6 @@
 <?php
 
-namespace ChirpChat\Model;
+namespace Chirpchat\Model;
 
 class Database {
 

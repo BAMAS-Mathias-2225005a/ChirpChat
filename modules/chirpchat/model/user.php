@@ -20,10 +20,8 @@ class User{
     }
 
     public function register($username, $pseudonyme, $email, $password, $birthdate) : void{
-        if(!$statement = $this->connection->getConnection()->query("INSERT INTO Utilisateur (id_utilisateur, username, pseudonyme, email, mot_passe, date_naissance) 
-        VALUES (uuid(), '$username', '$pseudonyme', '$email', '$password', '$birthdate'")){
-            throw new \PDOException('erreur sql');
-        }
+        $statement = $this->connection->prepare("INSERT INTO Utilisateur VALUES (?, ?, ?, ?, ?, ?, NULL, NULL, ?, ? )" );
+        $statement->execute([uniqid(),$email,$username, $pseudonyme, password_hash($password,PASSWORD_BCRYPT), $birthdate,  date('l F d, Y'),  date('l F d, Y')]);
     }
 
     public function getID(string $email, $password) : string{

@@ -10,6 +10,9 @@ class HomePage {
 ?><h1>Dernier commentaire : </h1>
 <h2><a href="index.php?action=inscription">INSCRIPTION</a></h2>
 <h2><a href="index.php?action=connexion">LOGIN</a></h2>
+        <?php if(isset($_SESSION['ID'])){
+            echo "<h2>" . $_SESSION['ID'] . "</h2>";
+        }?>
         <div id="postList">
     <?php foreach($postList as $post){
 ?>  <div class="post">

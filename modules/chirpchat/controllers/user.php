@@ -29,6 +29,7 @@ class User {
 
     public function register() : void{
         (new \ChirpChat\Model\User(Database::getInstance()->getConnection()))->register($_POST['username'],$_POST['pseudonyme'],$_POST['email'],$_POST['password'],$_POST['birthdate']);
+        header("Location:index.php");
     }
 
     private function createUserSession(string $ID) : void{

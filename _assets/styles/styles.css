@@ -7,6 +7,12 @@
     text-decoration: none;
 }
 
+a {
+    padding: 0;
+    text-decoration: none;
+    color: inherit;
+}
+
 body {
     overflow-x: hidden;
     background-color: #F0F0F0;
@@ -257,8 +263,7 @@ form{
 }
 
 .post #postContent {
-    padding-left: 90px;
-    padding-right: 30px;
+    padding: 3vh 30px 3vh 90px;
     font-size: 15px;
     font-weight: 400;
     font-family: 'Heebo';

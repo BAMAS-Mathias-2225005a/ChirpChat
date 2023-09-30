@@ -18,6 +18,14 @@
         } else if ($_GET['action'] === 'sendPost') {
             (new \ChirpChat\Controllers\Post)->addPost();
         }
+        else if ($_GET['action'] === 'addComment') {
+            (new \ChirpChat\Controllers\Comment())->addComment();
+        }
+        else if ($_GET['action'] === 'comment'){
+            if(isset($_GET['id'])){
+                (new \ChirpChat\Controllers\Comment())->execute();
+            }
+        }
     }
     else {
         (new \ChirpChat\Controllers\HomePage)->execute();

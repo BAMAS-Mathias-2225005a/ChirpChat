@@ -7,19 +7,19 @@ class User{
     public function __construct(private string $id, private string $username, private string $email, private string $pseudo){}
 
     public function getID(){
-        return $this->id;
+        return htmlspecialchars($this->id);
     }
 
     public function getUsername(){
-        return $this->username;
+        return htmlspecialchars($this->username);
     }
 
     public function getEmail(){
-        return $this->email;
+        return htmlspecialchars($this->email);
     }
 
     public function getPseudo() : string{
-        return $this->pseudo;
+        return htmlspecialchars($this->pseudo);
     }
 
 

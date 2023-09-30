@@ -33,31 +33,33 @@ class HomePage {
         ?><div id="postList">
     <?php foreach($postList as $post){
 ?>  <div class="post">
-        <div id="postHeader">
-            <img alt="author profile picture" id="profilePicture" src="https://cdn-icons-png.flaticon.com/512/436/436299.png" />
-            <div id="authorInfo">
-                <?php
-                    echo '<h2> ' . $post->getUser()->getPseudo() . '</h2>';
-                    echo '<h3> ' . $post->getUser()->getUsername() . '</h3>';
-                ?>
+        <a href="index.php?action=comment&id=<?=$post->idPost?> ">
+            <div id="postHeader">
+                <img alt="author profile picture" id="profilePicture" src="https://cdn-icons-png.flaticon.com/512/436/436299.png" />
+                <div id="authorInfo">
+                    <?php
+                        echo '<h2> ' . $post->getUser()->getPseudo() . '</h2>';
+                        echo '<h3> ' . $post->getUser()->getUsername() . '</h3>';
+                    ?>
+                </div>
             </div>
-        </div>
-        <div id="postContent">
-            <p>
-                <?php echo $post->message?>
-            </p>
-        </div>
-        <div id="postFooter">
-            <div>
-                <img alt="hearth image" src="https://static-00.iconduck.com/assets.00/heart-icon-512x441-zviestnn.png"/>
-                <p>500</p>
+            <div id="postContent">
+                <p>
+                    <?php echo $post->message?>
+                </p>
             </div>
-            <div><img alt="comment image" src="https://icon-library.com/images/speech-bubble-icon/speech-bubble-icon-13.jpg"/>
-                <p>500</p>
+            <div id="postFooter">
+                <div>
+                    <img alt="hearth image" src="https://static-00.iconduck.com/assets.00/heart-icon-512x441-zviestnn.png"/>
+                    <p>500</p>
+                </div>
+                <div><img alt="comment image" src="https://icon-library.com/images/speech-bubble-icon/speech-bubble-icon-13.jpg"/>
+                    <p>500</p>
+                </div>
             </div>
-        </div>
+        </a>
     </div><?php } ?>
-</div><?php
+    <?php
         $content = ob_get_clean();
         (new \ChirpChat\Views\MainLayout("Accueil", $content))->show();
     }

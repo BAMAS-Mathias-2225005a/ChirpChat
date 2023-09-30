@@ -21,6 +21,7 @@ class UserRepository{
     }
 
     public function register($username, $pseudonyme, $email, $password, $birthdate) : void{
+        if($this->doesUserExist($email)); //ERREUR
         $statement = $this->connection->prepare("INSERT INTO Utilisateur VALUES (?, ?, ?, ?, ?, ?, NULL, NULL, ?, ? )" );
         $statement->execute([uniqid(),$email,$username, $pseudonyme, password_hash($password,PASSWORD_BCRYPT), $birthdate,  date('l F d, Y'),  date('l F d, Y')]);
     }

@@ -15,6 +15,8 @@
             (new \ChirpChat\Controllers\User)->register();
         } else if ($_GET['action'] === 'loginUser') {
             (new \ChirpChat\Controllers\User)->login();
+        } else if ($_GET['action'] === 'sendPost') {
+            (new \ChirpChat\Controllers\Post)->addPost();
         }
     }
     else {

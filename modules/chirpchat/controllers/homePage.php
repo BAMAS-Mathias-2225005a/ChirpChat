@@ -8,7 +8,7 @@ class HomePage {
 
 
     public function execute() : void{
-        $postList = (new \ChirpChat\Model\PostRepository(Database::getInstance()))->getPost();
+        $postList = (new \ChirpChat\Model\PostRepository(Database::getInstance()->getConnection()))->getPost();
         (new \ChirpChat\Views\HomePage())->show($postList);
     }
 

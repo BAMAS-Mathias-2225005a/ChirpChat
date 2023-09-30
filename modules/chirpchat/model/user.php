@@ -4,7 +4,7 @@ namespace ChirpChat\Model;
 
 class User{
 
-    public function __construct(private string $id, private string $username, private string $email){}
+    public function __construct(private string $id, private string $username, private string $email, private string $pseudo){}
 
     public function getID(){
         return $this->id;
@@ -16,6 +16,10 @@ class User{
 
     public function getEmail(){
         return $this->email;
+    }
+
+    public function getPseudo() : string{
+        return $this->pseudo;
     }
 
 

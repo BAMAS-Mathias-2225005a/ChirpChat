@@ -36,11 +36,11 @@ class UserRepository{
     }
 
     public function getUser(string $id) : ?user {
-        $statement = $this->connection->prepare("SELECT EMAIL, USERNAME FROM Utilisateur WHERE ID = ?");
+        $statement = $this->connection->prepare("SELECT EMAIL, USERNAME, PSEUDONYME FROM Utilisateur WHERE ID = ?");
         $statement->execute([$id]);
 
         if($row = $statement->fetch()){
-            return new User($id, $row['USERNAME'], $row['EMAIL']);
+            return new User($id, $row['USERNAME'], $row['EMAIL'], $row['PSEUDONYME']);
         }
         return null;
     }

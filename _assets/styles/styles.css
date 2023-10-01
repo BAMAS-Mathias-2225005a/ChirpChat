@@ -100,7 +100,6 @@ nav #profilSection p{
 }
 
 nav #connectionSection{
-    display: flex;
     gap: 20px;
 }
 
@@ -128,6 +127,105 @@ nav #connectionSection a:nth-child(2) input {
     box-shadow: 0px 4px 4px 0px rgba(104, 135, 212, 0.25);
 }
 
+#hamburgerMenuUnscroll{
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    background-color: white;
+    position: absolute;
+}
+
+#hamburgerMenuUnscroll #buttons{
+    margin-top: 100px;
+    margin-bottom: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+#hamburgerMenuUnscroll input[type=button]{
+    width: 90vw;
+    height: 10vh;
+    color: #3D3D3D;
+    font-size: 3em;
+    font-family: "League Spartan", serif;
+    font-weight: 600;
+    border: 3px solid #9fbaf8;
+}
+
+#hamburgerMenuUnscroll #closeHamburgerMenuIcon{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 40px;
+    height: 40px;
+}
+
+
+#hamburgerMenuIcon {
+    display: none;
+}
+
+@media screen and (max-width: 1050px){
+
+    #profilSection p {
+        display: none;
+    }
+
+    #connectionSection{
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 800px){
+
+    #profilSection #messageIcon {
+        display: none;
+    }
+
+    nav h1 {
+        margin-right: 0;
+    }
+
+    nav #searchBar input{
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 600px){
+
+    nav #searchBar {
+        display: none;
+    }
+
+    nav{
+        justify-content: space-between;
+    }
+
+    nav h1{
+        margin-left: 20px;
+    }
+
+    nav #profilPicture{
+        margin-right: 20px;
+    }
+
+    #hamburgerMenuIcon{
+        display: block;
+    }
+    #hamburgerMenuIcon img{
+        width: 40px;
+        height: 40px;
+        margin-right: 20px;
+    }
+
+    #connectionSection{
+        display: none;
+    }
+
+}
 
 /* ------ PAGE INSCRIPTION ------ */
 
@@ -234,10 +332,6 @@ main * {
 
 @media screen and (max-width: 1000px) {
 
-    nav h1 {
-        font-size: 6.5vw;
-    }
-
     #inscriptionTitle{
         font-size: 3em;
     }
@@ -336,6 +430,13 @@ main * {
     padding: 30px 0 ;
 }
 
+@media screen and (max-width: 600px) {
+
+    .post {
+        width: 80vw;
+    }
+}
+
 /* ------ POST INPUT ------ */
 
 #writePostSection{
@@ -404,6 +505,23 @@ main * {
     height: 40px;
     border-radius: 50px;
     align-self: flex-start;
+}
+
+@media screen and (max-width: 600px) {
+
+    #writePostSection {
+        width: 80vw;
+    }
+
+    #writePostSection input[type=text],
+    #writePostSection textarea {
+        width: 60vw;
+    }
+
+    #writePostSection input[type=submit]{
+        width: 100px;
+    }
+
 }
 
 /* ------ COMMENT ------ */

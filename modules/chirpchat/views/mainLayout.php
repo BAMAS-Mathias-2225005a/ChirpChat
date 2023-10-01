@@ -20,6 +20,7 @@ class MainLayout {
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="../../../_assets/styles/styles.css">
         <link rel="icon" type="favicon" href="/favicon.png">
+        <script src="/_assets/js/scripts.js"></script>
         <title><?= $this->title?></title>
     </head>
     <body>
@@ -37,12 +38,22 @@ class MainLayout {
                 <img id="profilPicture" alt="photo de profil" src="https://cdn-icons-png.flaticon.com/512/168/168724.png">
             </div>
             <?php }else{?>
+            <a id="hamburgerMenuIcon" onclick="openHamburgerMenu()"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/2048px-Hamburger_icon.svg.png" ></a>
             <div id="connectionSection">
                 <a href="index.php?action=connexion"><input type="button" value="SE CONNECTER"></a>
                 <a href="index.php?action=inscription"><input type="button" value="S'INSCRIRE"></a>
             </div>
             <?php }?>
         </nav>
+
+        <div id="hamburgerMenuUnscroll" style="display: none">
+            <img id="closeHamburgerMenuIcon" onclick="closeHamburgerMenu()" src="https://cdn-icons-png.flaticon.com/512/57/57165.png">
+            <div id="buttons">
+                <a href="index.php?action=connexion"><input type="button" value="SE CONNECTER"></a>
+                <a href="index.php?action=inscription"><input type="button" value="S'INSCRIRE"></a>
+            </div>
+        </div>
+
         <main id="pageContent">
             <?= $this->content; ?>
         </main>

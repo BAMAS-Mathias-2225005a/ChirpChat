@@ -20,12 +20,28 @@ class MainLayout {
     </head>
     <body>
         <nav>
-            <img alt="photo de profil" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
-            <img id="Logo" src="/_assets/images/Logo.png">
-            <img id="loupeImage" alt="image d'une loupe" src="https://cdn-icons-png.flaticon.com/512/1280/1280594.png">
-            <img id="backgroundImage" alt="arrière plan image de vague" src="/_assets/images/NavBarBackground.png">
+            <h1>ChirpChat</h1>
+            <div id="searchBar">
+                <img alt="Loupe barre de recherche" src="https://cdn-icons-png.flaticon.com/512/68/68213.png">
+                <input placeholder="Rechercher un post">
+            </div>
+
+            <?php if(isset($_SESSION['ID'])){?>
+            <div id="profilSection">
+                <img id="messageIcon" alt="image icon message privés" src="https://cdn-icons-png.flaticon.com/512/245/245810.png">
+                <p>@Username</p>
+                <img id="profilPicture" alt="photo de profil" src="https://cdn-icons-png.flaticon.com/512/168/168724.png">
+            </div>
+            <?php }else{?>
+            <div id="connectionSection">
+                <input type="button" value="SE CONNECTER">
+                <input type="button" value="S'INSCRIRE">
+            </div>
+            <?php }?>
         </nav>
-    <?= $this->content; ?>
+        <main id="pageContent">
+            <?= $this->content; ?>
+        </main>
     </body>
     </html>
 <?php

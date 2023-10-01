@@ -9,8 +9,7 @@ class Comment{
     public function execute() : void {
         $postRepository = (new \ChirpChat\Model\PostRepository(Database::getInstance()->getConnection()));
         $postID = $_GET['id'];
-
-        $post = $postRepository->getPost($postID);
+        $post = $postRepository->getComment($postID);
         $commentList = $postRepository->getPostComment($postID);
         (new \ChirpChat\Views\Comment())->show($post, $commentList);
     }

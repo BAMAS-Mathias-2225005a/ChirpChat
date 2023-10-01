@@ -116,13 +116,13 @@ nav #connectionSection input[type=button]{
     letter-spacing: 1.8px;
 }
 
-nav #connectionSection input[type=button]:nth-child(1){
+nav #connectionSection a:nth-child(1) input{
     background: #6887D4;
     border-radius: 4px;
     box-shadow: 0px 4px 4px 0px rgba(104, 135, 212, 0.25);
 }
 
-nav #connectionSection input[type=button]:nth-child(2) {
+nav #connectionSection a:nth-child(2) input {
     border-radius: 4px;
     background: #9fbaf8;
     box-shadow: 0px 4px 4px 0px rgba(104, 135, 212, 0.25);
@@ -186,16 +186,6 @@ main * {
     max-width: 500px;
 }
 
-form{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border: solid;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0px 4px 4px 0px rgba(104, 135, 212, 0.25);
-    padding: 30px 30px;
-}
 
 #btnSuivant {
     background-color: #6887D4;
@@ -251,13 +241,13 @@ form{
     }
 }
 
-/* ------ Posts ------ */
+/* ------ POSTS ------ */
 
 .post{
     display: flex;
     width: 500px;
     align-items: flex-start;
-    border-radius: 30px;
+    border-radius: 15px;
     background: rgba(255, 255, 255, 0.70);
     box-shadow: 0px 4px 4px 0px rgba(104, 135, 212, 0.25);
     padding: 20px 30px 10px 15px;
@@ -332,6 +322,142 @@ form{
     padding: 30px 0 ;
 }
 
+/* ------ POST INPUT ------ */
+
+#writePostSection{
+    position: relative;
+    display: flex;
+    width: 500px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.70);
+    box-shadow: 0px 4px 4px 0px rgba(104, 135, 212, 0.25);
+    padding: 20px 30px 10px 15px;
+    border-radius: 15px;
+}
+
+#writePostSection input[type=submit]{
+    position: absolute;
+    cursor: pointer;
+    right: 50px;
+    bottom: 15px;
+    color: #FFFFFF;
+    font-family: League Spartan, serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 2.1px;
+    border-radius: 10px;
+    background: #6887D4;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: none;
+    width: 125px;
+    height: 30px;
+}
+
+#writePostSection textarea,
+#writePostSection input[type=text]{
+    border-radius: 10px;
+    background: #EAEBF8;
+    padding: 15px 0 0 15px;
+    width: 450px;
+    height: 70px;
+    border: none;
+    margin-left: 15px;
+    line-height: 15px;
+    resize: none;
+    outline: none;
+    color: #000;
+    font-family: Heebo, serif ;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+#userInputContent{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    gap: 10px;
+}
+
+#userInputContent input[type=text]{
+    padding: 8px 0 8px 15px;
+    line-height: 0;
+    height: 20px;
+    vertical-align: center;
+}
+
+#writePostSection img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    align-self: flex-start;
+}
+
+/* ------ COMMENT ------ */
+
+#commentPage{
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+}
+
+#commentList{
+    padding-top: 20px;
+}
+
+#commentList .post{
+    border-radius: 0;
+}
+
+#commentSectionTitle{
+    font-family: "League Spartan", serif;
+    padding: 20px 0;
+    width: 100%;
+    height: 30px;
+    background-color: rgba(171, 162, 244, 0.7);
+    color: #313131;
+    font-weight: 700;
+    text-align: center;
+}
+
+#commentPage form input[type=submit]{
+    cursor: pointer;
+    right: 50px;
+    bottom: 10px;
+    color: #FFFFFF;
+    font-family: League Spartan, serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    border-radius: 10px;
+    background: #6887D4;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: none;
+    width: 100px;
+    height: 30px;
+}
+
+#commentPage form{
+    display: flex;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 10px 30px;
+    margin-top: 20px;
+    width: 490px;
+}
+
+#commentPage form img{
+    width: 40px;
+    height: 40px;
+}
+#commentPage textarea{
+    width: 65%;
+    resize: none;
+    border: none;
+    background: #EAEBF8;
+    font-family: Heebo, serif;
+    font-size: 14px;
+    padding: 10px 0 0 10px;
+}
 
 /* ------ PAGE LOGIN ------ */
 

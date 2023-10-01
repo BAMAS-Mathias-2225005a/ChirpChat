@@ -54,4 +54,16 @@ class PostRepository{
         return null;
     }
 
+    public function getComment(string $commentId) : ?Post{
+        $userRepo = new \ChirpChat\Model\UserRepository($this->connection);
+        $statement = $this->connection->prepare("SELECT * FROM Post WHERE ID_POST = ? LIMIT 1");
+        $statement->execute([$commentId]);
+
+        if($row = $statement->fetch()){
+            return new Comment($row['id_post'], $row['titre'], $row['message'], $row['date_publi'], $row['categories'], $userRepo->getUser($row['id_utilisateur']));
+        }
+
+        return null;
+    }
+
 }

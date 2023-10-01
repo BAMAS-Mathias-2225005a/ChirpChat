@@ -1,12 +1,16 @@
 <?php
 
 namespace ChirpChat\Views;
-
+use \ChirpChat\Model\User;
 class MainLayout {
 
     public function __construct(private string $title, private string $content) { }
 
-    public function show() : void {
+    /**
+     * @param $user
+     * @return void
+     */
+    public function show(?User $user = null) : void {
 ?><!doctype html>
     <html lang="fr">
     <head>
@@ -20,7 +24,7 @@ class MainLayout {
     </head>
     <body>
         <nav>
-            <h1>ChirpChat</h1>
+            <h1><a href="index.php">ChirpChat</a></h1>
             <div id="searchBar">
                 <img alt="Loupe barre de recherche" src="https://cdn-icons-png.flaticon.com/512/68/68213.png">
                 <input placeholder="Rechercher un post">
@@ -29,13 +33,13 @@ class MainLayout {
             <?php if(isset($_SESSION['ID'])){?>
             <div id="profilSection">
                 <img id="messageIcon" alt="image icon message privés" src="https://cdn-icons-png.flaticon.com/512/245/245810.png">
-                <p>@Username</p>
+                <?php if($user != null) echo '<p>@' . $user->getUsername() . '</p>' ?>;
                 <img id="profilPicture" alt="photo de profil" src="https://cdn-icons-png.flaticon.com/512/168/168724.png">
             </div>
             <?php }else{?>
             <div id="connectionSection">
-                <input type="button" value="SE CONNECTER">
-                <input type="button" value="S'INSCRIRE">
+                <a href="index.php?action=connexion"><input type="button" value="SE CONNECTER"></a>
+                <a href="index.php?action=inscription"><input type="button" value="S'INSCRIRE"></a>
             </div>
             <?php }?>
         </nav>

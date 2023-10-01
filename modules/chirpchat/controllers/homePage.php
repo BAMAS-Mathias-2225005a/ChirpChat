@@ -9,7 +9,13 @@ class HomePage {
 
     public function execute() : void{
         $postList = (new \ChirpChat\Model\PostRepository(Database::getInstance()->getConnection()))->getPostList();
-        (new \ChirpChat\Views\HomePage())->show($postList);
+        if(isset($_SESSION['ID'])) {
+            $user = (new \ChirpChat\Model\UserRepository(Database::getInstance()->getConnection()))->getUser($_SESSION['ID']);
+        }
+        else{
+            $user = null;
+        }
+        (new \ChirpChat\Views\HomePage())->show($postList, $user);
     }
 
 }

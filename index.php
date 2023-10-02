@@ -15,7 +15,18 @@
             (new \ChirpChat\Controllers\User)->register();
         } else if ($_GET['action'] === 'loginUser') {
             (new \ChirpChat\Controllers\User)->login();
-        } else if ($_GET['action'] === 'sendPost') {
+        }  else if ($_GET['action'] === 'comment'){
+            if(isset($_GET['id'])){
+                (new \ChirpChat\Controllers\Comment())->execute();
+            }
+        }
+
+        // ---- A BESOIN QUE L'UTILISATEUR SOIR CONNECTÉ ----
+
+        else if (!isset($_SESSION['ID'])){
+            header("Location:index.php?action=connexion");
+        }
+        else if ($_GET['action'] === 'sendPost') {
             (new \ChirpChat\Controllers\Post)->addPost();
         } else if ($_GET['action'] === 'like'){
             (new \ChirpChat\Model\PostRepository(\Chirpchat\Model\Database::getInstance()->getConnection()))->addLike($_GET['id'],$_SESSION['ID']);
@@ -23,11 +34,6 @@
         }
         else if ($_GET['action'] === 'addComment') {
             (new \ChirpChat\Controllers\Comment())->addComment();
-        }
-        else if ($_GET['action'] === 'comment'){
-            if(isset($_GET['id'])){
-                (new \ChirpChat\Controllers\Comment())->execute();
-            }
         }
     }
     else {

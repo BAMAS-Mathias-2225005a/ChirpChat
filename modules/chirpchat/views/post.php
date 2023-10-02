@@ -13,6 +13,7 @@ class Post{
     public function show() : void{
         ob_start();
         ?><div class="post">
+            <a id="<?php echo $this->post->idPost?>"></a>
             <img alt="author profile picture" id="profilePicture" src="https://cdn-icons-png.flaticon.com/512/436/436299.png" />
             <a href="index.php?action=comment&id=<?=$this->post->idPost?> ">
                 <div id="postHeader">
@@ -30,7 +31,9 @@ class Post{
                 </div>
                 <div id="postFooter">
                     <div>
-                        <img alt="hearth image" src="https://static-00.iconduck.com/assets.00/heart-icon-512x441-zviestnn.png"/>
+                        <form action="index.php?action=like&id=<?php echo $this->post->idPost?>" method="post">
+                            <input type="submit">
+                        </form>
                         <p><?php echo $this->post->likeAmount ?></p>
                     </div>
                     <div><img alt="comment image" src="https://icon-library.com/images/speech-bubble-icon/speech-bubble-icon-13.jpg"/>

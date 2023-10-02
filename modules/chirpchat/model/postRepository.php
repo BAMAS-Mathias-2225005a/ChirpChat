@@ -82,4 +82,25 @@ class PostRepository{
         return null;
     }
 
+    public function isAlreadyLiked(?int $post_id, string $user_id) : bool {
+        $statement = $this->connection->prepare("SELECT POST_ID, USER_ID FROM LIKES WHERE POST_ID = ? AND USER_ID = ?");
+        $statement->execute([$post_id, $user_id]);
+        if($statement->fetch()) return true;
+        return false;
+    }
+
+    public function addLike(?int $post_id, string $user_id) : void {
+        if($this->isAlreadyLiked($post_id, $user_id)){
+            $this->removeLike($post_id, $user_id);
+        } else {
+            $statement = $this->connection->prepare("INSERT INTO LIKES (POST_ID, USER_ID) VALUES (?, ?)");
+            $statement->execute([$post_id, $user_id]);
+        }
+    }
+
+    public function removeLike(?int $post_id, string $user_id) : void {
+        $statement = $this->connection->prepare("DELETE FROM LIKES WHERE POST_ID = ? AND USER_ID = ?");
+        $statement->execute([$post_id, $user_id]);
+    }
+
 }

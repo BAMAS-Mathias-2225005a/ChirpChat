@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
 
+
 * {
     margin: 0;
     padding: 0;
@@ -418,7 +419,7 @@ main * {
     gap: 5px;
 }
 
-.post a #postFooter img{
+.post a #postFooter a img{
     width: 20px;
     height: 20px;
 }

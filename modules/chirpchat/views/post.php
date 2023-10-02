@@ -32,7 +32,7 @@ class Post{
                 <div id="postFooter">
                     <div>
                         <form action="index.php?action=like&id=<?php echo $this->post->idPost?>" method="post">
-                            <input type="submit">
+                            <input type="submit" value="LIKE">
                         </form>
                         <p><?php echo $this->post->likeAmount ?></p>
                     </div>

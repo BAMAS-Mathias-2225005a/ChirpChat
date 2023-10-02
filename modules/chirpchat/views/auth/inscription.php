@@ -47,7 +47,7 @@ class Inscription{
         </main><?php
 
         $content = ob_get_clean();
-        (new \ChirpChat\Views\MainLayout("Inscription", $content))->show();
+        (new \ChirpChat\Views\MainLayout("Inscription 1/2", $content))->show();
     }
 
 }

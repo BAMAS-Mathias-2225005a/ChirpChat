@@ -17,6 +17,9 @@
             (new \ChirpChat\Controllers\User)->login();
         } else if ($_GET['action'] === 'sendPost') {
             (new \ChirpChat\Controllers\Post)->addPost();
+        } else if ($_GET['action'] === 'like'){
+            (new \ChirpChat\Model\PostRepository(\Chirpchat\Model\Database::getInstance()->getConnection()))->addLike($_GET['id'],$_SESSION['ID']);
+            header("Location:index.php#" . $_GET['id']);
         }
         else if ($_GET['action'] === 'addComment') {
             (new \ChirpChat\Controllers\Comment())->addComment();

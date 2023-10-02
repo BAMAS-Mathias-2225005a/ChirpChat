@@ -669,17 +669,18 @@ main * {
 .errorMessage {
     display: flex;
     width: 30vw;
-    height: 5vh;
+    height: 10vh;
     background-color: #fd4f4f;
     justify-content: center;
     padding: 0 2vw;
     align-items: center;
     margin: 5vh auto;
+    border-radius: 8px;
 }
 
 .errorMessage h2 {
     font-size: 1.05em;
-    font-weight: 400;
+    font-weight: bold;
     margin: 0;
     padding: 0;
     text-decoration: none;

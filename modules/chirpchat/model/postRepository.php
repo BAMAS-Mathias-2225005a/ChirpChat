@@ -35,6 +35,16 @@ class PostRepository{
         }
     }
 
+    public function addLike(?int $post_id, string $user_id) : void {
+        $statement = $this->connection->prepare("INSERT INTO LIKES ($post_id, $user_id) VALUES (?, ?)");
+        $statement->execute([$post_id, $user_id]);
+    }
+
+    public function removeLike(?int $post_id, string $user_id) : void {
+        $statement = $this->connection->prepare("DELETE FROM LIKES WHERE POST_ID = $post_id AND USER_ID = $user_id");
+        $statement->execute([$post_id, $user_id]);
+    }
+
 
     public function getPostComment(string $id) : array {
         $userRepo = new \ChirpChat\Model\UserRepository($this->connection);

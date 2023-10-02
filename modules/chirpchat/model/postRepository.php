@@ -27,7 +27,7 @@ class PostRepository{
 
     public function add(?string $titre, string $message, string $userID, string $parent_id=null) : void {
         $statement = $this->connection->prepare("INSERT INTO Post (titre, message, date_publi, categories, id_utilisateur, PARENT_ID)VALUES (?,?,?,NULL,?,?)");
-        $statement->execute([$titre, $message,date('D M Y'), $userID, $parent_id]);
+        $statement->execute([$titre, $message,date('Y-m-d H:i:s'), $userID, $parent_id]);
     }
 
     public function getPostComment(string $id) : array {

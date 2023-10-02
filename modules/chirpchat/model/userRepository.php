@@ -23,7 +23,7 @@ class UserRepository{
     public function register($username, $pseudonyme, $email, $password, $birthdate) : void{
         if($this->doesUserExist($email)); //ERREUR
         $statement = $this->connection->prepare("INSERT INTO Utilisateur VALUES (?, ?, ?, ?, ?, ?, NULL, NULL, ?, ? )" );
-        $statement->execute([uniqid(),$email,$username, $pseudonyme, password_hash($password,PASSWORD_BCRYPT), $birthdate,  date('Y-m-d H:i:s'),  date('Y-m-d H:i:s')]);
+        $statement->execute([uniqid(),$email,$username, $pseudonyme, password_hash($password,PASSWORD_BCRYPT), $birthdate,  date('l F d, Y'),  date('l F d, Y')]);
     }
 
     public function getID(string $email, $password) : string{

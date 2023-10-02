@@ -31,10 +31,10 @@ class Post{
                 <div id="postFooter">
                     <div>
                         <img alt="hearth image" src="https://static-00.iconduck.com/assets.00/heart-icon-512x441-zviestnn.png"/>
-                        <p>500</p>
+                        <p><?php echo $this->post->likeAmount ?></p>
                     </div>
                     <div><img alt="comment image" src="https://icon-library.com/images/speech-bubble-icon/speech-bubble-icon-13.jpg"/>
-                        <p>500</p>
+                        <p><?php echo $this->post->commentAmount ?></p>
                     </div>
                 </div>
             </a>

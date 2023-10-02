@@ -627,19 +627,13 @@ main * {
     text-align: center;
 }
 
-/* ------ Main Layout ------ */
-#Logo { /* Logo qui s'affiche en haut de toutes les pages */
-    max-width: 100%;
-    height: auto;
-}
-
-/*#loginPassword {
+#loginChamps { /* Champs à remplir */
     border-radius: 8px;
     outline: none;
     border: none;
     border-bottom: 0px solid rgba(221, 221, 221, 0.33);
     box-shadow: 0px 3px 3px 2px rgba(104, 135, 212, 0.25);
-    width: 100%;
+    width: 27.5%;
     height: 5vh;
     padding-left: 2%;
     background: rgba(221, 221, 221, 0.33);
@@ -647,7 +641,7 @@ main * {
     font-weight: 400;
     font-size: 20px;
     letter-spacing: 1.6px;
-}*/
+}
 
 #submit { /* Bouton pour envoyer */
     background-color: #6887D4;
@@ -671,6 +665,12 @@ main * {
 #submit:hover{ /* Changement de couleur du bouton pour envoyer quand on passe le curseur dessus */
     background-color: #5653b4;
     transition: background-color 0.3s ease-in-out;
+}
+
+/* ------ Main Layout ------ */
+#Logo { /* Logo qui s'affiche en haut de toutes les pages */
+    max-width: 100%;
+    height: auto;
 }
 
 /* ------ Error Message ------ */

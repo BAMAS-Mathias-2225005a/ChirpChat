@@ -30,13 +30,13 @@ class Login {
                         </span>
                     </span>
                 </label>
-            </div>
+            </div> <br>
 
             <input id="submit" type="submit" value="SE CONNECTER"><br> <!-- Bouton pour valider la connexion -->
 
-            <a href="index.php?action=inscription">S'INSCRIRE</a><br> <!-- Bouton pour aller a la page d'inscription  -->
+            <a href="index.php?action=inscription" id="liensLogin">S'INSCRIRE</a> <!-- Bouton pour aller a la page d'inscription  -->
 
-            <a href="index.php?action=recuperation">Mot de passe oublié?</a> <!-- Bouton pour aller vers la page pour récupérer le mot de passe -->
+            <a href="index.php?action=recuperation" id="liensLogin">Mot de passe oublié?</a> <!-- Bouton pour aller vers la page pour récupérer le mot de passe -->
 
             </p>
         </form><?php

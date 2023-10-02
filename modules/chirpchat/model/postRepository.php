@@ -2,8 +2,8 @@
 
 namespace ChirpChat\Model;
 
+use ChirpChat\Model\Post;
 use Includes\DatabaseConnection;
-use \ChirpChat\Model\Post;
 use \ChirpChat\Model\Post as Comment;
 
 class PostRepository{
@@ -34,17 +34,6 @@ class PostRepository{
             $statement->execute([$parent_id]);
         }
     }
-
-    public function addLike(?int $post_id, string $user_id) : void {
-        $statement = $this->connection->prepare("INSERT INTO LIKES ($post_id, $user_id) VALUES (?, ?)");
-        $statement->execute([$post_id, $user_id]);
-    }
-
-    public function removeLike(?int $post_id, string $user_id) : void {
-        $statement = $this->connection->prepare("DELETE FROM LIKES WHERE POST_ID = $post_id AND USER_ID = $user_id");
-        $statement->execute([$post_id, $user_id]);
-    }
-
 
     public function getPostComment(string $id) : array {
         $userRepo = new \ChirpChat\Model\UserRepository($this->connection);
@@ -101,6 +90,26 @@ class PostRepository{
     public function removeLike(?int $post_id, string $user_id) : void {
         $statement = $this->connection->prepare("DELETE FROM LIKES WHERE POST_ID = ? AND USER_ID = ?");
         $statement->execute([$post_id, $user_id]);
+    }
+
+    /**
+     * @param string $filter
+     * @return Post array
+     */
+    public function searchPost(string $filter) : array{
+        $filter = '%' . $filter . '%';
+        $userRepo = new \ChirpChat\Model\UserRepository($this->connection);
+        $statement = $this->connection->prepare("SELECT * FROM Post WHERE message LIKE ? ");
+        $statement->execute([$filter]);
+
+        $postList = [];
+
+        while ($row = $statement->fetch()){
+            $post = new Post($row['id_post'], $row['titre'], $row['message'], $row['date_publi'], $row['categories'], $userRepo->getUser($row['id_utilisateur']), $row['commentAmount'], $row['likeAmount']);
+            $postList[] = $post;
+        }
+
+        return $postList;
     }
 
 }

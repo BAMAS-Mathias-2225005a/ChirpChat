@@ -19,9 +19,11 @@
             if(isset($_GET['id'])){
                 (new \ChirpChat\Controllers\Comment())->execute();
             }
+        }  else if ($_GET['action'] === 'search'){
+            (new \ChirpChat\Controllers\Post())->searchPost();
         }
 
-        // ---- A BESOIN QUE L'UTILISATEUR SOIR CONNECTÉ ----
+        // ---- A BESOIN QUE L'UTILISATEUR SOIT CONNECTÉ ----
 
         else if (!isset($_SESSION['ID'])){
             header("Location:index.php?action=connexion");

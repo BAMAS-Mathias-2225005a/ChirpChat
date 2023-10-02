@@ -21,6 +21,7 @@ class Login {
                 <br>
                 <input id="loginChamps" type="password" name="password" placeholder="Mot de passe"> <br> <!-- L'utilisateur rentre son mot de passe ici -->
 
+             <br>
             <div class="form-group">
                 <label class="toggle-switch">
                     <input class="toggle-switch-check" type="checkbox" />

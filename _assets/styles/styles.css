@@ -623,6 +623,13 @@ main * {
     letter-spacing: 1.6px;
 }
 
+#loginChamps input:focus {
+    border-color: transparent;
+    border-bottom: 4px solid #758cc9;
+    box-shadow: none;
+    transition: border-bottom-color 0.3s;
+}
+
 #submit { /* Bouton pour envoyer */
     background-color: #6887D4;
     border: none;
@@ -660,7 +667,7 @@ main * {
 
 /* ------ Main Layout ------ */
 #Logo { /* Logo qui s'affiche en haut de toutes les pages */
-    max-width: 100%;
+    max-width: 5%;
     height: auto;
 }
 
@@ -706,6 +713,13 @@ main * {
     letter-spacing: 1.6px;
   }
 
+#recoveryChamps input:focus {
+    border-color: transparent;
+    border-bottom: 4px solid #758cc9;
+    box-shadow: none;
+    transition: border-bottom-color 0.3s;
+}
+
 #submitRecovery { /* Bouton pour envoyer */
     background-color: #6887D4;
     border: none;
@@ -729,3 +743,4 @@ main * {
     background-color: #5653b4;
     transition: background-color 0.3s ease-in-out;
 }
+

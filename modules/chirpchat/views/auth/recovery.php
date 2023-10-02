@@ -3,9 +3,15 @@
 namespace chirpchat\views\auth;
 
 class Recovery {
+    public function __construct(private string $errorMessage = '') {}
 
     public function show() : void {
         ob_start();
+        if(!empty($this->errorMessage)){?>
+            <div class="errorMessage">
+                <h2><?= $this->errorMessage ?></h2>
+            </div><?php
+        }
         ?>
 
     <form id="loginForm" action="index.php?action=loginUser" method="post">

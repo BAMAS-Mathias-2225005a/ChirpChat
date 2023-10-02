@@ -18,7 +18,7 @@ class PostRepository{
         $postList = [];
 
         while ($row = $statement->fetch()){
-            $post = new Post($row['id_post'], $row['titre'], $row['message'], $row['date_publi'], $row['categories'], $userRepo->getUser($row['id_utilisateur']));
+            $post = new Post($row['id_post'], $row['titre'], $row['message'], $row['date_publi'], $row['categories'], $userRepo->getUser($row['id_utilisateur']), $row['commentAmount'], $row['likeAmount']);
             $postList[] = $post;
         }
 
@@ -27,8 +27,14 @@ class PostRepository{
 
     public function add(?string $titre, string $message, string $userID, string $parent_id=null) : void {
         $statement = $this->connection->prepare("INSERT INTO Post (titre, message, date_publi, categories, id_utilisateur, PARENT_ID)VALUES (?,?,?,NULL,?,?)");
-        $statement->execute([$titre, $message,date('Y-m-d H:i:s'), $userID, $parent_id]);
+        $statement->execute([$titre, $message,date('D M Y'), $userID, $parent_id]);
+
+        if($parent_id != null){
+            $statement = $this->connection->prepare("UPDATE Post SET CommentAmount = CommentAmount + 1 WHERE ID_POST=?");
+            $statement->execute([$parent_id]);
+        }
     }
+
 
     public function getPostComment(string $id) : array {
         $userRepo = new \ChirpChat\Model\UserRepository($this->connection);
@@ -37,7 +43,7 @@ class PostRepository{
 
         $commentList = [];
         while($row = $statement->fetch()){
-            $commentList[] = new Comment($row['id_post'], $row['titre'], $row['message'], $row['date_publi'], $row['categories'], $userRepo->getUser($row['id_utilisateur']));
+            $commentList[] = new Comment($row['id_post'], $row['titre'], $row['message'], $row['date_publi'], $row['categories'], $userRepo->getUser($row['id_utilisateur']), $row['commentAmount'], $row['likeAmount']);
         }
         return $commentList;
     }
@@ -48,7 +54,7 @@ class PostRepository{
         $statement->execute([$postId]);
 
         if($row = $statement->fetch()){
-            return new Comment($row['id_post'], $row['titre'], $row['message'], $row['date_publi'], $row['categories'], $userRepo->getUser($row['id_utilisateur']));
+            return new Comment($row['id_post'], $row['titre'], $row['message'], $row['date_publi'], $row['categories'], $userRepo->getUser($row['id_utilisateur']), $row['commentAmount'], $row['likeAmount'], $row['likeAmount']);
         }
 
         return null;
@@ -60,7 +66,7 @@ class PostRepository{
         $statement->execute([$commentId]);
 
         if($row = $statement->fetch()){
-            return new Comment($row['id_post'], $row['titre'], $row['message'], $row['date_publi'], $row['categories'], $userRepo->getUser($row['id_utilisateur']));
+            return new Comment($row['id_post'], $row['titre'], $row['message'], $row['date_publi'], $row['categories'], $userRepo->getUser($row['id_utilisateur']), $row['commentAmount'], $row['likeAmount']);
         }
 
         return null;

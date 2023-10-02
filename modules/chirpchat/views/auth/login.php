@@ -13,13 +13,13 @@ class Login {
                 <h2><?= $this->errorMessage ?></h2>
             </div><?php
         }
-        ?><form id="loginForm" action="index.php?action=loginUser" method="post"> <!-- Mail a laquelle seront envoyées les informations -->
+        ?><form id="loginForm" action="index.php?action=loginUser" method="post">
             <p>
-                <label for="email">E-mail</label> <br>
-                <input id="email" type="text" name="email"> <br> <!-- L'utilisateur rentre son e-mail ici -->
+                <br>
+                <input id="loginChamps" type="text" name="email" placeholder="E-mail"> <br> <!-- L'utilisateur rentre son e-mail ici -->
 
-                <label for="password">Mot de passe</label> <br>
-                <input id="password" type="password" name="password"> <br> <!-- L'utilisateur rentre son mot de passe ici -->
+                <br>
+                <input id="loginChamps" type="password" name="password" placeholder="Mot de passe"> <br> <!-- L'utilisateur rentre son mot de passe ici -->
 
             <div class="form-group">
                 <label class="toggle-switch">

@@ -750,3 +750,36 @@ main * {
     transition: background-color 0.3s ease-in-out;
 }
 
+/* ------ Home Page ------ */
+#categories{ /* Zone des recommandations des catégories */
+    width: 20vw;
+    height: 120vh;
+    background: white;
+    align-self: flex-start;
+    font-family: 'League Spartan';
+    border-radius: 10px;
+}
+
+#bestPost{ /* */
+    width: 20vw;
+    height: 120vh;
+    background: white;
+    align-self: flex-start;
+    font-family: 'League Spartan';
+    border-radius: 10px;
+}
+
+#liensCategories { /* Liens cliquables */
+    font-family: 'League Spartan';
+    display: block;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    font-size: 2em;
+    letter-spacing: 1.8px;
+    padding-top: 40px;
+    background:url(https://www.publicdomainpictures.net/pictures/70000/nahled/animal-13901479985Nv.jpg) no-repeat;
+    width:336px;
+    height:115px;
+    border-radius: 10px;
+}

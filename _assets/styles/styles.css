@@ -783,3 +783,10 @@ main * {
     height:115px;
     border-radius: 10px;
 }
+
+#titreCategorie{
+    font-family: 'League Spartan';
+    font-weight: 500;
+    font-size: 2em;
+    text-align:left;
+}

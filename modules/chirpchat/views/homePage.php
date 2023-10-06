@@ -16,10 +16,12 @@ class HomePage {
     public function show(array $postList, ?User $user) : void {
         ob_start();
 
-        ?><
+        ?>ㅤ
         <main style="display: flex;justify-content: space-around">
         <div id="categories">
 
+
+            <h1 id="titreCategorie"> Catégories </h1>
             <a href="index.php?action=categorie" id="liensCategories">ANIMAUX</a><br> <!-- Bouton qui raméne a la catégorie -->
 
         </div>

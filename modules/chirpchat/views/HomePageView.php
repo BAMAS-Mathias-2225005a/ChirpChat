@@ -7,7 +7,7 @@ use ChirpChat\Model\Post;
 use ChirpChat\Model\User;
 use ChirpChat\Model\UserRepository;
 
-class HomePage {
+class HomePageView {
 
     /**
      * @param Post[] $postList
@@ -41,7 +41,7 @@ class HomePage {
 
     <?php } foreach($postList as $post)
         {
-            (new \ChirpChat\Views\Post($post))->show();
+            (new \ChirpChat\Views\PostView($post))->show();
         }
     ?></div>
 

@@ -2,7 +2,7 @@
 
 namespace Chirpchat\Views\auth;
 
-class Login {
+class LoginView {
 
     public function __construct(private string $errorMessage = '') {}
 

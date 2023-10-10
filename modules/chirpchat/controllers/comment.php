@@ -18,11 +18,11 @@ class Comment{
         $postID = $_GET['id'];
         $post = $postRepository->getPost($postID);
         $commentList = $postRepository->getPostComment($postID);
-        $commentPage = (new \ChirpChat\Views\Comment());
+        $commentPage = (new \ChirpChat\Views\PostCommentView());
 
         $commentPage
-            ->displayMainPost($post)
-            ->displayPostComments($commentList)
+            ->setMainPost($post)
+            ->setPostComments($commentList)
             ->displayCommentPage();
     }
 

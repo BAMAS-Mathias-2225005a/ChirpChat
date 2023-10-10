@@ -18,7 +18,7 @@ class Post{
         $postList = (new \Chirpchat\Model\PostRepository(Database::getInstance()->getConnection()))->searchPost($filter);
 
         if(!empty($postList)) {
-            (new \ChirpChat\Views\HomePage())->show($postList, null);
+            (new \ChirpChat\Views\HomePageView())->show($postList, null);
         }
     }
 }

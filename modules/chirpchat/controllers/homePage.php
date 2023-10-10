@@ -15,7 +15,7 @@ class HomePage {
         else{
             $user = null;
         }
-        (new \ChirpChat\Views\HomePage())->show($postList, $user);
+        (new \ChirpChat\Views\HomePageView())->show($postList, $user);
     }
 
 }

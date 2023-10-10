@@ -31,7 +31,7 @@ class MainLayout {
                 <img alt="Loupe barre de recherche" src="https://cdn-icons-png.flaticon.com/512/68/68213.png">
                 <form action="index.php?action=search" method="post">
                     <input name="filter" placeholder="Rechercher un post">
-                    <input type="submit" style="position: absolute; opacity: 0">
+                    <input type="submit" style="position: absolute; width: 0; height: 0">
                 </form>
             </div>
 

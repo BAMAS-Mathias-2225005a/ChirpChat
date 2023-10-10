@@ -2,7 +2,7 @@
 
 namespace ChirpChat\Views;
 
-class Post{
+class PostView{
 
     /**
      * @param \ChirpChat\Model\Post $post
@@ -13,10 +13,9 @@ class Post{
     public function show() : void{
         ob_start();
         ?><div class="post">
-            <a id="<?php echo $this->post->idPost?>"></a>
             <img alt="author profile picture" id="profilePicture" src="https://cdn-icons-png.flaticon.com/512/436/436299.png" />
-            <a href="index.php?action=comment&id=<?=$this->post->postID?> ">
-                <div id="postHeader">
+            <a href="index.php?action=comment&id=<?=$this->post->idPost?>" style="width: 100%">
+            <div id="postHeader">
                     <div id="authorInfo">
                         <?php
                         echo '<h2> ' . $this->post->getUser()->getPseudo() . '</h2>';

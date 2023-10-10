@@ -2,7 +2,7 @@
 
 namespace chirpchat\views\auth;
 
-class Inscription{
+class InscriptionView{
 
     public function show() : void{
         ob_start();

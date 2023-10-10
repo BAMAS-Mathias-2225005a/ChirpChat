@@ -2,7 +2,7 @@
 
 namespace ChirpChat\Controllers;
 
-use Chirpchat\Views\auth\Login;
+use Chirpchat\Views\auth\LoginView;
 
 class ConnectionPage{
 
@@ -10,17 +10,17 @@ class ConnectionPage{
         if(isset($_GET['error'])){
             switch ($_GET['error']){
                 case 'emptyEmail':
-                    (new Login("Vous devez entrer un email"))->show();
+                    (new LoginView("Vous devez entrer un email"))->show();
                     break;
                 case 'emptyPassword':
-                    (new Login("Vous devez entrer un mot de passe"))->show();
+                    (new LoginView("Vous devez entrer un mot de passe"))->show();
                     break;
                 case 'wrongID':
-                    (new Login("Les identifiants ne sont pas valides"))->show();
+                    (new LoginView("Les identifiants ne sont pas valides"))->show();
                     break;
             }
         }else{
-            (new Login())->show();
+            (new LoginView())->show();
         }
     }
 

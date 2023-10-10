@@ -2,16 +2,19 @@
 
 namespace ChirpChat\Model;
 
-use Includes\DatabaseConnection;
 use \ChirpChat\Model\Post;
 use \ChirpChat\Model\Post as Comment;
+use \ChirpChat\Model\UserRepository;
 
 class PostRepository{
 
     public function __construct(private \PDO $connection){ }
 
-    public function getPostList(){
-        $userRepo = new \ChirpChat\Model\UserRepository($this->connection);
+    /**
+     * @return array
+     */
+    public function getPostList() : array{
+        $userRepo = new UserRepository($this->connection);
         $statement =  $this->connection->prepare("SELECT * FROM Post WHERE PARENT_ID IS NULL");
         $statement->execute();
 
@@ -30,6 +33,10 @@ class PostRepository{
         $statement->execute([$titre, $message,date('D M Y'), $userID, $parent_id]);
     }
 
+    /** Return the 10 first comments of a post
+     * @param string $id
+     * @return array
+     */
     public function getPostComment(string $id) : array {
         $userRepo = new \ChirpChat\Model\UserRepository($this->connection);
         $statement = $this->connection->prepare("SELECT * FROM Post WHERE PARENT_ID=? LIMIT 10");
@@ -54,7 +61,11 @@ class PostRepository{
         return null;
     }
 
-    public function getComment(string $commentId) : ?Post{
+    /** Return a comment
+     * @param string $commentId
+     * @return \ChirpChat\Model\Post|null
+     */
+    public function getPostAsComment(string $commentId) : ?Post{
         $userRepo = new \ChirpChat\Model\UserRepository($this->connection);
         $statement = $this->connection->prepare("SELECT * FROM Post WHERE ID_POST = ? LIMIT 1");
         $statement->execute([$commentId]);

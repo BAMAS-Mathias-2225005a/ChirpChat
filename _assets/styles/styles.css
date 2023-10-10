@@ -645,8 +645,8 @@ main * {
 }
 
 /* ------ Main Layout ------ */
-#Logo { /* Logo qui s'affiche en haut de toutes les pages */
-    max-width: 100%;
+#logo { /* Logo qui s'affiche en haut de toutes les pages */
+    width: 80px;
     height: auto;
 }
 

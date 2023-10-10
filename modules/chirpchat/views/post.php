@@ -14,7 +14,7 @@ class Post{
         ob_start();
         ?><div class="post">
             <img alt="author profile picture" id="profilePicture" src="https://cdn-icons-png.flaticon.com/512/436/436299.png" />
-            <a href="index.php?action=comment&id=<?=$this->post->idPost?> ">
+            <a href="index.php?action=comment&id=<?=$this->post->postID?> ">
                 <div id="postHeader">
                     <div id="authorInfo">
                         <?php

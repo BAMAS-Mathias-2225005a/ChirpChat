@@ -23,7 +23,7 @@
         }
         else if ($_GET['action'] === 'comment'){
             if(isset($_GET['id'])){
-                (new \ChirpChat\Controllers\Comment())->execute();
+                (new \ChirpChat\Controllers\Comment())->displayComment();
             }
         }
     }

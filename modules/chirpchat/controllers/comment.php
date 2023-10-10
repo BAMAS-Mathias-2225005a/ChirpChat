@@ -3,17 +3,33 @@
 namespace ChirpChat\Controllers;
 
 use Chirpchat\Model\Database;
+use Chirpchat\Model\PostRepository;
 
 class Comment{
 
-    public function execute() : void {
-        $postRepository = (new \ChirpChat\Model\PostRepository(Database::getInstance()->getConnection()));
+    /**
+     * Display all comments of a post from the post id in the URL
+     * @return void
+     */
+    public function displayComment() : void {
+        if(!isset($_GET['id'])) return;
+
+        $postRepository = new PostRepository(Database::getInstance()->getConnection());
         $postID = $_GET['id'];
-        $post = $postRepository->getComment($postID);
+        $post = $postRepository->getPost($postID);
         $commentList = $postRepository->getPostComment($postID);
-        (new \ChirpChat\Views\Comment())->show($post, $commentList);
+        $commentPage = (new \ChirpChat\Views\Comment());
+
+        $commentPage
+            ->displayMainPost($post)
+            ->displayPostComments($commentList)
+            ->displayCommentPage();
     }
 
+    /**
+     * Add a comment if the user is connected
+     * @return void
+     */
     public function addComment() : void {
         $comment = $_POST['comment'];
         if(!isset($_GET['id'])) return;

@@ -25,10 +25,14 @@ class MainLayout {
     </head>
     <body>
         <nav>
+            <img alt="Logo" id="logo" src="/_assets/images/Logo.png">
             <h1><a href="index.php">ChirpChat</a></h1>
             <div id="searchBar">
                 <img alt="Loupe barre de recherche" src="https://cdn-icons-png.flaticon.com/512/68/68213.png">
-                <input placeholder="Rechercher un post">
+                <form action="index.php?action=search" method="post">
+                    <input name="filter" placeholder="Rechercher un post">
+                    <input type="submit" style="position: absolute; opacity: 0">
+                </form>
             </div>
 
             <?php if(isset($_SESSION['ID'])){?>

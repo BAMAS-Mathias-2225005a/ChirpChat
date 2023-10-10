@@ -13,14 +13,15 @@ class Login {
                 <h2><?= $this->errorMessage ?></h2>
             </div><?php
         }
-        ?><form id="loginForm" action="index.php?action=loginUser" method="post"> <!-- Mail a laquelle seront envoyées les informations -->
+        ?><form id="loginForm" action="index.php?action=loginUser" method="post">
             <p>
-                <label for="email">E-mail</label> <br>
-                <input id="email" type="text" name="email"> <br> <!-- L'utilisateur rentre son e-mail ici -->
+                <br>
+                <input id="loginChamps" type="text" name="email" placeholder="E-mail"> <br> <!-- L'utilisateur rentre son e-mail ici -->
 
-                <label for="password">Mot de passe</label> <br>
-                <input id="password" type="password" name="password"> <br> <!-- L'utilisateur rentre son mot de passe ici -->
+                <br>
+                <input id="loginChamps" type="password" name="password" placeholder="Mot de passe"> <br> <!-- L'utilisateur rentre son mot de passe ici -->
 
+             <br>
             <div class="form-group">
                 <label class="toggle-switch">
                     <input class="toggle-switch-check" type="checkbox" />
@@ -30,13 +31,13 @@ class Login {
                         </span>
                     </span>
                 </label>
-            </div>
+            </div> <br>
 
             <input id="submit" type="submit" value="SE CONNECTER"><br> <!-- Bouton pour valider la connexion -->
 
-            <a href="index.php?action=inscription">S'INSCRIRE</a><br> <!-- Bouton pour aller a la page d'inscription  -->
+            <a href="index.php?action=inscription" id="liensLogin">S'INSCRIRE</a> <!-- Bouton pour aller a la page d'inscription  -->
 
-            <a href="index.php?action=recuperation">Mot de passe oublié?</a> <!-- Bouton pour aller vers la page pour récupérer le mot de passe -->
+            <a href="index.php?action=recuperation" id="liensLogin">Mot de passe oublié?</a> <!-- Bouton pour aller vers la page pour récupérer le mot de passe -->
 
             </p>
         </form><?php

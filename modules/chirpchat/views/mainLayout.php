@@ -10,7 +10,7 @@ class MainLayout {
      * @param $user
      * @return void
      */
-    public function show(?User $user = null) : void {
+    public function show(array $styles, ?User $user = null) : void {
 ?><!doctype html>
     <html lang="fr">
     <head>
@@ -19,6 +19,15 @@ class MainLayout {
               content="width=device-width, user-scalable=1">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="../../../_assets/styles/styles.css">
+
+        <!-- Ajout des styles donnés -->
+        <?php
+            foreach($styles as $style){
+                echo '<link rel="stylesheet" href="../../../_assets/styles/' . $style . '">';
+            }
+            ?>
+
+        <link rel="stylesheet" href="_assets/styles/styles.css">
         <link rel="icon" type="favicon" href="/favicon.png">
         <script src="/_assets/js/scripts.js"></script>
         <title><?= $this->title?></title>

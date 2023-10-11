@@ -43,6 +43,6 @@ class PostCommentView{
             $this->commentListView .
             '</main>';
 
-        (new \ChirpChat\Views\MainLayout("Commentaire", $this->content))->show();
+        (new \ChirpChat\Views\MainLayout("Commentaire", $this->content))->show(['postComment.css', 'post.css']);
     }
 }

@@ -43,7 +43,7 @@ class LoginView {
         </form><?php
 
         $content = ob_get_clean();
-        (new \ChirpChat\Views\MainLayout("Connexion", $content))->show();
+        (new \ChirpChat\Views\MainLayout("Connexion", $content))->show(['login.css']);
     }
 }
 ?>

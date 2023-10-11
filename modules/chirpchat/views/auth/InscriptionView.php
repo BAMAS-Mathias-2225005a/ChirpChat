@@ -47,7 +47,7 @@ class InscriptionView{
         </main><?php
 
         $content = ob_get_clean();
-        (new \ChirpChat\Views\MainLayout("Inscription", $content))->show();
+        (new \ChirpChat\Views\MainLayout("Inscription", $content))->show(['inscription.css']);
     }
 
 }

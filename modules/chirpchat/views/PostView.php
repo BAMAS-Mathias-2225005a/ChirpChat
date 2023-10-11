@@ -39,6 +39,12 @@ class PostView{
                         <p><?php echo $this->post->commentAmount ?></p>
                     </div>
                 </div>
+
+                <div id="categories">
+                    <?php foreach ($this->post->getCategories() as $cat){
+                        echo $cat->getLibelle();
+                    }?>
+                </div>
             </a>
         </div><?php
 

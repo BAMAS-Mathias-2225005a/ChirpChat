@@ -7,32 +7,26 @@ class CategoryRepository
 
     public function __construct(private \PDO $connection){ }
 
+    public function getCategory($idCat) : Category{
+        $statement = $this->connection->prepare("SELECT * FROM Categorie WHERE id_cat = ?");
+        $statement->execute([$idCat]);
+
+        while ($row = $statement->fetch()) {
+            return new Category($row['id_cat'], $row['libelle'], $row['description']);
+        }
+    }
     public function getCategoriesForPost($postId): array
     {
-        $statement = $this->connection->prepare("SELECT id_cat FROM PostCategory WHERE post_id = ?");
+        $statement = $this->connection->prepare("SELECT id_cat FROM PostCategory WHERE id_post = ?");
         $statement->execute([$postId]);
 
         $categories = [];
 
         while ($row = $statement->fetch()) {
-            $categories[] = $row['id_cat'];
+            $categories[] = $this->getCategory($row['id_cat']);
         }
 
         return $categories;
-    }
-
-    public function deletePostWithCategories(int $postId): void
-    {
-        $this->connection->beginTransaction();
-
-
-        $deleteCategoriesStatement = $this->connection->prepare("DELETE FROM PostCategory WHERE post_id = ?");
-        $deleteCategoriesStatement->execute([$postId]);
-
-        $deletePostStatement = $this->connection->prepare("DELETE FROM Post WHERE id_post = ?");
-        $deletePostStatement->execute([$postId]);
-
-        $this->connection->commit();
     }
 
 }

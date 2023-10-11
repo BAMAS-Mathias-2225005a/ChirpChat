@@ -4,7 +4,32 @@ namespace ChirpChat\Model;
 
 class Category
 {
-    public function __construct(public string $idPost,?string $titre, public string $message,string $datePubli,?string $categorie,private $utilisateur, public int $commentAmount, public int $likeAmount ){ }
+
+    public function __construct(private int $idCat, private string $libelle, private string $description){}
+
+    /**
+     * @return int
+     */
+    public function getIdCat(): int
+    {
+        return $this->idCat;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLibelle(): string
+    {
+        return $this->libelle;
+    }
 
 
 }

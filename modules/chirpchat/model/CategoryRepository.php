@@ -5,6 +5,8 @@ namespace ChirpChat\Model;
 class CategoryRepository
 {
 
+    public function __construct(private \PDO $connection){ }
+
     public function getCategoriesForPost($postId): array
     {
         $statement = $this->connection->prepare("SELECT id_cat FROM PostCategory WHERE post_id = ?");

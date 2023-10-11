@@ -12,13 +12,14 @@ class PostRepository{
 
     public function getPostList(){
         $userRepo = new \ChirpChat\Model\UserRepository($this->connection);
+        $catRepo = new \ChirpChat\Model\CategoryRepository($this->connection);
         $statement =  $this->connection->prepare("SELECT * FROM Post WHERE PARENT_ID IS NULL");
         $statement->execute();
 
         $postList = [];
 
         while ($row = $statement->fetch()){
-            $post = new Post($row['id_post'], $row['titre'], $row['message'], $row['date_publi'], $row['categories'], $userRepo->getUser($row['id_utilisateur']), $row['commentAmount'], $row['likeAmount']);
+            $post = new Post($row['id_post'], $row['titre'], $row['message'], $row['date_publi'], $catRepo->getCategoriesForPost($row['id_post']), $userRepo->getUser($row['id_utilisateur']), $row['commentAmount'], $row['likeAmount']);
             $postList[] = $post;
         }
 

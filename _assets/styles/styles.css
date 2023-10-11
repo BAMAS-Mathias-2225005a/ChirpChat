@@ -769,7 +769,14 @@ main * {
     border-radius: 10px;
 }
 
-#liensCategories { /* Liens cliquables */
+#titreBestPost{
+    font-family: 'League Spartan';
+    font-weight: 500;
+    font-size: 2em;
+    text-align:center;
+}
+
+#lienCategorieAnimaux { /* Liens cliquables */
     font-family: 'League Spartan';
     display: block;
     text-align: center;
@@ -784,9 +791,55 @@ main * {
     border-radius: 10px;
 }
 
+#lienCategorieSport { /* Liens cliquables */
+    font-family: 'League Spartan';
+    display: block;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    font-size: 2em;
+    letter-spacing: 1.8px;
+    padding-top: 40px;
+    background:url(https://img.freepik.com/photos-premium/journee-internationale-du-sport-6-avril_10221-18936.jpg) no-repeat;
+    width:336px;
+    height:115px;
+    border-radius: 10px;
+}
+
+#lienCategorieAuto { /* Liens cliquables */
+    font-family: 'League Spartan';
+    display: block;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    font-size: 2em;
+    letter-spacing: 1.8px;
+    padding-top: 40px;
+    background:url(https://media.discordapp.net/attachments/1151845307089424454/1161594001015701554/IMG_64961.jpg?ex=6538ddb7&is=652668b7&hm=20787b8f1cd6fd9a579af932e0d44cd910df34855017f87b35e37c407e2e784c&=) no-repeat;
+    width:336px;
+    height:115px;
+    border-radius: 10px;
+}
+
+#lienCategorieGaming { /* Liens cliquables */
+    font-family: 'League Spartan';
+    display: block;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    font-size: 2em;
+    letter-spacing: 1.8px;
+    padding-top: 40px;
+    background:url(https://cdn.discordapp.com/attachments/1151845307089424454/1161595814561447946/GamingRedim.jpg?ex=6538df67&is=65266a67&hm=00f80dfe273bc42b7a6172d8cb61f9e57b762726adb22b4e11eb76a2f84cc6f7&
+    ) no-repeat;
+    width:336px;
+    height:115px;
+    border-radius: 10px;
+}
+
 #titreCategorie{
     font-family: 'League Spartan';
     font-weight: 500;
     font-size: 2em;
-    text-align:left;
+    text-align:center;
 }

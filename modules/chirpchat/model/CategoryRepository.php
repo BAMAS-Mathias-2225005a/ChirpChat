@@ -17,6 +17,21 @@ class CategoryRepository
 
         return null;
     }
+
+    /**
+     * @param $catLibelle
+     * @return int return -1 if category don't exist
+     */
+    public function getCategoryId($catLibelle) : int {
+        $statement = $this->connection->prepare("SELECT id_cat FROM Categorie WHERE libelle = ?");
+        $statement->execute([$catLibelle]);
+
+        if($row = $statement->fetch()){
+            return $row['id_cat'];
+        }
+        return -1;
+    }
+
     public function getCategoriesForPost($postId): array
     {
         $statement = $this->connection->prepare("SELECT id_cat FROM PostCategory WHERE id_post = ?");
@@ -45,6 +60,11 @@ class CategoryRepository
         }
 
         return $categoriesList;
+    }
+
+    public function addPostToCategory($idPost, $idCategories) : void{
+        $statement = $this->connection->prepare("INSERT INTO PostCategory VALUES (?,?)");
+        $statement->execute([$idCategories, $idPost]);
     }
 
 }

@@ -7,10 +7,22 @@ use Chirpchat\Model\Database;
 class Post{
 
     public function addPost() : void{
+
+        $categoryRepo = new \ChirpChat\Model\CategoryRepository(Database::getInstance()->getConnection());
+        $postRepo = new \ChirpChat\Model\PostRepository(Database::getInstance()->getConnection());
         $titre = htmlspecialchars($_POST['titre']);
         $message = htmlspecialchars($_POST['message']);
+        $categoriesNames = $_POST['categories'];
 
-        (new \ChirpChat\Model\PostRepository(Database::getInstance()->getConnection()))->add($titre, $message, $_SESSION['ID']);
+        $postRepo->add($titre, $message, $_SESSION['ID']);
+
+        foreach ($categoriesNames as $caterory){
+            $catId = $categoryRepo->getCategoryId($caterory);
+            if($catId != -1){
+               $categoryRepo->addPostToCategory($postRepo->getLastPostID(), $catId);
+            }
+        }
+
         header("Location:index.php");
     }
 

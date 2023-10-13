@@ -116,4 +116,10 @@ class PostRepository{
         return $postList;
     }
 
+    public function getLastPostID() : int {
+        $statement = $this->connection->prepare('SELECT MAX(id_post) m FROM Post');
+        $statement->execute();
+        return $statement->fetch()['m'];
+    }
+
 }

@@ -42,9 +42,9 @@ class PostView{
                     </div>
                 </div>
 
-                <div id="PostCategories">
+                <div id="postCategories">
                     <?php foreach ($this->post->getCategories() as $cat){
-                        echo $cat->getLibelle();
+                        echo '<p class="category">#' . strtoupper($cat->getLibelle()) . '</p>';
                     }?>
                 </div>
             </a>

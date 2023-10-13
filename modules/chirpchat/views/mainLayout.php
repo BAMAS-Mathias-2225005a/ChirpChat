@@ -19,7 +19,8 @@ class MainLayout {
               content="width=device-width, user-scalable=1">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="../../../_assets/styles/styles.css">
-
+        <script src="https://unpkg.com/slim-select@latest/dist/slimselect.min.js"></script>
+        <link href="https://unpkg.com/slim-select@latest/dist/slimselect.css" rel="stylesheet"></link>
         <!-- Ajout des styles donnés -->
         <?php
             foreach($styles as $style){

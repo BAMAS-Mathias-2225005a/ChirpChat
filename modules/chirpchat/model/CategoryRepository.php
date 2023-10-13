@@ -7,13 +7,15 @@ class CategoryRepository
 
     public function __construct(private \PDO $connection){ }
 
-    public function getCategory($idCat) : Category{
+    public function getCategory($idCat) : ?Category{
         $statement = $this->connection->prepare("SELECT * FROM Categorie WHERE id_cat = ?");
         $statement->execute([$idCat]);
 
-        while ($row = $statement->fetch()) {
+        if($row = $statement->fetch()){
             return new Category($row['id_cat'], $row['libelle'], $row['description']);
         }
+
+        return null;
     }
     public function getCategoriesForPost($postId): array
     {
@@ -27,6 +29,22 @@ class CategoryRepository
         }
 
         return $categories;
+    }
+
+    /** Return all categories available
+     * @return Category[]
+     */
+    public function getAllCategories() : array{
+        $statement = $this->connection->prepare("SELECT * FROM Categorie");
+        $statement->execute();
+
+        $categoriesList = [];
+
+        while($row = $statement->fetch()){
+            $categoriesList[] = $this->getCategory($row['id_cat']);
+        }
+
+        return $categoriesList;
     }
 
 }

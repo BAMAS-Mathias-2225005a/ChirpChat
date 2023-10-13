@@ -85,6 +85,26 @@
     padding: 30px 0 ;
 }
 
+.post #postCategories {
+    display: flex;
+    width: 80%;
+    height: 10%;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.post .category{
+    background-color: #f85d5d;
+    border-radius: 10px;
+    padding: 5px 20px;
+    width: fit-content;
+    font-family: "League Spartan", serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #2c2c2c;
+
+}
+
 @media screen and (max-width: 600px) {
 
     .post {
@@ -98,7 +118,7 @@
     position: relative;
     display: flex;
     width: 500px;
-    height: 150px;
+    height: 225px;
     background: rgba(255, 255, 255, 0.70);
     box-shadow: 0px 4px 4px 0px rgba(104, 135, 212, 0.25);
     padding: 20px 30px 10px 15px;

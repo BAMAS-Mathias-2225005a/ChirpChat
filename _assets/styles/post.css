@@ -1,0 +1,246 @@
+/* ------ POSTS ------ */
+
+.post{
+    display: flex;
+    width: 500px;
+    align-items: flex-start;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.70);
+    box-shadow: 0px 4px 4px 0px rgba(104, 135, 212, 0.25);
+    padding: 20px 30px 10px 15px;
+}
+
+.post a{
+    align-self: flex-start;
+    max-width: 90%;
+}
+
+.post a #postHeader{
+    align-self: flex-start;
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.post a #postHeader #authorInfo{
+    display: flex;
+    padding-bottom: 10px;
+    font-family: League Spartan;
+    gap: 5px;
+}
+
+.post a #postHeader #authorInfo h2{
+    color: black;
+}
+
+.post a #postHeader #authorInfo h3{
+    color: #979696;
+    font-weight: 400;
+}
+
+.post a #postContent p {
+    padding-left: 20px;
+    color: #000;
+    font-family: Heebo, serif ;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.post #profilePicture{
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    align-self: flex-start;
+}
+
+.post a #postFooter {
+    display: flex;
+    padding-left: 20px;
+    padding-top: 20px;
+    gap: 20px;
+}
+
+.post a #postFooter *{
+    display: flex;
+    gap: 5px;
+}
+
+.post #postFooter img{
+    width: 20px;
+    height: 20px;
+}
+
+.post #postFooter #likeButton{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+#postList{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 30px 0 ;
+}
+
+@media screen and (max-width: 600px) {
+
+    .post {
+        width: 80vw;
+    }
+}
+
+/* ------ POST INPUT ------ */
+
+#writePostSection{
+    position: relative;
+    display: flex;
+    width: 500px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.70);
+    box-shadow: 0px 4px 4px 0px rgba(104, 135, 212, 0.25);
+    padding: 20px 30px 10px 15px;
+    border-radius: 15px;
+}
+
+#writePostSection input[type=submit]{
+    position: absolute;
+    cursor: pointer;
+    right: 50px;
+    bottom: 15px;
+    color: #FFFFFF;
+    font-family: League Spartan, serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 2.1px;
+    border-radius: 10px;
+    background: #6887D4;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: none;
+    width: 125px;
+    height: 30px;
+}
+
+#writePostSection textarea,
+#writePostSection input[type=text]{
+    border-radius: 10px;
+    background: #EAEBF8;
+    padding: 15px 0 0 15px;
+    width: 450px;
+    height: 70px;
+    border: none;
+    margin-left: 15px;
+    line-height: 15px;
+    resize: none;
+    outline: none;
+    color: #000;
+    font-family: Heebo, serif ;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+#userInputContent{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    gap: 10px;
+}
+
+#userInputContent input[type=text]{
+    padding: 8px 0 8px 15px;
+    line-height: 0;
+    height: 20px;
+    vertical-align: center;
+}
+
+#writePostSection img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    align-self: flex-start;
+}
+
+@media screen and (max-width: 600px) {
+
+    #writePostSection {
+        width: 80vw;
+    }
+
+    #writePostSection input[type=text],
+    #writePostSection textarea {
+        width: 60vw;
+    }
+
+    #writePostSection input[type=submit]{
+        width: 100px;
+    }
+}
+
+/* ------ COMMENT ------ */
+
+#commentPage{
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+}
+
+#commentList{
+    padding-top: 20px;
+}
+
+#commentList .post{
+    border-radius: 0;
+}
+
+#commentSectionTitle{
+    font-family: "League Spartan", serif;
+    padding: 20px 0;
+    width: 100%;
+    height: 30px;
+    background-color: rgba(171, 162, 244, 0.7);
+    color: #313131;
+    font-weight: 700;
+    text-align: center;
+}
+
+#commentPage #ChampReponse input[type=submit]{
+    cursor: pointer;
+    right: 50px;
+    bottom: 10px;
+    color: #FFFFFF;
+    font-family: League Spartan, serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    border-radius: 10px;
+    background: #6887D4;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: none;
+    width: 100px;
+    height: 30px;
+}
+
+#commentPage #ChampReponse{
+    display: flex;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 10px 30px;
+    margin-top: 20px;
+    width: 490px;
+}
+
+#commentPage form img{
+    width: 40px;
+    height: 40px;
+}
+#commentPage textarea{
+    width: 65%;
+    resize: none;
+    border: none;
+    background: #EAEBF8;
+    font-family: Heebo, serif;
+    font-size: 14px;
+    padding: 10px 0 0 10px;
+}

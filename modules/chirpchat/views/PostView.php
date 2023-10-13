@@ -31,7 +31,9 @@ class PostView{
                 <div id="postFooter">
                     <div>
                         <form action="index.php?action=like&id=<?php echo $this->post->idPost?>" method="post">
-                            <input type="submit" value="LIKE">
+                            <button id="likeButton" type="submit">
+                                <?= $this->getLikeButton() ?>
+                            </button>
                         </form>
                         <p><?php echo $this->post->likeAmount ?></p>
                     </div>
@@ -40,7 +42,7 @@ class PostView{
                     </div>
                 </div>
 
-                <div id="categories">
+                <div id="PostCategories">
                     <?php foreach ($this->post->getCategories() as $cat){
                         echo $cat->getLibelle();
                     }?>
@@ -49,5 +51,17 @@ class PostView{
         </div><?php
 
         echo ob_get_clean();
+    }
+
+    /** Return the like button with the correct image depending on the likes of the user
+     * @return string
+     */
+    public function getLikeButton() : string{
+        // User not connected or hasn't liked
+        if(isset($_SESSION['ID']) && $this->post->isLikedByUser($_SESSION['ID'])){
+            return '<img alt="like icon" src="https://cdn-icons-png.flaticon.com/512/753/753252.png">';
+        }else{
+            return '<img alt="like icon" src="https://cdn-icons-png.flaticon.com/512/159/159774.png">';
+        }
     }
 }

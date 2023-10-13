@@ -69,6 +69,6 @@ class HomePageView {
         <?php
 
         $content = ob_get_clean();
-        (new \ChirpChat\Views\mainLayout("Accueil", $content))->show(['homepage.css'],$user);
+        (new \ChirpChat\Views\mainLayout("Accueil", $content))->show(['homepage.css', 'post.css'],$user);
     }
 }

@@ -47,7 +47,7 @@ class MainLayout {
 
             <?php if(isset($_SESSION['ID'])){?>
             <div id="profilSection">
-                <img id="messageIcon" alt="image icon message privés" src="https://cdn-icons-png.flaticon.com/512/245/245810.png">
+                <a href="index.php?action=privateMessage"><img id="messageIcon" alt="image icon message privés" src="https://cdn-icons-png.flaticon.com/512/245/245810.png"></a>
                 <?php if($user != null) echo '<p>@' . $user->getUsername() . '</p>' ?>;
                 <img id="profilPicture" alt="photo de profil" src="https://cdn-icons-png.flaticon.com/512/168/168724.png">
             </div>

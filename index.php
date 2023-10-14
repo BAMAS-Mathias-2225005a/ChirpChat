@@ -42,6 +42,12 @@
         }
         else if ($_GET['action'] === 'addComment') {
             (new \ChirpChat\Controllers\Comment())->addComment();
+        } else if ($_GET['action'] === 'privateMessage'){
+            (new \ChirpChat\Controllers\PrivateMessageController())->displayPrivateMessagePageForUser($_SESSION['ID']);
+        } else if ($_GET['action'] === 'privateMessageWith'){
+            if(isset($_GET['id'])){
+                (new \ChirpChat\Controllers\PrivateMessageController())->displayConversationBetweenUsers($_SESSION['ID'], $_GET['id']);
+            }
         }
     }
     else {

@@ -21,6 +21,12 @@
             }
         }  else if ($_GET['action'] === 'search'){
             (new \ChirpChat\Controllers\Post())->searchPost();
+        } else if ($_GET['action'] === 'categoryList'){
+            (new \ChirpChat\Controllers\CategoryController())->displayCategoryListPage();
+        } else if ($_GET['action'] === 'categoryCreation'){
+            (new \ChirpChat\Controllers\CategoryController())->displayCategoryCreationPage();
+        } else if ($_GET['action'] === 'createCategory'){
+            (new \ChirpChat\Controllers\CategoryController())->createCategory();
         }
 
         // ---- A BESOIN QUE L'UTILISATEUR SOIT CONNECTÉ ----

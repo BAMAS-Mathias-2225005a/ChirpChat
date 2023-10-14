@@ -63,8 +63,13 @@ class CategoryRepository
     }
 
     public function addPostToCategory($idPost, $idCategories) : void{
-        $statement = $this->connection->prepare("INSERT INTO PostCategory VALUES (?,?)");
+        $statement = $this->connection->prepare('INSERT INTO PostCategory VALUES (?,?)');
         $statement->execute([$idCategories, $idPost]);
+    }
+
+    public function createCategory(string $categoryName, string $categoryDescription) : void{
+        $statement = $this->connection->prepare('INSERT INTO Categorie (libelle, description) VALUE (?,?)');
+        $statement->execute([$categoryName, $categoryDescription]);
     }
 
 }

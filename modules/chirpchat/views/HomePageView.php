@@ -22,6 +22,7 @@ class HomePageView {
             <a href="index.php?action=categorieSport" id="lienCategorieSport">SPORT</a><br/>
             <a href="index.php?action=categorieAuto" id="lienCategorieAuto">VOITURES</a><br/>
             <a href="index.php?action=categorieGaming" id="lienCategorieGaming">GAMING</a>
+            <a href="index.php?action=categoryList"><p>Voir plus</p></a>
         </div>
         <?php
         $this->categoriesView = ob_get_clean();
@@ -44,7 +45,11 @@ class HomePageView {
                     </select>
                     <script>
                         new SlimSelect({
-                            select: '#category'
+                            select: '#category',
+                            settings: {
+                                placeholderText: 'Choisir une catégorie',
+                                searchPlaceholder: 'Rechercher',
+                            }
                         })
                     </script>
                 </div>

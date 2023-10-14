@@ -22,15 +22,19 @@ class PrivateMessageView {
      * @return void
      */
     public function displayPrivateMessageWithUser(array $privateMessages) : PrivateMessageView {
+        ?><div id="privateMessageList" style="display: flex; flex-direction: column"> <?php
         foreach ($privateMessages as $message){
-            echo $message->getMessage();
+            echo '<p>' . $message->getMessage() . '</p>';
         }
+        ?></div><?php
         return $this;
     }
 
     public function displaySendMessageForm(string $targetID) : void {
-        ?><form action="index.php?action=sendMessageTo&id=<?= $targetID ?> " method="post">
-            <input type="text" placeholder="Message" required>
+        ?>
+        <a href="index.php?action=privateMessage"><input type="button" value="RETOUR"></a>
+        <form action="index.php?action=sendMessageTo&id=<?= $targetID ?> " method="post">
+            <input type="text" placeholder="Message" name="message" required>
             <input type="submit" value="ENVOYER">
         </form>
         <?php

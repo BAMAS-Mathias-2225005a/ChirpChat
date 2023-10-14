@@ -48,6 +48,10 @@
             if(isset($_GET['id'])){
                 (new \ChirpChat\Controllers\PrivateMessageController())->displayConversationBetweenUsers($_SESSION['ID'], $_GET['id']);
             }
+        } else if ($_GET['action'] === 'sendMessageTo'){
+            if(isset($_GET['id'])){
+                (new \ChirpChat\Controllers\PrivateMessageController())->sendMessageTo($_GET['id']);
+            }
         }
     }
     else {

@@ -29,7 +29,10 @@ class PrivateMessageController{
     }
 
     public function sendMessageTo(string $targetID) : void{
+        $privateMessageRepo = new PrivateMessageRepository(Database::getInstance()->getConnection());
+        $message = $_POST['message'];
+        $privateMessageRepo->sendMessageToUser($_SESSION['ID'], $targetID, $message);
 
-
+        header('Location:index.php?action=privateMessageWith&id=' . $targetID);
     }
 }

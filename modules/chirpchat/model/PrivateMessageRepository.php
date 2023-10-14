@@ -41,4 +41,9 @@ class PrivateMessageRepository{
         return $usersList;
     }
 
+    public function sendMessageToUser(string $senderID, string $targetID, string $message){
+        $statement = $this->connection->prepare('INSERT INTO PrivateMessage (sender,target,message,creationDate) VALUES (?,?,?,?)');
+        $statement->execute([$senderID, $targetID, $message, date("DD-MM-YYYY")]);
+    }
+
 }

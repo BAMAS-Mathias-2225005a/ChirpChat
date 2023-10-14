@@ -3,6 +3,8 @@
 namespace ChirpChat\Controllers;
 
 use Chirpchat\Model\Database;
+use ChirpChat\Model\UserRepository;
+use ChirpChat\Views\UserView;
 
 class User {
 
@@ -36,5 +38,10 @@ class User {
     private function createUserSession(string $ID) : void{
         session_start();
         $_SESSION['ID'] = $ID;
+    }
+
+    public function displayUserProfile($userID) : void{
+        $userRepo = new UserRepository(Database::getInstance()->getConnection());
+        (new UserView())->displayUserProfile($userRepo->getUser($userID));
     }
 }

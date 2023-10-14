@@ -29,8 +29,12 @@ class PrivateMessageRepository{
 
     public function getUsersWhoSendMessageTo(string $userID) : array{
         $userRepo = new \ChirpChat\Model\UserRepository($this->connection);
-        $statement = $this->connection->prepare("SELECT DISTINCT sender FROM PrivateMessage WHERE target = ?");
-        $statement->execute([$userID]);
+        $statement = $this->connection->prepare("SELECT DISTINCT sender FROM PrivateMessage WHERE target = :userID 
+                                           UNION SELECT target FROM PrivateMessage WHERE sender = :userID AND sender NOT IN 
+                                           (SELECT DISTINCT  sender FROM PrivateMessage WHERE target = :userID)");
+
+        $statement->bindParam(':userID', $userID);
+        $statement->execute();
 
         $usersList = [];
 

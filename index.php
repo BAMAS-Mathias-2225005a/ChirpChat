@@ -27,6 +27,10 @@
             (new \ChirpChat\Controllers\CategoryController())->displayCategoryCreationPage();
         } else if ($_GET['action'] === 'createCategory'){
             (new \ChirpChat\Controllers\CategoryController())->createCategory();
+        } else if ($_GET['action'] === 'profile'){
+            if(isset($_GET['id'])){
+                (new \ChirpChat\Controllers\User())->displayUserProfile($_GET['id']);
+            }
         }
 
         // ---- A BESOIN QUE L'UTILISATEUR SOIT CONNECTÉ ----

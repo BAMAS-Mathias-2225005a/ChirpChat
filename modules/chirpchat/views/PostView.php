@@ -13,7 +13,7 @@ class PostView{
     public function show() : void{
         ob_start();
         ?><div class="post">
-            <img alt="author profile picture" id="profilePicture" src="https://cdn-icons-png.flaticon.com/512/436/436299.png" />
+            <a href="index.php?action=profile&id=<?= $this->post->getUser()->getUserID() ?>"><img alt="author profile picture" id="profilePicture" src="https://cdn-icons-png.flaticon.com/512/436/436299.png" /></a>
             <a href="index.php?action=comment&id=<?=$this->post->idPost?>" style="width: 100%">
             <div id="postHeader">
                     <div id="authorInfo">

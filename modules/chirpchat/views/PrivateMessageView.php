@@ -7,6 +7,12 @@ use \ChirpChat\Model\User;
 
 class PrivateMessageView {
 
+    private string $pageContent;
+
+    public function __construct(){
+        $this->pageContent = "";
+    }
+
     /**
      * @param User[] $userList
      * @return void
@@ -21,23 +27,41 @@ class PrivateMessageView {
      * @param PrivateMessage[] $privateMessages
      * @return void
      */
-    public function displayPrivateMessageWithUser(array $privateMessages) : PrivateMessageView {
-        ?><div id="privateMessageList" style="display: flex; flex-direction: column"> <?php
-        foreach ($privateMessages as $message){
-            echo '<p>' . $message->getMessage() . '</p>';
-        }
-        ?></div><?php
+    public function displayPrivateMessageWithUser(array $privateMessages,User $userTarget) : PrivateMessageView {
+        ob_start();
+        ?>
+        <main id="privateMessagesContainer">
+            <h2><?= $userTarget->getUsername() ?></h2>
+            <div id="privateMessageList"> <?php
+            foreach ($privateMessages as $message){
+                if ($message->getAuthor()->getUserID() == $_SESSION['ID']){
+                    echo '<div class="privateMessageSent privateMessage"><p>' .  $message->getMessage() . '</p></div>';
+                } else{
+                    echo '<div class="privateMessageReceived privateMessage"><p>' .  $message->getMessage() . '</p></div>';
+                }
+            }
+            ?></div>
+        </main>
+        <?php
+        $this->pageContent .= ob_get_clean();
         return $this;
     }
 
-    public function displaySendMessageForm(string $targetID) : void {
+    public function displaySendMessageForm(string $targetID) : PrivateMessageView {
+        ob_start();
         ?>
         <a href="index.php?action=privateMessage"><input type="button" value="RETOUR"></a>
-        <form action="index.php?action=sendMessageTo&id=<?= $targetID ?> " method="post">
+        <form id="privateMessageForm" action="index.php?action=sendMessageTo&id=<?= $targetID ?> " method="post">
             <input type="text" placeholder="Message" name="message" required>
             <input type="submit" value="ENVOYER">
         </form>
         <?php
+        $this->pageContent .= ob_get_clean();
+        return $this;
+    }
+
+    public function displayPrivateMessageView() : void{
+        (new \ChirpChat\Views\MainLayout('Private message', $this->pageContent))->show(['privateMessage.css']);
     }
 
 }

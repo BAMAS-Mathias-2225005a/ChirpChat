@@ -3,6 +3,7 @@
 namespace ChirpChat\Controllers;
 use Chirpchat\Model\Database;
 use \ChirpChat\Model\PrivateMessageRepository;
+use ChirpChat\Model\UserRepository;
 use ChirpChat\Views\PrivateMessageView;
 
 class PrivateMessageController{
@@ -17,6 +18,7 @@ class PrivateMessageController{
     }
 
     public function displayConversationBetweenUsers(string $firstUserID, string $secondUserID){
+        $userRepo = new UserRepository(Database::getInstance()->getConnection());
         $privateMessageRepo = new PrivateMessageRepository(Database::getInstance()->getConnection());
         $privateMessageView = new PrivateMessageView();
 
@@ -24,8 +26,9 @@ class PrivateMessageController{
 
         $messageList = $privateMessageRepo->getPrivateMessageBetweenUsers($firstUserID, $secondUserID);
         $privateMessageView
-            ->displayPrivateMessageWithUser($messageList)
-            ->displaySendMessageForm($secondUserID);
+            ->displayPrivateMessageWithUser($messageList, $userRepo->getUser($secondUserID))
+            ->displaySendMessageForm($secondUserID)
+            ->displayPrivateMessageView();
     }
 
     public function sendMessageTo(string $targetID) : void{

@@ -96,6 +96,11 @@ class PostRepository{
         $statement->execute([$post_id, $user_id]);
     }
 
+    public function deletePost(?int $post_id, string $user_id) : void {
+        $statement = $this->connection->prepare("DELETE FROM Post WHERE Post.id_post = ? AND id_utilisateur = ?");
+        $statement->execute([$post_id, $user_id]);
+    }
+
     /**
      * @param string $filter
      * @return Post array

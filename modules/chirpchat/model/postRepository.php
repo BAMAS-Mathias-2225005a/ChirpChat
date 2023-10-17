@@ -27,7 +27,7 @@ class PostRepository{
     }
 
     public function add(?string $titre, string $message, string $userID, string $parent_id=null) : void {
-        $statement = $this->connection->prepare("INSERT INTO Post (titre, message, date_publi, categories, id_utilisateur, PARENT_ID)VALUES (?,?,?,NULL,?,?)");
+        $statement = $this->connection->prepare("INSERT INTO Post (titre, message, date_publi, id_utilisateur, PARENT_ID)VALUES (?,?,?,?,?)");
         $statement->execute([$titre, $message,date('D M Y'), $userID, $parent_id]);
 
         if($parent_id != null){
@@ -109,7 +109,7 @@ class PostRepository{
         $postList = [];
 
         while ($row = $statement->fetch()){
-            $post = new Post($row['id_post'], $row['titre'], $row['message'], $row['date_publi'], $row['categories'], $userRepo->getUser($row['id_utilisateur']), $row['commentAmount'], $row['likeAmount']);
+            $post = $this->getPost($row['id_post']);
             $postList[] = $post;
         }
 

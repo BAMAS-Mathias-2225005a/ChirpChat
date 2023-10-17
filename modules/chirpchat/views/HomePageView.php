@@ -10,14 +10,14 @@ use ChirpChat\Model\UserRepository;
 
 class HomePageView {
 
-    private string $categoriesView;
-    private string $postListView;
-    private string $bestPostView;
+    private string $categoriesView = "";
+    private string $postListView = "";
+    private string $bestPostView = "";
 
     public function setCategoriesView() : HomePageView{
         ob_start();
         ?> <div id="categories">
-            <h1 id="titreCategorie"> Catégories </h1><br/>
+            <h3 class="sectionTitle"> Catégories </h3><br/>
             <a href="index.php?action=categorieAnimaux" id="lienCategorieAnimaux">ANIMAUX</a><br/>
             <a href="index.php?action=categorieSport" id="lienCategorieSport">SPORT</a><br/>
             <a href="index.php?action=categorieAuto" id="lienCategorieAuto">VOITURES</a><br/>
@@ -70,7 +70,7 @@ class HomePageView {
         ob_start();
         ?>
         <div id="bestPost">
-            <h1 id="titreBestPost"> Les plus likés </h1><br/>
+            <h3 class="sectionTitle"> Les plus likés </h3><br/>
         </div>
         <?php
         $this->bestPostView = ob_get_clean();
@@ -79,15 +79,19 @@ class HomePageView {
 
     public function displayHomePageView($user) : void {
         ob_start();
-        ?><main style="display: flex;justify-content: space-around">
+        ?><div id="catContainer">
             <?= $this->categoriesView ?>
             <?= $this->postListView ?>
             <?= $this->bestPostView ?>
-        </main>
+        </div>
         <?php
 
         $content = ob_get_clean();
         (new \ChirpChat\Views\mainLayout("Accueil", $content))->show(['homePage.css', 'post.css'],$user);
+    }
+
+    public function displayNoPostFoundError() : void {
+        echo '<p> Aucun Post Trouvé </p>';
     }
 
     /**

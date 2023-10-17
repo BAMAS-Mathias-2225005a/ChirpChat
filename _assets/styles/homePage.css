@@ -1,5 +1,7 @@
 /* ------ Home Page ------ */
 #categories{ /* Zone des recommandations des catégories */
+    display: flex;
+    flex-direction: column;
     width: 20vw;
     height: 120vh;
     background: white;
@@ -9,6 +11,8 @@
 }
 
 #bestPost{ /* */
+    display: flex;
+    flex-direction: column;
     width: 20vw;
     height: 120vh;
     background: white;
@@ -48,4 +52,30 @@
     font-size: 2em;
     letter-spacing: 1.8px;
     padding-top: 40px;
+}
+
+#catContainer{
+    display: flex;
+    justify-content: space-around;
+    padding: 30px 0;
+}
+
+.sectionTitle{
+    align-self: center;
+    justify-self: center;
+    padding-top: 30px;
+    font-size: 2em;
+    font-family: "League Spartan", serif;
+
+}
+
+@media screen and (max-width: 1200px){
+
+    #catContainer #bestPost{
+        display: none;
+    }
+
+    #catContainer #categories{
+        display: none;
+    }
 }

@@ -2,7 +2,9 @@
 
 namespace ChirpChat\Controllers;
 
+use ChirpChat\Model\CategoryRepository;
 use Chirpchat\Model\Database;
+use ChirpChat\Views\HomePageView;
 
 class Post{
 
@@ -28,10 +30,16 @@ class Post{
 
     public function searchPost() : void{
         $filter = str_replace( ' ', '+', $_POST['filter']);
+        $categorieList = (new CategoryRepository(Database::getInstance()->getConnection()))->getAllCategories();
         $postList = (new \Chirpchat\Model\PostRepository(Database::getInstance()->getConnection()))->searchPost($filter);
+        $homePageView = new HomePageView();
 
         if(!empty($postList)) {
-            (new \ChirpChat\Views\HomePageView())->show($postList, null);
+            $homePageView->setPostListView($postList, $categorieList);
+        }else{
+            $homePageView->displayNoPostFoundError();
         }
+
+        $homePageView->displayHomePageView(null);
     }
 }

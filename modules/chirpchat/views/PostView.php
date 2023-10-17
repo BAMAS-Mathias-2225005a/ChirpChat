@@ -40,19 +40,19 @@ class PostView{
                     <div><img alt="comment image" src="https://icon-library.com/images/speech-bubble-icon/speech-bubble-icon-13.jpg"/>
                         <p><?php echo $this->post->commentAmount ?></p>
                     </div>
+                    <div>
+                        <?php if(isset($_SESSION['ID']) && $_SESSION['ID'] === $this->post->getUser()->getUserID()){?>
+                            <form action="index.php?action=deletepost&id=<?php echo $this->post->idPost?>" method="post">
+                                <input type="image" src="https://icon-library.com/images/trash-icon-png/trash-icon-png-12.jpg" width="20" alt="deletepost">
+                            </form>
+                        <?php } ?>
+                    </div>
                 </div>
 
                 <div id="postCategories">
                     <?php foreach ($this->post->getCategories() as $cat){
                         echo '<p class="category">#' . strtoupper($cat->getLibelle()) . '</p>';
                     }?>
-                </div>
-                <div>
-                    <?php if(isset($_SESSION['ID']) && $_SESSION['ID'] === $this->post->getUser()->getUserID()){?>
-                        <form action="index.php?action=deletepost&id=<?php echo $this->post->idPost?>" method="post">
-                            <input type="image" src="https://icon-library.com/images/trash-icon-png/trash-icon-png-12.jpg" width="20" alt="deletepost">
-                        </form>
-                    <?php } ?>
                 </div>
             </a>
         </div><?php

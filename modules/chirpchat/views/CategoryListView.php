@@ -12,7 +12,7 @@ class CategoryListView{
      */
 
     public function displayCreationButton() : void{
-        echo '<a href="index.php?action=categoryCreation"><p>Creation de nouvelles catégories</p></a>';
+        echo '<a href="index.php?action=categoryCreation"><p id="creation">Créer une nouvelle catégorie</p></a>';
     }
 
     /**
@@ -25,6 +25,6 @@ class CategoryListView{
             echo $category->getLibelle();
         }
         $pageContent = ob_get_clean();
-        (new \ChirpChat\Views\MainLayout("Liste des catégories", $pageContent))->show([]);
+        (new \ChirpChat\Views\MainLayout("Liste des catégories", $pageContent))->show(['categoryList.css']);
     }
 }

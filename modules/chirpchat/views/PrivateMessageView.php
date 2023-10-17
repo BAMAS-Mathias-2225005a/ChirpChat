@@ -50,7 +50,7 @@ class PrivateMessageView {
     public function displaySendMessageForm(string $targetID) : PrivateMessageView {
         ob_start();
         ?>
-        <a href="index.php?action=privateMessage"><input type="button" value="RETOUR"></a>
+        <a href="index.php?action=privateMessage"><input type="button" id="retour" value="RETOUR"></a>
         <form id="privateMessageForm" action="index.php?action=sendMessageTo&id=<?= $targetID ?> " method="post">
             <input type="text" placeholder="Message" name="message" required>
             <input type="submit" value="ENVOYER">

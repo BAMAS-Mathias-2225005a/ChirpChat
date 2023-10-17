@@ -8,9 +8,9 @@ class UserView{
     public function displayUserProfile(User $user){
         ob_start();
         ?><h2>Profil de <?= $user->getUsername() ?> </h2>
-        <a href="index.php?action=privateMessageWith&id=<?= $user->getUserID() ?>"><input type="button" value="ENVOYER UN MESSAGE"></a>
+        <a href="index.php?action=privateMessageWith&id=<?= $user->getUserID() ?>"><input id="send" type="button" value="ENVOYER UN MESSAGE"></a>
         <?php
         $content = ob_get_clean();
-        (new \ChirpChat\Views\MainLayout("Profil de" . $user->getUsername(), $content))->show([]);
+        (new \ChirpChat\Views\MainLayout("Profil de " . $user->getUsername(), $content))->show(['userView.css']);
     }
 }

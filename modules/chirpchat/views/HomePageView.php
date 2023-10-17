@@ -22,7 +22,7 @@ class HomePageView {
             <a href="index.php?action=categorieSport" id="lienCategorieSport">SPORT</a><br/>
             <a href="index.php?action=categorieAuto" id="lienCategorieAuto">VOITURES</a><br/>
             <a href="index.php?action=categorieGaming" id="lienCategorieGaming">GAMING</a>
-            <a href="index.php?action=categoryList"><p>Voir plus</p></a>
+            <a href="index.php?action=categoryList"><p id="voirPlus">Voir plus</p></a>
         </div>
         <?php
         $this->categoriesView = ob_get_clean();
@@ -87,7 +87,7 @@ class HomePageView {
         <?php
 
         $content = ob_get_clean();
-        (new \ChirpChat\Views\mainLayout("Accueil", $content))->show(['homepage.css', 'post.css'],$user);
+        (new \ChirpChat\Views\mainLayout("Accueil", $content))->show(['homePage.css', 'post.css'],$user);
     }
 
     /**

@@ -24,7 +24,7 @@ class MainLayout {
         <!-- Ajout des styles donnés -->
         <?php
             foreach($styles as $style){
-                echo '<link rel="stylesheet" href="../../../_assets/styles/' . $style . '">';
+                echo '<link rel="stylesheet" href="/_assets/styles/' . $style . '">';
             }
             ?>
 

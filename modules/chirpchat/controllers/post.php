@@ -4,6 +4,7 @@ namespace ChirpChat\Controllers;
 
 use ChirpChat\Model\CategoryRepository;
 use Chirpchat\Model\Database;
+use ChirpChat\Model\PostRepository;
 use ChirpChat\Views\HomePageView;
 
 class Post{
@@ -41,5 +42,11 @@ class Post{
         }
 
         $homePageView->displayHomePageView(null);
+    }
+
+    public function deletePost(string $postID) : void {
+        $postRepo = new PostRepository(Database::getInstance()->getConnection());
+        $postRepo->deletePost($postID);
+        header('Location:index.php'); // Redirection vers la page d'accueil
     }
 }

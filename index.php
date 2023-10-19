@@ -31,8 +31,6 @@
             if(isset($_GET['id'])){
                 (new \ChirpChat\Controllers\User())->displayUserProfile($_GET['id']);
             }
-        } else if ($_GET['action'] === 'deletepost'){
-            (new \ChirpChat\Model\PostRepository(\ChirpChat\Model\Database::getInstance()->getConnection()))->deletePost($_GET['id'],$_SESSION['ID']);
         }
 
         // ---- A BESOIN QUE L'UTILISATEUR SOIT CONNECTÉ ----
@@ -57,6 +55,11 @@
         } else if ($_GET['action'] === 'sendMessageTo'){
             if(isset($_GET['id'])){
                 (new \ChirpChat\Controllers\PrivateMessageController())->sendMessageTo($_GET['id']);
+            }
+        }
+        else if ($_GET['action'] === 'deletepost'){
+            if(isset($_GET['id'])){
+                (new \ChirpChat\Controllers\Post())->deletePost($_GET['id']);
             }
         }
     }

@@ -182,7 +182,7 @@ nav #logo{
     right: 0;
     height: fit-content;
     background-color: white;
-    border: solid #2c2c2c;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,.1);
     border-top: 0;
     position: absolute;
     top: 95px;

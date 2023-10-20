@@ -13,7 +13,7 @@ class CategoryCreationView {
             <br/>
             <textarea id="descriptionCategorie" placeholder="Description de la catégorie" name="categoryDescription" required></textarea><br/>
             <br/>
-            <input id="envoiCreation" type="submit">
+            <input id="envoiCreation" type="submit" value="VALIDER">
         </form>
         <?php
         $pageContent = ob_get_clean();

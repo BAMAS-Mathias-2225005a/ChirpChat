@@ -16,9 +16,14 @@ class Comment{
 
         $postRepository = new PostRepository(Database::getInstance()->getConnection());
         $postID = $_GET['id'];
-        $post = $postRepository->getPost($postID);
         $commentList = $postRepository->getPostComment($postID);
         $commentPage = (new \ChirpChat\Views\PostCommentView());
+
+        $post = $postRepository->getPost($postID);
+        if($post == null){ //Reponse a un commentaire
+            $post = $postRepository->getComment($postID);
+        }
+
 
         $commentPage
             ->setMainPost($post)

@@ -20,6 +20,7 @@ class MainLayout {
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="../../../_assets/styles/styles.css">
         <script src="https://unpkg.com/slim-select@latest/dist/slimselect.min.js"></script>
+        <script src="/_assets/js/navbar.js"></script>
         <link href="https://unpkg.com/slim-select@latest/dist/slimselect.css" rel="stylesheet"></link>
         <!-- Ajout des styles donnés -->
         <?php
@@ -77,8 +78,8 @@ class MainLayout {
         <div id="profilSection">
             <a href="index.php?action=privateMessage"><img id="messageIcon" alt="image icon message privés" src="https://cdn-icons-png.flaticon.com/512/245/245810.png"></a>
             <?php if($user != null) echo '<p>@' . $user->getUsername() . '</p>' ?>
-            <img id="profilPicture" alt="photo de profil" src="https://cdn-icons-png.flaticon.com/512/168/168724.png">
-            <div id="scrolledProfile">
+            <img id="profilPicture" alt="photo de profil" src="https://cdn-icons-png.flaticon.com/512/168/168724.png" onclick="openCloseUserMenu()">
+            <div id="scrolledProfile" class="menuClose">
                 <ul>
                     <li id="profilMenu">
                         <a href="index.php?action=profile&id=<?= $_SESSION['ID'] ?>">

@@ -93,6 +93,7 @@ nav #profilSection #profilPicture{
     border-radius: 50px;
     width: 65px;
     height: 65px;
+    cursor: pointer;
 }
 
 nav #profilSection p{
@@ -186,6 +187,18 @@ nav #logo{
     position: absolute;
     top: 95px;
     z-index: 1;
+}
+
+.menuOpen{
+    transition: transform 0.2s ease-in, opacity 0.3s ease-in;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.menuClose{
+    transition: transform 0.1s ease-in, opacity 0.1s ease-in;
+    opacity: 0;
+    transform: translateY(-30%);
 }
 
 #scrolledProfile ul{

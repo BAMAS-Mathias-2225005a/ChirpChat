@@ -44,4 +44,9 @@ class User {
         $userRepo = new UserRepository(Database::getInstance()->getConnection());
         (new UserView())->displayUserProfile($userRepo->getUser($userID));
     }
+
+    public function logout() : void{
+        session_destroy();
+        header("Location:index.php");
+    }
 }

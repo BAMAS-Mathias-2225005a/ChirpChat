@@ -10,7 +10,8 @@
     border-radius: 10px;
 }
 
-#bestPost{ /* */
+#bestPost{
+    position: sticky;
     display: flex;
     flex-direction: column;
     width: 20vw;

@@ -62,6 +62,9 @@
                 (new \ChirpChat\Controllers\Post())->deletePost($_GET['id']);
             }
         }
+        else if ($_GET['action'] === 'logout'){
+            (new \ChirpChat\Controllers\User())->logout();
+        }
     }
     else {
         (new \ChirpChat\Controllers\HomePage)->execute();

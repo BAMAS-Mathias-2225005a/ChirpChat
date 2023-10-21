@@ -1,9 +1,9 @@
-function openCloseUserMenu(){
-    var menu = document.getElementById("scrolledProfile");
-    if(menu.className === 'menuOpen'){
-        menu.className = 'menuClose';
+function openCloseUserMenu(menu){
+    var menuDeroulant = menu.children[1];
+    if(menuDeroulant.className === 'menuOpen'){
+        menuDeroulant.className = 'menuClose';
     }else{
-        menu.className = 'menuOpen'
+        menuDeroulant.className = 'menuOpen'
     }
-
 }
+

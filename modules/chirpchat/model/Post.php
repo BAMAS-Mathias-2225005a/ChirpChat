@@ -15,7 +15,7 @@ class Post{
      * @param int $commentAmount
      * @param int $likeAmount
      */
-    public function __construct(public string $idPost,?string $titre, public string $message,string $datePubli, private array $categorie,private $utilisateur, public int $commentAmount, public int $likeAmount ){ }
+    public function __construct(public string $idPost, private readonly ?string $titre, public string $message,private string $datePubli, private array $categorie, private $utilisateur, public int $commentAmount, public int $likeAmount ){ }
 
     public function getUser() : User{
         return $this->utilisateur;
@@ -26,6 +26,14 @@ class Post{
      */
     public function getCategories() : array{
         return $this->categorie;
+    }
+
+    public function getTitre() : string{
+        return $this->titre;
+    }
+
+    public function getDatePubli() : string{
+        return $this->datePubli;
     }
 
     public function isLikedByUser($userId) : bool{

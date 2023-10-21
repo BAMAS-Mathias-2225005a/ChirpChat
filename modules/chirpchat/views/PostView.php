@@ -108,7 +108,7 @@ class PostView{
             return 'Il y a ' . (round($timeSincePostUpload/60)) . ' minutes';
         }
         if($timeSincePostUpload < 86400){
-            return 'Il y a ' . (round($timeSincePostUpload/60/24)) . ' heures';
+            return 'Il y a ' . (round($timeSincePostUpload/60/60)) . ' heures';
         }
         else{
             return explode(' ', $date)[0];

@@ -28,7 +28,7 @@ class Post{
         return $this->categorie;
     }
 
-    public function getTitre() : string{
+    public function getTitre() : ?string{
         return $this->titre;
     }
 

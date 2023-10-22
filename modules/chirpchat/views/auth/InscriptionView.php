@@ -32,11 +32,7 @@ class InscriptionView{
                     <input placeholder="Mot de passe" type="password" name="password">
                 </div>
 
-                <div class="champ-saisie">
-                    <input placeholder="Confirmer mot de passe" type="password">
-                </div>
-
-                <input type="submit" value="SUIVANT" id="btnSuivant">
+                <input type="submit" value="S'inscrire" id="btnSuivant">
             </form>
 
             <p id="loginPageLink"><a href="index.php?action=connexion"> Vous avez déja un compte ? </a></p>

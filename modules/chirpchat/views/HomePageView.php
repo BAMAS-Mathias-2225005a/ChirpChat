@@ -69,7 +69,7 @@ class HomePageView {
     public function setBestPostView() : HomePageView {
         ob_start();
         ?>
-        <div id="bestPost">
+        <div id="bestPost" style="background: linear-gradient(to bottom, #2980b9, #6dd5fa, #ffffff);">
             <h3 class="sectionTitle"> Les plus likés </h3><br/>
         </div>
         <?php

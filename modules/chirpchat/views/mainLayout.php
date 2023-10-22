@@ -36,8 +36,10 @@ class MainLayout {
     </head>
     <body>
         <nav>
-            <img alt="Logo" id="logo" src="/_assets/images/Logo.png">
-            <h1><a href="index.php">ChirpChat</a></h1>
+            <div id="logoDiv" style="display: flex; align-items: center; gap: 20px; width: 20vw; justify-content: space-around">
+                <img alt="Logo" id="logo" src="/_assets/images/Logo.png">
+                <h1 style="margin-top: 15px"><a href="index.php">ChirpChat</a></h1>
+            </div>
             <div id="searchBar">
                 <img alt="Loupe barre de recherche" src="https://cdn-icons-png.flaticon.com/512/68/68213.png">
                 <form action="index.php?action=search" method="post">
@@ -77,7 +79,7 @@ class MainLayout {
     ?>
         <div id="profilSection">
             <a href="index.php?action=privateMessage"><img id="messageIcon" alt="image icon message privés" src="https://cdn-icons-png.flaticon.com/512/245/245810.png"></a>
-            <?php if($user != null) echo '<p>@' . $user->getUsername() . '</p>' ?>
+            <?php if($user != null) echo '<p>' . $user->getUsername() . '</p>' ?>
             <div id="profile" onclick="openCloseUserMenu(this)">
                 <img id="profilPicture" alt="photo de profil" src="https://cdn-icons-png.flaticon.com/512/168/168724.png">
                 <div id="scrolledProfile" class="menuClose">

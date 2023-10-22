@@ -6,44 +6,53 @@ class InscriptionView{
 
     public function show() : void{
         ob_start();
-        ?><main>
+        ?>
+        <form id="registerForm" action="index.php?action=registerUser" method="post">
 
-            <form id="inscriptionForm" action="index.php?action=registerUser" method="post">
+            <h2 id="inscriptionTitle">INSCRIPTION</h2>
 
-                <h2 id="inscriptionTitle">INSCRIPTION</h2>
+            <label>Nom d'utilisateur
+                <input class="inputField" type="text" name="username">
+            </label>
 
-                <div class="champ-saisie">
-                    <input placeholder="Nom d'utilisateur" type="text" name="username">
-                </div>
+            <label>Pseudo
+                <input class="inputField" type="text" name="pseudonyme">
+            </label>
 
-                <div class="champ-saisie">
-                    <input placeholder="Pseudo" type="text" name="pseudonyme">
-                </div>
+            <label>Email
+                <input class="inputField" type="text" name="email">
+            </label>
 
-                <div class="champ-saisie">
-                    <input placeholder="E-mail" type="text" name="email">
-                </div>
+            <label>Date de naissance
+                <input class="inputField" type="date" name="birthdate">
+            </label>
 
-                <div class="champ-saisie">
-                    <input placeholder="Date de naissance" type="date" name="birthdate">
-                </div>
+            <label>Mot de passe
+                <input class="inputField" type="password" name="password">
+            </label>
 
-                <div class="champ-saisie">
-                    <input placeholder="Mot de passe" type="password" name="password">
-                </div>
+            <input class="authButtons" type="submit" value="S'inscrire">
 
-                <input type="submit" value="S'inscrire" id="btnSuivant">
-            </form>
+            <p id="liensLogin"><a href="index.php?action=connexion"> Vous avez déja un compte ? </a></p>
+        </form>
 
-            <p id="loginPageLink"><a href="index.php?action=connexion"> Vous avez déja un compte ? </a></p>
+        <!-- Background shapes -->
+        <svg class="backgroundShapes" style="width: 800px; top: 0%; left: -15%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#72A6D7" d="M38.9,-41.8C52.6,-34.8,67.6,-24.7,72.2,-10.9C76.7,2.8,70.8,20.1,61.1,33.6C51.3,47.1,37.7,56.7,21.8,64.4C5.9,72,-12.2,77.8,-26.1,72.4C-39.9,67.1,-49.4,50.6,-58.3,34.2C-67.1,17.8,-75.3,1.5,-74.9,-15.3C-74.4,-32.2,-65.3,-49.6,-51.4,-56.6C-37.5,-63.6,-18.8,-60.1,-3.1,-56.4C12.6,-52.7,25.1,-48.8,38.9,-41.8Z" transform="translate(100 100)" />
+        </svg>
 
-            <svg width="1080" height="145" viewBox="0 0 1080 145" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M751.961 32.3728C948.981 -66.2328 1134 91.8762 1134 91.8762V477.798L-207.636 505L-257.606 73.1944C-293.212 61.5776 -301.999 50.801 -259.641 55.6075L-257.606 73.1944C-192.635 94.3918 -38.3701 118.387 57.3907 55.6075C205.631 -41.5768 386.924 21.0388 444.43 40.3066C501.936 59.5744 554.941 130.978 751.961 32.3728Z" fill="#6887D5" fill-opacity="0.33"/>
-            </svg>
-        </main><?php
+        <svg class="backgroundShapes" style="width: 600px; top: -5%; right: -10%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#325A90" d="M63.2,-39.3C74.2,-17.6,69.8,10.1,56.8,34.2C43.7,58.4,21.8,78.9,2.8,77.3C-16.3,75.7,-32.5,51.9,-41.7,30C-51,8.1,-53.2,-11.9,-45.1,-32.1C-36.9,-52.2,-18.5,-72.4,3.8,-74.6C26.2,-76.8,52.3,-61.1,63.2,-39.3Z" transform="translate(100 100)" />
+        </svg>
+
+        <svg class="backgroundShapes" style="width: 1200px; top: 50%; left: 30%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#143762" d="M50.8,-43.4C67.4,-34.2,83.6,-17.1,86.3,2.7C89,22.5,78.3,45,61.7,57.7C45,70.3,22.5,72.9,-0.2,73.1C-22.9,73.3,-45.8,71.1,-58.3,58.5C-70.7,45.8,-72.7,22.9,-71.9,0.8C-71,-21.3,-67.5,-42.6,-55,-51.8C-42.6,-61,-21.3,-58.1,-2.1,-56C17.1,-53.9,34.2,-52.6,50.8,-43.4Z" transform="translate(100 100)" />
+        </svg>
+
+        <?php
 
         $content = ob_get_clean();
-        (new \ChirpChat\Views\MainLayout("Inscription", $content))->show(['inscription.css']);
+        (new \ChirpChat\Views\MainLayout("Inscription", $content))->show(['authentification.css']);
     }
 
 }

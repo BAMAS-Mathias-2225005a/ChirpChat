@@ -15,14 +15,16 @@ a {
     color: inherit;
 }
 
-body {
+body{
     overflow-x: hidden;
 }
 
 #pageContent {
     background-color: #F0F0F0;
     min-width: 100vw;
+    position: relative;
     min-height: 88vh;
+    overflow: hidden;
 }
 
 /* ------ NAVBAR ------ */

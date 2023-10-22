@@ -52,7 +52,7 @@ class MainLayout {
                 $this->displayProfilSection($user);
             }else{?>
             <a id="hamburgerMenuIcon" onclick="openHamburgerMenu()"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/2048px-Hamburger_icon.svg.png" ></a>
-            <div id="connectionSection">
+            <div id="connectionSection" style="z-index: 2">
                 <a href="index.php?action=connexion"><input type="button" value="SE CONNECTER"></a>
                 <a href="index.php?action=inscription"><input type="button" value="S'INSCRIRE"></a>
             </div>

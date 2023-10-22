@@ -53,7 +53,14 @@
     padding-left: 15px;
     font-family: Heebo, serif;
     font-size: 1.1em;
+    transition: all 0.1s ease;
 }
+
+.inputField:focus{
+    outline: none;
+    border-bottom: solid rgba(7, 90, 193,0.6) 4px;
+}
+
 
 .authButtons { /* Bouton pour envoyer */
     background: linear-gradient(#72a6d7, #325a90);    width: 415px;

@@ -52,14 +52,14 @@ class MainLayout {
                 $this->displayProfilSection($user);
             }else{?>
             <a id="hamburgerMenuIcon" onclick="openHamburgerMenu()"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/2048px-Hamburger_icon.svg.png" ></a>
-            <div id="connectionSection" style="z-index: 2">
+            <div id="connectionSection"">
                 <a href="index.php?action=connexion"><input type="button" value="SE CONNECTER"></a>
                 <a href="index.php?action=inscription"><input type="button" value="S'INSCRIRE"></a>
             </div>
             <?php }?>
         </nav>
 
-        <div id="hamburgerMenuUnscroll" style="display: none">
+        <div id="hamburgerMenuUnscroll" style="display: none; z-index: 1">
             <img id="closeHamburgerMenuIcon" onclick="closeHamburgerMenu()" src="https://cdn-icons-png.flaticon.com/512/57/57165.png">
             <div id="buttons">
                 <a href="index.php?action=connexion"><input type="button" value="SE CONNECTER"></a>

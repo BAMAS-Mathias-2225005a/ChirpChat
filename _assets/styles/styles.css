@@ -140,40 +140,67 @@ nav #logo{
     height: 45px;
 }
 
-#hamburgerMenuUnscroll{
-    width: 100vw;
-    height: 100vh;
-    top: 0;
+#mobileViewBottomBar{
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
     background-color: white;
-    position: absolute;
+    width: 100vw;
+    height: 80px;
+    z-index: 1;
+    border-radius: 10px 10px 0 0;
 }
 
-#hamburgerMenuUnscroll #buttons{
-    margin-top: 100px;
-    margin-bottom: 300px;
+#mobileViewBottomBar ul{
+    display: flex;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+}
+
+#mobileViewBottomBar ul li{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    width: 20%;
+}
+
+#mobileViewBottomBar ul li:nth-child(2){
+    margin-right: 40px;
+}
+
+#mobileViewBottomBar ul li svg{
+    width: 35px;
+    height: 30px;
+}
+
+#mobileViewBottomBar ul li p{
+    font-family: League Spartan, serif;
+    font-size: 0.9em;
+}
+
+#addPostButtonContainer{
+    display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #F0F0F0;
+    position: fixed;
+    border-radius: 100%;
+    bottom: 50px;
+    left: calc(50% - 30px);
 }
 
-#hamburgerMenuUnscroll input[type=button]{
-    width: 90vw;
-    height: 10vh;
-    color: #3D3D3D;
-    font-size: 3em;
-    font-family: "League Spartan", serif;
-    font-weight: 600;
-    border: 3px solid #9fbaf8;
-}
-
-#hamburgerMenuUnscroll #closeHamburgerMenuIcon{
-    position: absolute;
-    top: 30px;
-    right: 30px;
+#addPostButtonContainer svg{
     width: 40px;
     height: 40px;
+    background-color: #5A88FF;
+    border-radius: 100%;
+    color: white;
 }
 
 
@@ -296,6 +323,10 @@ nav #logo{
 }
 
 @media screen and (max-width: 600px){
+
+    #mobileViewBottomBar{
+        display: flex;
+    }
 
     nav #profilPicture{
         margin-right: 20px;

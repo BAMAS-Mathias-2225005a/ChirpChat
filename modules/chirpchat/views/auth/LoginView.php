@@ -24,7 +24,7 @@ class LoginView {
             </label>
 
             <input class="authButtons" type="submit" value="Se connecter"><br> <!-- Bouton pour valider la connexion -->
-            <a href="index.php?action=inscription"><button class="authButtons">S'inscrire</button></a>
+            <a href="index.php?action=inscription"><button type="button" class="authButtons">S'inscrire</button></a>
 
             <a href="index.php?action=recuperation" id="lienForgetPassword">Mot de passe oublié?</a> <!-- Bouton pour aller vers la page pour récupérer le mot de passe -->
         </form>

@@ -87,7 +87,7 @@ class HomePageView {
         <?php
 
         $content = ob_get_clean();
-        (new \ChirpChat\Views\mainLayout("Accueil", $content))->show(['homePage.css', 'post.css'],$user);
+        (new \ChirpChat\Views\mainLayout("Accueil", $content))->show(['homePage.css', 'post.css']);
     }
 
     public function displayNoPostFoundError() : void {

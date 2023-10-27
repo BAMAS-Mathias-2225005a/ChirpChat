@@ -1,68 +1,103 @@
 /* ------ POSTS ------ */
 
 .post{
-    display: flex;
-    gap: 20px;
+    display: grid;
     width: 500px;
-    align-items: flex-start;
-    border-radius: 15px;
-    background: rgba(255, 255, 255, 0.70);
-    box-shadow: 0px 4px 4px 0px rgba(104, 135, 212, 0.25);
-    padding: 20px 30px 10px 15px;
+    min-height: 100px;
+    grid-auto-rows: auto;
+    padding: 10px 20px;
+    grid-template-rows: min-content min-content min-content min-content;
+    grid-template-columns: 1fr 7fr 1fr;
+    border-radius: 20px;
+    background: linear-gradient(175deg, rgba(255, 255, 255, 0.70) 2.91%, rgb(255, 255, 255) 60.51%, rgba(104, 135, 212, 0.02) 107.21%);
+    filter: drop-shadow(0px 4px 4px rgba(104, 135, 212, 0.25));
+    grid-template-areas:
+        'profile-picture post-infos settings'
+        'profile-picture categories categories'
+        'separator separator separator'
+        'content content content'
+        'footer footer footer';
 }
 
-.post a:nth-child(2){
-    width: 80%;
+
+#postSettings svg{
+    width: 35px;
+    height: 35px;
 }
 
-.post #authorInfo h2{
+#separator{
+    grid-area: separator;
+    height: 1px;
+    background-color: #cecece;
+    margin-top: 5px;
+    width: 100%;
+    padding-right: 40px;
+    margin-left: -20px;
+}
+
+#profilePicture{
+    width: 50px;
+    height: 50px;
+    border-radius: 40px;
+    grid-area: profile-picture;
+}
+
+#authorInfo{
+    padding-left: 22px;
+    display: flex;
+    grid-area: post-infos;
+    align-items: center;
+    gap: 10px;
     font-family: "League Spartan", serif;
-    color: #2c2c2c;
-    font-size: 1.8em;
 }
 
-.post #authorInfo h3{
-    font-family: "League Spartan", serif;
-    color: #a4a4a4;
+#authorInfo h3{
+    color: #9b9b9b;
     font-weight: 400;
 }
 
-.post #postHeader{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+.post a{
+    width: fit-content;
+    height: fit-content;
 }
 
-.post #postHeader #authorInfo{
-    display: flex;
-    flex-direction: column;
+.post #postContent h3{
+    font-size: 1.7em;
+    font-family: "League Spartan", serif;
 }
 
-.post #postHeader svg{
-    width: 25px;
-    height: 25px;
-    justify-self: flex-end;
+.post #postContent p{
+    overflow-wrap: anywhere;
+    font-family: "League Spartan", serif;
+    padding-top: 10px;
+    font-size: 1.2em;
 }
 
-.post #mainPostContainer{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
+#postSettings{
+    grid-area: settings;
+    width: fit-content;
+    height: fit-content;
 }
 
-.post #mainPostContainer a{
-    width: 100%;
+#postSettingsMenu{
+    position: absolute;
 }
 
-.post #profilePicture{
-    width: 50px;
-    height: 50px;
+#postContent{
+    grid-area: content;
+    padding-top: 20px;
+    padding-left: 10px;
 }
 
-.post #postFooter img{
-    width: 25px;
-    height: 25px;
+.post #postFooter svg{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.post #postFooter button{
+    background: none;
+    border: none;
 }
 
 #postList{
@@ -71,191 +106,75 @@
     gap: 20px;
 }
 
-.post #postCategories{
-    width: 100%;
+#postFooter{
+    display: flex;
+    align-items: center;
+    grid-area: footer;
+    padding-top: 10px;
+    padding-left: 10px;
+    gap: 15px;
+    font-family: "League Spartan", serif;
+    font-size: 1.3em;
+}
+
+#postFooter > div{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#postCategories{
+    padding-left: 20px;
+    grid-area: categories;
     display: flex;
     flex-wrap: wrap;
-    gap: 7px;
-    padding-top: 20px;
+    gap: 5px;
 }
 
-.post #postCategories .category{
-    padding: 7px 14px;
-    background: linear-gradient(90deg, rgba(59,48,255,1) 0%, rgba(52,52,221,1) 0%, rgba(137,144,249,1) 100%);;
-    font-size: 16px;
-    font-family: "League Spartan", serif;
+#postCategories .category{
+    background: linear-gradient(90deg, rgb(96, 96, 190) 0%, rgba(6,81,168,1) 57%, rgb(6, 131, 178) 100%);
+    width: fit-content;
+    padding: 2px 20px;
+    font-weight: 600;
     border-radius: 10px;
     color: #ffffff;
-    font-weight: 700;
-}
-
-
-.post #postFooter{
-    display: flex;
-    gap: 30px;
-}
-
-.post #postContent h3{
     font-family: "League Spartan", serif;
-    font-size: 1.6em;
-    color: #2c2c2c;
 }
 
-.post #postContent p{
-    font-family: "League Spartan", serif;
-    font-weight: 400;
-    font-size: 16px;
-    padding: 3% 0 ;
-}
+@media screen and (max-width: 600px){
 
-.post #postFooter button{
-    border: none;
-    background: none;
-}
-
-.post #postFooter div{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.post #postFooter p {
-    font-size: 1.4em;
-}
-
-#postSettings{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-#postSettingsMenu{
-    position: absolute;
-    width: 150px;
-    background-color: white;
-    box-shadow: 0 4px 10px 0 rgba(0,0,0,.1);
-    padding: 10px 20px;
-}
-
-#postSettingsMenu ul{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-}
-
-#postSettingsMenu ul li a{
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-#postSettingsMenu ul li p{
-    font-family: "League Spartan", serif;
-    font-size: 18px;
-}
-
-#postSettings ul li:hover{
-    cursor: pointer;
-    color: #6887D4;
-}
-
-#postSettings #deletePost:hover{
-    color: #fd4f4f;
-}
-
-@media screen and (max-width: 600px) {
-
-    .post {
-        width: 80vw;
+    .post{
+        box-sizing: border-box;
+        max-width: 100%;
+        padding: 5px 10px;
     }
-}
-
-/* ------ POST INPUT ------ */
-
-#writePostSection{
-    position: relative;
-    display: flex;
-    width: 500px;
-    height: 225px;
-    background: rgba(255, 255, 255, 0.70);
-    box-shadow: 0px 4px 4px 0px rgba(104, 135, 212, 0.25);
-    padding: 20px 30px 10px 15px;
-    border-radius: 15px;
-}
-
-#writePostSection input[type=submit]{
-    position: absolute;
-    cursor: pointer;
-    right: 50px;
-    bottom: 15px;
-    color: #FFFFFF;
-    font-family: League Spartan, serif;
-    font-size: 17px;
-    font-weight: 700;
-    letter-spacing: 2.1px;
-    border-radius: 10px;
-    background: #6887D4;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    border: none;
-    width: 125px;
-    height: 30px;
-}
-
-#writePostSection textarea,
-#writePostSection input[type=text]{
-    border-radius: 10px;
-    background: #EAEBF8;
-    padding: 15px 0 0 15px;
-    width: 450px;
-    height: 70px;
-    border: none;
-    margin-left: 15px;
-    line-height: 15px;
-    resize: none;
-    outline: none;
-    color: #000;
-    font-family: Heebo, serif ;
-    font-size: 15px;
-    font-weight: 500;
-}
-
-#userInputContent{
-    display: flex;
-    flex-direction: column;
-    align-self: flex-start;
-    gap: 10px;
-}
-
-#userInputContent input[type=text]{
-    padding: 8px 0 8px 15px;
-    line-height: 0;
-    height: 20px;
-    vertical-align: center;
-}
-
-#writePostSection img{
-    width: 40px;
-    height: 40px;
-    border-radius: 50px;
-    align-self: flex-start;
-}
-
-@media screen and (max-width: 600px) {
-
-    #writePostSection {
+    #postList{
         width: 80vw;
     }
 
-    #writePostSection input[type=text],
-    #writePostSection textarea {
-        width: 60vw;
+    #postContent{
+        padding-left: 10px;
     }
 
-    #writePostSection input[type=submit]{
-        width: 100px;
+    #postFooter{
+        padding-left: 10px;
     }
+
+    .post h2{
+        font-size: 1.3em;
+    }
+
+    #authorInfo{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+    }
+
+    #separator{
+        padding: 0px 10px;
+        margin-left: -10px;
+    }
+
 }
 
 /* ------ COMMENT ------ */

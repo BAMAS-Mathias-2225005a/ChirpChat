@@ -5,7 +5,7 @@
     width: 500px;
     min-height: 100px;
     grid-auto-rows: auto;
-    padding: 10px 20px;
+    padding: 20px 20px;
     grid-template-rows: min-content min-content min-content min-content;
     grid-template-columns: 1fr 7fr 1fr;
     border-radius: 20px;
@@ -18,7 +18,6 @@
         'content content content'
         'footer footer footer';
 }
-
 
 #postSettings svg{
     width: 35px;
@@ -47,7 +46,7 @@
     display: flex;
     grid-area: post-infos;
     align-items: center;
-    gap: 10px;
+    gap: 30px;
     font-family: "League Spartan", serif;
 }
 
@@ -62,14 +61,14 @@
 }
 
 .post #postContent h3{
-    font-size: 1.7em;
+    font-size: 2.1em;
     font-family: "League Spartan", serif;
 }
 
 .post #postContent p{
     overflow-wrap: anywhere;
     font-family: "League Spartan", serif;
-    padding-top: 10px;
+    padding-top: 25px;
     font-size: 1.2em;
 }
 
@@ -85,8 +84,9 @@
 
 #postContent{
     grid-area: content;
-    padding-top: 20px;
+    padding-top: 30px;
     padding-left: 10px;
+    padding-bottom: 10px;
 }
 
 .post #postFooter svg{
@@ -112,9 +112,13 @@
     grid-area: footer;
     padding-top: 10px;
     padding-left: 10px;
-    gap: 15px;
+    gap: 20px;
     font-family: "League Spartan", serif;
-    font-size: 1.3em;
+    font-size: 1.1em;
+}
+
+.post #postHeader h2{
+    font-size: 1.9em;
 }
 
 #postFooter > div{
@@ -134,20 +138,104 @@
 #postCategories .category{
     background: linear-gradient(90deg, rgb(96, 96, 190) 0%, rgba(6,81,168,1) 57%, rgb(6, 131, 178) 100%);
     width: fit-content;
-    padding: 2px 20px;
+    padding: 5px 20px;
     font-weight: 600;
     border-radius: 10px;
     color: #ffffff;
+    font-size: 0.8em;
+    text-align-all: center;
     font-family: "League Spartan", serif;
+}
+
+#writePostSection{
+    display: flex;
+    padding: 20px;
+    width: 500px;
+    border-radius: 20px;
+    background: linear-gradient(175deg, rgba(255, 255, 255, 0.70) 2.91%, rgb(255, 255, 255) 60.51%, rgba(104, 135, 212, 0.02) 107.21%);
+}
+
+#writePostSection img{
+    width: 40px;
+    height: 40px;
+}
+
+#writePostSection #userInputContent{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 10px;
+}
+
+#writePostSection input,
+#writePostSection textarea{
+    resize: none;
+    width: 70%;
+    border: none;
+}
+
+#writePostSection #userInputContent input[type=text]{
+    width: 70%;
+    height: 40px;
+    padding-left: 10px;
+    background-color: #EAEBF8;
+    border-radius: 10px;
+    font-family: League Spartan, serif;
+    font-size: 1.7em;
+    font-weight: 600;
+}
+
+#writePostSection #userInputContent input[type=submit]{
+    align-self: flex-end;
+    width: 180px;
+    height: 40px;
+    font-family: League Spartan, serif;
+    font-weight: bold;
+    font-size: 1.45em;
+    letter-spacing: 3px;
+    background: linear-gradient(#72a6d7, #325a90);
+    color: white;
+    background-size: 1px 350px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+}
+
+#writePostSection #userInputContent input[type=submit]:hover{
+    background-position: 100px;
+}
+
+#writePostSection #userInputContent textarea{
+    width: 90%;
+    height: 90px;
+    background-color: #EAEBF8;
+    padding-top: 5px;
+    padding-left: 10px;
+    font-size: 1.1em;
+    font-family: League Spartan, serif;
+    border-radius: 10px;
 }
 
 @media screen and (max-width: 600px){
 
-    .post{
+    .post, #writePostSection{
         box-sizing: border-box;
         max-width: 100%;
-        padding: 5px 10px;
+        padding: 10px 10px;
     }
+
+    #writePostSection #userInputContent input[type=text]{
+        font-size: 1.2em;
+        height: 30px;
+    }
+
+
+    #writePostSection #userInputContent textarea{
+        font-size: 1em;
+    }
+
+
     #postList{
         width: 80vw;
     }

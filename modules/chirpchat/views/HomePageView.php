@@ -39,7 +39,6 @@ class HomePageView {
                 <div id="userInputContent">
                     <input type="text" placeholder="Donnez un titre !" name="titre" required></input>
                     <textarea spellcheck="false" maxlength="160" placeholder="Envoyez un message !" name="message" required></textarea>
-                    <input type="submit" value="POSTER">
                     <select id="category" multiple name="categories[]" required>
                         <?php $this->getCategoriesList($categories) ?>
                     </select>
@@ -52,6 +51,7 @@ class HomePageView {
                             }
                         })
                     </script>
+                    <input type="submit" value="POSTER">
                 </div>
 
 

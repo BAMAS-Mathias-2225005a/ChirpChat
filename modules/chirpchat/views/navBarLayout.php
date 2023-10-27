@@ -6,8 +6,6 @@ use ChirpChat\Model\User;
 
 class NavBarLayout{
 
-
-
     public function __construct(private ?User $user){ }
 
     function displayNavBar() : void{

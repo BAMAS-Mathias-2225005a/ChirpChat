@@ -18,7 +18,7 @@ class HomePage {
         }
         $homePageView = new \ChirpChat\Views\HomePageView();
         $homePageView
-            ->setCategoriesView()
+            ->setCategoriesView($categoriesList)
             ->setPostListView($postList, $categoriesList)
             ->setBestPostView()
             ->displayHomePageView($user);

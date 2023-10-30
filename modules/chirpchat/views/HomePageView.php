@@ -44,10 +44,12 @@ class HomePageView {
     public function setPostListView($postList, $categories) : HomePageView {
         ob_start();
         ?><div id="postList">
-        <?php if(isset($_SESSION['ID'])){?>
+        <?php if(isset($_SESSION['ID'])){
+            $user = (new UserRepository(Database::getInstance()->getConnection()))->getUser($_SESSION['ID']);
+        ?>
 
             <form action="index.php?action=sendPost" id="writePostSection" method="post">
-                <img alt="photo de profil" src="https://cdn-icons-png.flaticon.com/512/436/436299.png">
+                <img alt="photo de profil" src="<?= $user->getProfilPicPath()?>">
                 <div id="userInputContent">
                     <input type="text" placeholder="Donnez un titre !" name="titre" required></input>
                     <textarea spellcheck="false" maxlength="160" placeholder="Envoyez un message !" name="message" required></textarea>

@@ -8,13 +8,13 @@ if(isset($_POST['img_submit'])) {
     $fileSize = $_FILES['img_upload']['size'];
     $newFileName = $user_id . ".jpg";
     $fileExtension = explode('.', $fileName);
-    $ActualFileExension = strtolower(end($fileExtension));
+    $ActualFileExtension = strtolower(end($fileExtension));
 
     if($fileSize > 2097152) {
         echo "L'image est trop volumineuse. La taille maximale autorisée est 2 Mo.";
         exit();
     }
-    if($ActualFileExension !== 'jpg'){
+    if($ActualFileExtension !== 'jpg'){
         echo "L'image doit être sous format jpg.";
         exit();
     }

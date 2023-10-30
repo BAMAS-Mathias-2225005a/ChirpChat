@@ -65,6 +65,10 @@
         else if ($_GET['action'] === 'logout'){
             (new \ChirpChat\Controllers\User())->logout();
         }
+
+        else if($_GET['action'] === 'uploadProfilePicture'){
+            (new \ChirpChat\Controllers\User())->uploadProfilePicture();
+        }
     }
     else {
         (new \ChirpChat\Controllers\HomePage)->execute();

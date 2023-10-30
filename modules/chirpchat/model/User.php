@@ -22,7 +22,7 @@ class User{
         return htmlspecialchars($this->pseudo);
     }
 
-    public function getProfilPic() : string {
+    public function getProfilPicPath() : string {
         foreach(new \DirectoryIterator('_assets/images/user_pic/') as $userPIC){
             if($userPIC->getFilename() === $this->userID . ".jpg"){
                 return '_assets/images/user_pic/' . $this->userID . ".jpg";

@@ -27,7 +27,10 @@ class Recovery {
 
         <?php
         $content = ob_get_clean();
-        (new \ChirpChat\Views\MainLayout("Mot de passe oublié", $content))->show();
+
+        $styles = array("styles.css");
+
+        (new \ChirpChat\Views\MainLayout("Mot de passe oublié", $content))->show($styles);
     }
 }
 ?>

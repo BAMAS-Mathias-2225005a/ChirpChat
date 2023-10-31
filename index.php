@@ -66,8 +66,8 @@
             (new \ChirpChat\Controllers\User())->logout();
         }
 
-        else if($_GET['action'] === 'uploadProfilePicture'){
-            (new \ChirpChat\Controllers\User())->uploadProfilePicture();
+        else if($_GET['action'] === 'modifyProfile'){
+            (new \ChirpChat\Controllers\User())->modifyProfile();
         }
     }
     else {

@@ -22,7 +22,7 @@ class UserRepository{
 
     public function register($username, $pseudonyme, $email, $password, $birthdate) : void{
         if($this->doesUserExist($email)); //ERREUR
-        $statement = $this->connection->prepare("INSERT INTO Utilisateur VALUES (?, ?, ?, ?, ?, ?, NULL, NULL, ?, ? )" );
+        $statement = $this->connection->prepare("INSERT INTO Utilisateur VALUES (?, ?, ?, ?, ?, ?, NULL, ?, ? )" );
         $statement->execute([uniqid(),$email,$username, $pseudonyme, password_hash($password,PASSWORD_BCRYPT), $birthdate,  date('Y-m-d H:i:s'),  date('Y-m-d H:i:s')]);
     }
 
@@ -37,14 +37,26 @@ class UserRepository{
     }
 
     public function getUser(string $id) : ?user {
-        $statement = $this->connection->prepare("SELECT EMAIL, USERNAME, PSEUDONYME FROM Utilisateur WHERE ID = ?");
+        $statement = $this->connection->prepare("SELECT EMAIL, USERNAME, PSEUDONYME, DESCRIPTION FROM Utilisateur WHERE ID = ?");
         $statement->execute([$id]);
 
         if($row = $statement->fetch()){
-            return new User($id, $row['USERNAME'], $row['EMAIL'], $row['PSEUDONYME']);
+            return new User($id, $row['USERNAME'], $row['EMAIL'], $row['PSEUDONYME'], $row['DESCRIPTION']);
         }
         return null;
     }
+
+    public function setUsername(User $user, string $newUsername) : void{
+        $statement = $this->connection->prepare("UPDATE Utilisateur SET USERNAME=? WHERE ID=?");
+        $statement->execute([$newUsername, $user->getUserID()]);
+    }
+
+    public function setDescription(User $user, string $newDescription) : void{
+        $statement = $this->connection->prepare("UPDATE Utilisateur SET DESCRIPTION=? WHERE ID=?");
+        $statement->execute([$newDescription, $user->getUserID()]);
+    }
+
+
 
     public function getUserName($uuid){
 

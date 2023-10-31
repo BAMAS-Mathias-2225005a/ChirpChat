@@ -4,7 +4,7 @@ namespace ChirpChat\Model;
 
 class User{
 
-    public function __construct(private readonly string $userID, private readonly string $username, private readonly string $email, private readonly string $pseudo){}
+    public function __construct(private readonly string $userID, private readonly string $username, private readonly string $email, private readonly string $pseudo, private readonly ?string $description){}
 
     public function getUserID() : string{
         return htmlspecialchars($this->userID);
@@ -20,6 +20,10 @@ class User{
 
     public function getPseudo() : string{
         return htmlspecialchars($this->pseudo);
+    }
+
+    public function getDescription() : string{
+        return htmlspecialchars($this->description);
     }
 
     public function getProfilPicPath() : string {

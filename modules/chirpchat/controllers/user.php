@@ -3,6 +3,7 @@
 namespace ChirpChat\Controllers;
 
 use Chirpchat\Model\Database;
+use ChirpChat\Model\PostRepository;
 use ChirpChat\Model\UserRepository;
 use ChirpChat\Views\UserView;
 
@@ -43,7 +44,11 @@ class User {
 
     public function displayUserProfile($userID) : void{
         $userRepo = new UserRepository(Database::getInstance()->getConnection());
-        (new UserView())->displayUserProfile($userRepo->getUser($userID));
+        $postRepo = new PostRepository(Database::getInstance()->getConnection());
+
+        $userPost = $postRepo->getUserPost($userID);
+
+        (new UserView())->displayUserProfile($userRepo->getUser($userID), $userPost);
     }
 
     public function logout() : void{
@@ -93,10 +98,31 @@ class User {
         return true;
     }
 
-    function uploadProfilePicture() : void{
-        if(!isset($_POST['img_submit'])) return;
+    function modifyProfile() : void{
+        if(!isset($_SESSION['ID'])) return;
 
-        $user_id = $_POST['user_id'];
+        $userRepo = new UserRepository(Database::getInstance()->getConnection());
+        $user = $userRepo->getUser($_SESSION['ID']);
+        $username = $_POST['username'];
+        $description = $_POST['description'];
+
+        if(isset($_POST['img_submit'])){
+            $this->uploadProfilePicture();
+        }
+
+        if(!empty($username)){
+            $userRepo->setUsername($user, $username);
+        }
+
+        if(!empty($description)){
+            $userRepo->setDescription($user, $description);
+        }
+
+        header('Location:index.php?action=profile&id=' . $_SESSION['ID']);
+
+    }
+    function uploadProfilePicture() : void{
+        $user_id = $_SESSION['ID'];
         $file = $_FILES['img_upload'];
         $fileName = $_FILES['img_upload']['name'];
         $fileTmpName = $_FILES['img_upload']['tmp_name'];
@@ -122,5 +148,7 @@ class User {
             echo "Une erreur s'est produite lors de l'upload de l'image." . "<br>";
         }
     }
+
+
 
 }

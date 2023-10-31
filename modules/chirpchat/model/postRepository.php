@@ -127,4 +127,16 @@ class PostRepository{
         return $statement->fetch()['m'];
     }
 
+    public function getUserPost(string $userID) : array{
+        $statement = $this->connection->prepare('SELECT id_post FROM Post WHERE id_utilisateur = ? ORDER BY date_publi DESC');
+        $statement->execute([$userID]);
+        $postList = [];
+
+        while($row = $statement->fetch()){
+            $postList[] = $this->getPost($row['id_post']);
+        }
+
+        return $postList;
+    }
+
 }

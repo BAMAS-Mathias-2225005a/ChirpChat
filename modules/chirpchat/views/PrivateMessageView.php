@@ -7,33 +7,32 @@ use \ChirpChat\Model\User;
 
 class PrivateMessageView {
 
-    private string $pageContent;
+    private array $userList;
+    private array $privateMessageWithUserList;
+    private User $targetUser;
 
-    public function __construct(){
-        $this->pageContent = "";
+    public function setUserList(array $userList) : void{
+        $this->userList = $userList;
     }
 
-    /**
-     * @param User[] $userList
-     * @return void
-     */
-    public function displayPrivateMessageList(array $userList) : void{
-        foreach ($userList as $user){
-            echo '<a href="index.php?action=privateMessageWith&id=' . $user->getUserID() . '"> <p>' . $user->getUsername() . '</p></a>';
-        }
+    public function setPrivateMessageWithUserList(array $messageList) : void{
+        $this->privateMessageWithUserList = $messageList;
+    }
+
+    public function setTargetUser(User $targetUser) : void {
+        $this->targetUser = $targetUser;
     }
 
     /**
      * @param PrivateMessage[] $privateMessages
      * @return void
      */
-    public function displayPrivateMessageWithUser(array $privateMessages,User $userTarget) : PrivateMessageView {
-        ob_start();
+    public function displayPrivateMessageWithUser() : PrivateMessageView {
         ?>
-        <main id="privateMessagesContainer">
-            <h2><?= $userTarget->getUsername() ?></h2>
+        <div id="privateMessagesContainer">
+            <h2><?= $this->targetUser->getUsername() ?></h2>
             <div id="privateMessageList"> <?php
-            foreach ($privateMessages as $message){
+            foreach ($this->privateMessageWithUserList as $message){
                 if ($message->getAuthor()->getUserID() == $_SESSION['ID']){
                     echo '<div class="privateMessageSent privateMessage"><p>' .  $message->getMessage() . '</p></div>';
                 } else{
@@ -41,10 +40,13 @@ class PrivateMessageView {
                 }
             }
             ?></div>
-        </main>
+        </div>
         <?php
-        $this->pageContent .= ob_get_clean();
         return $this;
+    }
+
+    public function displayEmptyMessageBox(){
+        echo '<div id="privateMessagesContainer"> </div>';
     }
 
     public function displaySendMessageForm(string $targetID) : PrivateMessageView {
@@ -60,8 +62,39 @@ class PrivateMessageView {
         return $this;
     }
 
+    /**
+     * @param User[] $userList
+     * @return void
+     */
+    public function displayUserList(array $userList) : void{
+        ?>
+        <div id="all-users-container">
+            <?php foreach ($userList as $user){
+                ?>
+                <a href="index.php?action=privateMessage&id=<?=$user->getUserID()?>">
+                    <div class="user-container">
+                        <img alt='profile picture' src="<?= $user->getProfilPicPath(); ?>" >
+                        <h3><?= $user->getUsername(); ?></h3>
+                    </div>
+                </a>
+            <?php } ?>
+        </div>
+        <?php
+    }
+
+
     public function displayPrivateMessageView() : void{
-        (new \ChirpChat\Views\MainLayout('Private message', $this->pageContent))->show(['privateMessage.css']);
+        ob_start();
+        echo '<div id="private-message-container">';
+        $this->displayUserList($this->userList);
+        if(!isset($this->targetUser)){
+            $this->displayEmptyMessageBox();
+        }else{
+            $this->displayPrivateMessageWithUser();
+        }
+        $pageContent = ob_get_clean();
+
+        (new \ChirpChat\Views\MainLayout('Private message', $pageContent))->show(['privateMessage.css']);
     }
 
 }

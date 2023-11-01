@@ -6,6 +6,12 @@ h2{
     padding-bottom: 20px;
 }
 
+#private-message-container{
+    display: flex;
+    width: 95vw;
+    height: 90%;
+}
+
 #privateMessageList {
     display: flex;
     flex-direction: column;
@@ -18,13 +24,15 @@ h2{
 #privateMessagesContainer{
     display: flex;
     flex-direction: column;
-    margin-right: auto;
-    margin-left: auto;
+    align-items: center;
+    margin-left: 50px;
     padding-top: 5vh;
-    height: 650px;
+    height: 70vh;
     overflow-y: scroll;
-    width: fit-content;
+    width: 60vw;
     scroll-behavior: smooth;
+    background-color: white;
+    margin-top: 50px;
 }
 
 #privateMessagesContainer::-webkit-scrollbar{
@@ -129,6 +137,40 @@ h2{
     border: none;
     width: 100px;
     height: 30px;
+}
+
+#all-users-container{
+    width: 25vw;
+    height: 75vh;
+    margin: 50px 0 0 50px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.user-container{
+    display: grid;
+    grid-template-areas:
+            "profile-picture username"
+            "profile-picture last-message";
+    grid-template-columns: min-content min-content;
+    gap: 20px;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.user-container img{
+    grid-area: profile-picture;
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+}
+.user-container h3{
+    padding-top: 5px;
+    font-family: League Spartan, serif;
+    grid-area: username;
+    font-size: 1.8em;
+    text-align: left;
 }
 
 

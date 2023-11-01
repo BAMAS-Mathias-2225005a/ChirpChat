@@ -3,20 +3,28 @@
 namespace ChirpChat\Views;
 
 use ChirpChat\Model\Category;
-
+/**
+ * Class CategoryCreationView
+ *
+ * Cette classe gère l'affichage du formulaire de création de catégorie.
+ */
 class CategoryListView{
 
     /**
-     * @param Category[] $categories
+     * Affiche le formulaire de création de catégorie.
+     *
+     * Cette méthode génère et affiche le formulaire permettant de créer une nouvelle catégorie.
+     *
      * @return void
      */
-
     public function displayCreationButton() : void{
         echo '<a href="index.php?action=categoryCreation"><p id="creation">Créer une nouvelle catégorie</p></a>';
     }
 
     /**
-     * @param Category[] $categories
+     * Affiche la liste de catégories.
+     *
+     * @param Category[] $categories Un tableau d'objets Category représentant les catégories à afficher.
      * @return void
      */
     public function displayAllCategories(array $categories) : void {

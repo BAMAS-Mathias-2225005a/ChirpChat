@@ -2,14 +2,27 @@
 
 namespace ChirpChat\Views;
 use Chirpchat\Model\Database;use \ChirpChat\Model\User;use ChirpChat\Model\UserRepository;
+/**
+ * Class MainLayout
+ *
+ * Cette classe gère la mise en page principale d'une page web.
+ */
 class MainLayout {
-
+/**
+ * Constructeur de la classe MainLayout.
+ *
+ * @param string $title   Le titre de la page.
+ * @param string $content Le contenu de la page.
+ */
     public function __construct(private string $title, private string $content) { }
 
-    /**
-     * @param $user
-     * @return void
-     */
+/**
+ * Affiche la page web avec un ensemble de styles.
+ *
+ * @param array $styles Un tableau contenant les noms des fichiers de styles à inclure.
+ *
+ * @return void
+ */
     public function show(array $styles) : void {
 ?><!doctype html>
     <html lang="fr">

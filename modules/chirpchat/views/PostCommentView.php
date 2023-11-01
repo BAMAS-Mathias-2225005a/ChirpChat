@@ -2,13 +2,24 @@
 
 namespace ChirpChat\Views;
 use ChirpChat\Model\Post;
-
+/**
+ * Class PostCommentView
+ *
+ * Cette classe gère l'affichage de la page de commentaires pour un post donné.
+ */
 class PostCommentView{
-
+    /**
+     * @var string Contenu principal de la page de commentaires.
+     */
     private string $content;
     private string $mainPostView;
     private string $commentListView;
-
+    /**
+     * Configure la vue du post principal.
+     *
+     * @param Post $post Le post principal.
+     * @return PostCommentView $this pour permettre la chaîne d'appels.
+     */
     public function setMainPost($post) : PostCommentView{
         ob_start();
         ?> <h2 id="commentSectionTitle">Répondre à <?php echo $post->getUser()->getUsername()?></h2>
@@ -22,7 +33,12 @@ class PostCommentView{
         $this->mainPostView = ob_get_clean();
         return $this;
     }
-
+    /**
+     * Configure la vue de la liste de commentaires.
+     *
+     * @param array $commentList La liste des commentaires.
+     * @return PostCommentView $this pour permettre la chaîne d'appels.
+     */
     public function setPostComments($commentList) : PostCommentView {
         ob_start();
         ?><div id="commentList">
@@ -35,7 +51,9 @@ class PostCommentView{
         $this->commentListView = ob_get_clean();
         return $this;
     }
-
+    /**
+     * Affiche la page de commentaires.
+     */
     public function displayCommentPage() : void {
         $this->content =
             '<main id="commentPage">' .

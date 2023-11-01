@@ -14,9 +14,7 @@ class PrivateMessageView {
     }
 
     /**
-     * Affiche la liste des utilisateurs pour les messages privés.
-     *
-     * @param User[] $userList Un tableau d'utilisateurs.
+     * @param User[] $userList
      * @return void
      */
     public function displayPrivateMessageList(array $userList) : void{
@@ -26,11 +24,8 @@ class PrivateMessageView {
     }
 
     /**
-     * Affiche la conversation de messages privés avec un utilisateur spécifique.
-     *
-     * @param PrivateMessage[] $privateMessages Un tableau de messages privés.
-     * @param User $userTarget L'utilisateur avec lequel se déroule la conversation.
-     * @return PrivateMessageView
+     * @param PrivateMessage[] $privateMessages
+     * @return void
      */
     public function displayPrivateMessageWithUser(array $privateMessages,User $userTarget) : PrivateMessageView {
         ob_start();
@@ -52,12 +47,6 @@ class PrivateMessageView {
         return $this;
     }
 
-    /**
-     * Affiche le formulaire d'envoi de message privé.
-     *
-     * @param string $targetID L'ID de l'utilisateur destinataire.
-     * @return PrivateMessageView
-     */
     public function displaySendMessageForm(string $targetID) : PrivateMessageView {
         ob_start();
         ?>
@@ -70,11 +59,7 @@ class PrivateMessageView {
         $this->pageContent .= ob_get_clean();
         return $this;
     }
-    /**
-     * Affiche la vue des messages privés.
-     *
-     * @return void
-     */
+
     public function displayPrivateMessageView() : void{
         (new \ChirpChat\Views\MainLayout('Private message', $this->pageContent))->show(['privateMessage.css']);
     }

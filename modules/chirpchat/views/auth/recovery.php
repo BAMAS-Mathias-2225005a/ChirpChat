@@ -31,7 +31,7 @@ class Recovery {
             <input id="recoveryChamps" type="text" name="email" placeholder="E-mail de récuperation"> <br> <!-- L'utilisateur rentre son e-mail ici -->
 
             <br>
-            <input id="recoveryChamps" type="text" name="placeholder" placeholder="placeholder"> <br>
+            <input id="recoveryChamps" type="text" name="nouveauMotDePasse" placeholder="Nouveau mot de passe"> <br>
 
             <br>
             <input id="submitRecovery" type="submit" value="Réinitialiser mot de passe"><br> <!-- Bouton pour valider les champs -->

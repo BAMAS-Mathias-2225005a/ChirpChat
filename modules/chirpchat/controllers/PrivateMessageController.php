@@ -1,6 +1,7 @@
 <?php
 
 namespace ChirpChat\Controllers;
+
 use Chirpchat\Model\Database;
 use \ChirpChat\Model\PrivateMessageRepository;
 use ChirpChat\Model\UserRepository;
@@ -8,34 +9,31 @@ use ChirpChat\Views\PrivateMessageView;
 
 class PrivateMessageController{
 
-    public function displayPrivateMessagePageForUser(string $userID) : void {
-        $privateMessageRepo = new PrivateMessageRepository(Database::getInstance()->getConnection());
-        $privateMessageView = new PrivateMessageView();
-
+    public function displayPrivateMessagePage(string $userID) : void {
         if(!isset($_SESSION['ID'])) return;
-        $userList = $privateMessageRepo->getUsersWhoSendMessageTo($_SESSION['ID']);
-        $privateMessageView->displayPrivateMessageList($userList);
-    }
 
-    public function displayConversationBetweenUsers(string $firstUserID, string $secondUserID){
         $userRepo = new UserRepository(Database::getInstance()->getConnection());
+        $firstUser = $userRepo->getUser($_SESSION['ID']);
         $privateMessageRepo = new PrivateMessageRepository(Database::getInstance()->getConnection());
         $privateMessageView = new PrivateMessageView();
+        $userList = $privateMessageRepo->getUsersWhoSendMessageTo($_SESSION['ID']);
 
-        if(!isset($_SESSION['ID'])) return;
+        if(isset($_GET['id'])){
+            $messageList = $privateMessageRepo->getPrivateMessageBetweenUsers($firstUser->getUserID(), $_GET['id']);
+            $privateMessageView->setTargetUser($userRepo->getUser($_GET['id']));
+            $privateMessageView->setPrivateMessageWithUserList($messageList);
+        }
 
-        $messageList = $privateMessageRepo->getPrivateMessageBetweenUsers($firstUserID, $secondUserID);
-        $privateMessageView
-            ->displayPrivateMessageWithUser($messageList, $userRepo->getUser($secondUserID))
-            ->displaySendMessageForm($secondUserID)
-            ->displayPrivateMessageView();
+        $privateMessageView->setUserList($userList);
+        $privateMessageView->displayPrivateMessageView();
     }
+
 
     public function sendMessageTo(string $targetID) : void{
         $privateMessageRepo = new PrivateMessageRepository(Database::getInstance()->getConnection());
         $message = $_POST['message'];
         $privateMessageRepo->sendMessageToUser($_SESSION['ID'], $targetID, $message);
 
-        header('Location:index.php?action=privateMessageWith&id=' . $targetID);
+        header('Location:index.php?action=privateMessage&id=' . $targetID);
     }
 }

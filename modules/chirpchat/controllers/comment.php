@@ -4,11 +4,17 @@ namespace ChirpChat\Controllers;
 
 use Chirpchat\Model\Database;
 use Chirpchat\Model\PostRepository;
-
+/**
+ * Classe Comment pour la gestion des commentaires.
+ */
 class Comment{
 
     /**
-     * Display all comments of a post from the post id in the URL
+     * Affiche tous les commentaires d'un message à partir de l'identifiant du message dans l'URL.
+     *
+     * Cette méthode récupère l'identifiant du message depuis l'URL, puis utilise le PostRepository
+     * pour obtenir la liste des commentaires associés à ce message.
+     *
      * @return void
      */
     public function displayComment() : void {
@@ -32,7 +38,11 @@ class Comment{
     }
 
     /**
-     * Add a comment if the user is connected
+     * Ajoute un commentaire si l'utilisateur est connecté.
+     *
+     * Cette méthode ajoute un commentaire en utilisant les données POST fournies si un identifiant de message
+     * est présent dans l'URL.
+     *
      * @return void
      */
     public function addComment() : void {

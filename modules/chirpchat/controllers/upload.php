@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Gestion de l'envoi et de la validation d'une image de profil.
+ */
 if(isset($_POST['img_submit'])) {
     $user_id = $_POST['user_id'];
     $file = $_FILES['img_upload'];

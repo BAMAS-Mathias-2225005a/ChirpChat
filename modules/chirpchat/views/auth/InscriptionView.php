@@ -1,9 +1,15 @@
 <?php
 
 namespace chirpchat\views\auth;
-
+/**
+ * Vue pour la page d'inscription.
+ */
 class InscriptionView{
-
+    /**
+     * Affiche le formulaire d'inscription.
+     *
+     * @return void
+     */
     public function show() : void{
         ob_start();
         ?>

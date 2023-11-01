@@ -7,16 +7,27 @@ use Chirpchat\Model\Database;
 use ChirpChat\Model\Post;
 use ChirpChat\Model\User;
 use ChirpChat\Model\UserRepository;
-
+/**
+ * Class HomePageView
+ *
+ * Cette classe gère l'affichage de la page d'accueil, y compris les catégories, les publications et les publications populaires.
+ */
 class HomePageView {
-
+    /**
+     * Vue des catégories.
+     *
+     * @var string
+     */
     private string $categoriesView = "";
     private string $postListView = "";
     private string $bestPostView = "";
 
     /**
-     * @param Category[] $categoriesList
-     * @return $this
+     * Définit la vue des catégories.
+     *
+     * @param Category[] $categoriesList Un tableau d'objets Category représentant les catégories.
+     *
+     * @return HomePageView
      */
     public function setCategoriesView(array $categoriesList) : HomePageView{
         ob_start();
@@ -40,7 +51,11 @@ class HomePageView {
         $this->categoriesView = ob_get_clean();
         return $this;
     }
-
+    /**
+     * Définit la vue des publications populaires.
+     *
+     * @return HomePageView
+     */
     public function setPostListView($postList, $categories) : HomePageView {
         ob_start();
         ?><div id="postList">
@@ -79,7 +94,11 @@ class HomePageView {
         return $this;
     }
 
-
+    /**
+     * Définit la vue des publications populaires.
+     *
+     * @return HomePageView
+     */
     public function setBestPostView() : HomePageView {
         ob_start();
         ?>
@@ -103,13 +122,20 @@ class HomePageView {
         $content = ob_get_clean();
         (new \ChirpChat\Views\mainLayout("Accueil", $content))->show(['homePage.css', 'post.css']);
     }
-
+    /**
+     * Affiche un message d'erreur lorsque aucune publication n'est trouvée.
+     *
+     * @return void
+     */
     public function displayNoPostFoundError() : void {
         echo '<p> Aucun Post Trouvé </p>';
     }
 
     /**
-     * @param Category[] $categoriesList
+     * Affiche la liste des catégories.
+     *
+     * @param Category[] $categoriesList Un tableau d'objets Category représentant les catégories.
+     *
      * @return void
      */
     public function getCategoriesList(array $categoriesList) : void{

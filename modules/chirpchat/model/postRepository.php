@@ -10,11 +10,11 @@ class PostRepository{
 
     public function __construct(private \PDO $connection){ }
 
-    public function getPostList(){
+    public function getPostList(int $limit = 5){
         $userRepo = new \ChirpChat\Model\UserRepository($this->connection);
         $catRepo = new \ChirpChat\Model\CategoryRepository($this->connection);
-        $statement =  $this->connection->prepare("SELECT * FROM Post WHERE PARENT_ID IS NULL");
-        $statement->execute();
+        $statement =  $this->connection->prepare("SELECT * FROM Post WHERE PARENT_ID IS NULL LIMIT " . $limit);
+        $statement->execute([]);
 
         $postList = [];
 

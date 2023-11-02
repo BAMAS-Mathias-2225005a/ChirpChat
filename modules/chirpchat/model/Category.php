@@ -31,6 +31,11 @@ class Category
         return $this->libelle;
     }
 
+    public function getNbPostInCategory() : int{
+        $catRepo = new CategoryRepository(Database::getInstance()->getConnection());
+        return $catRepo->getNbPostForCategory($this->idCat);
+    }
+
 
 }
 

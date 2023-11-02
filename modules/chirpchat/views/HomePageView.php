@@ -27,7 +27,7 @@ class HomePageView {
                 <?php foreach ($categoriesList as $category){ ?>
                     <a>
                         <h3><?= $category->getLibelle() ?></h3>
-                        <p>146 <br> Posts</p>
+                        <p><?= $category->getNbPostInCategory()?><br> Posts</p>
                         <svg onload="placeStarElement(this)" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                         </svg>
@@ -41,7 +41,13 @@ class HomePageView {
         return $this;
     }
 
-    public function setPostListView($postList, $categories) : HomePageView {
+    /**
+     * @param Post[] $postList
+     * @param $categories
+     * @param $pageNb
+     * @return $this
+     */
+    public function setPostListView($postList, $categories, $pageNb) : HomePageView {
         ob_start();
         ?><div id="postList">
         <?php if(isset($_SESSION['ID'])){
@@ -71,9 +77,15 @@ class HomePageView {
 
             </form>
 
-        <?php } foreach($postList as $post){
-            (new \ChirpChat\Views\PostView($post))->show();
-        }?></div><?php
+        <?php }
+        $lastPost = $postList[0];
+            foreach($postList as $post){
+                $lastPost = $post;
+                (new \ChirpChat\Views\PostView($post))->show();
+        }
+        echo '<a href="index.php?page=' . $pageNb + 1 . '#' . $lastPost->idPost . '"><button>Voir Plus</button></a>';
+        ?>
+        </div><?php
 
         $this->postListView = ob_get_clean();
         return $this;

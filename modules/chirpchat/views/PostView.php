@@ -14,7 +14,7 @@ class PostView{
         ob_start();
         ?>
         <div class="post">
-            <a href="index.php?action=profile&id=<?= $this->post->getUser()->getUserID() ?>"><img alt="author profile picture" id="profilePicture" src="<?=$this->post->getUser()->getProfilPicPath()?>" /></a>
+            <a id="<?= $this->post->idPost?>" href="index.php?action=profile&id=<?= $this->post->getUser()->getUserID() ?>"><img alt="author profile picture" id="profilePicture" src="<?=$this->post->getUser()->getProfilPicPath()?>" /></a>
             <div id="postHeader">
                 <div id="authorInfo">
                     <?php

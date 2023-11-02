@@ -68,7 +68,13 @@
         }
     }
     else {
-        (new \ChirpChat\Controllers\HomePage)->execute();
+        if(isset($_GET['page']) && $_GET['page'] > 0){
+            (new \ChirpChat\Controllers\HomePage)
+                ->setPageNb($_GET['page'])
+                ->execute();
+        }else{
+            (new \ChirpChat\Controllers\HomePage)->execute();
+        }
     }
 
 

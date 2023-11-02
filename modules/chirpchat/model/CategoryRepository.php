@@ -72,4 +72,13 @@ class CategoryRepository
         $statement->execute([$categoryName, $categoryDescription]);
     }
 
+    public function getNbPostForCategory($id_cat) : int{
+        $statement = $this->connection->prepare("SELECT COUNT(*) nb FROM PostCategory WHERE id_cat = ?");
+        $statement->execute([$id_cat]);
+        if($row = $statement->fetch()){
+            return $row['nb'];
+        }
+        return 0;
+    }
+
 }

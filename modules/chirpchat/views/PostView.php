@@ -33,7 +33,7 @@ class PostView{
 
                 <div id="postCategories">
                     <?php foreach ($this->post->getCategories() as $cat){
-                        echo '<p class="category">' . strtoupper($cat->getLibelle()) . '</p>';
+                        echo '<p class="category" style="background-color:' . $cat->getColorCode() . '">' . strtoupper($cat->getLibelle()) . '</p>';
                     }?>
                 </div>
             </div>

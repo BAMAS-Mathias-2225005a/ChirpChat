@@ -136,7 +136,6 @@
 }
 
 #postCategories .category{
-    background: linear-gradient(90deg, rgb(96, 96, 190) 0%, rgba(6,81,168,1) 57%, rgb(6, 131, 178) 100%);
     width: fit-content;
     padding: 5px 20px;
     font-weight: 600;
@@ -216,6 +215,8 @@
     font-family: League Spartan, serif;
     border-radius: 10px;
 }
+
+
 
 @media screen and (max-width: 600px){
 

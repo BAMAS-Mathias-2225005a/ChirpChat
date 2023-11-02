@@ -73,6 +73,25 @@
     padding: 30px 0;
 }
 
+#more-category{
+    background: linear-gradient(#151515, #151414);
+    justify-content: space-around;
+}
+
+#more-category p{
+    width: 50%;
+    padding-right: 10%;
+}
+
+#more-category svg {
+    padding-left: 10%;
+}
+
+
+#more-category p:after{
+    display: none;
+}
+
 .sectionTitle{
     align-self: center;
     justify-self: center;
@@ -80,7 +99,75 @@
     font-size: 2.8em;
     font-weight: 900;
     font-family: "League Spartan", serif;
+}
 
+#categories a{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 90%;
+    height: 100px;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    font-family: League Spartan, serif;
+    overflow: hidden;
+    position: relative;
+}
+
+#categories a h3{
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
+#categories a h3:after{
+    content: " ";
+    width: 20px;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    bottom: -25%;
+}
+
+#categories a p{
+    font-size: 1.8em;
+    margin-top: 2px;
+    margin-left: 25px;
+    font-weight: 600;
+    text-align: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#categories a p:after{
+    content: " ";
+    position: absolute;
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 100%;
+    width: 60%;
+    height: 200%;
+    left: 55%;
+    top: -25%;
+}
+#categories a svg:not(#more-category svg) {
+    position: absolute;
+}
+#categories a svg{
+    width: 30%;
+    height: auto;
+    color: rgba(255,255,255,0.25);
+    left: 0;
+}
+
+#see-more-button{
+    width: 300px;
+    height: 50px;
+    justify-self: center;
+}
+
+a:has(#see-more-button){
+    display: flex;
+    justify-content: center;
 }
 
 @media screen and (max-width: 1200px){
@@ -88,6 +175,7 @@
     body{
         overflow: scroll;
     }
+
     #catContainer #bestPost{
         display: none;
     }
@@ -139,6 +227,13 @@
         margin-bottom: 15vw;
     }
 
+    #more-category{
+        display: flex;
+        justify-content: center;
+    }
+    #more-category svg{
+        display: flex;
+    }
 }
 
 @media screen and (max-width: 600px){
@@ -150,72 +245,4 @@
     #catContainer #categories h3{
         font-size: 1.4em;
     }
-}
-
-#categories a{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 90%;
-    height: 100px;
-    border-radius: 10px;
-    background-color: red;
-    color: white;
-    font-family: League Spartan, serif;
-    overflow: hidden;
-    position: relative;
-}
-
-#categories a h3{
-    font-size: 1.8em;
-    font-weight: 600;
-}
-
-#categories a h3:after{
-    content: " ";
-    width: 20px;
-    height: 2px;
-    background-color: white;
-    position: absolute;
-    left: 0;
-    bottom: -25%;
-}
-
-#categories a p{
-    font-size: 1.8em;
-    margin-top: 2px;
-    margin-left: 25px;
-    font-weight: 600;
-    text-align: center;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-#categories a p:after{
-    content: " ";
-    position: absolute;
-    background-color: rgba(255,255,255,0.3);
-    border-radius: 100%;
-    width: 60%;
-    height: 200%;
-    left: 55%;
-    top: -25%;
-}
-
-#categories a svg{
-    width: 30%;
-    height: auto;
-    position: absolute;
-    color: rgba(255,255,255,0.25);
-    left: 0;
-}
-
-#see-more-button{
-    width: 300px;
-    height: 50px;
-    justify-self: center;
-}
-
-a:has(#see-more-button){
-    display: flex;
-    justify-content: center;
 }

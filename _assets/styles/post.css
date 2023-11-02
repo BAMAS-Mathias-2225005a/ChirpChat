@@ -216,6 +216,18 @@
     border-radius: 10px;
 }
 
+.post a, .post input, .post form, .post svg{
+    z-index: 1;
+}
+
+.post .commentLink{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
 
 
 @media screen and (max-width: 600px){

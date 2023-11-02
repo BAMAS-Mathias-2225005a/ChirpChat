@@ -65,7 +65,7 @@ class HomePageView {
      * @param $pageNb
      * @return $this
      */
-    public function setPostListView($postList, $categories, $pageNb) : HomePageView {
+    public function setPostListView($postList, $categories, $pageNb = 1) : HomePageView {
         ob_start();
         ?><div id="postList">
         <?php if(isset($_SESSION['ID'])){

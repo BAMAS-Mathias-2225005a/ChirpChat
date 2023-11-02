@@ -29,8 +29,8 @@ class Post{
 
         $postRepo->add($titre, $message, $_SESSION['ID']);
 
-        foreach ($categoriesNames as $caterory){
-            $catId = $categoryRepo->getCategoryId($caterory);
+        foreach ($categoriesNames as $category){
+            $catId = $categoryRepo->getCategoryId($category);
             if($catId != -1){
                $categoryRepo->addPostToCategory($postRepo->getLastPostID(), $catId);
             }

@@ -8,8 +8,10 @@ use ChirpChat\Model\User;
 class UserView{
 
     /**
-     * @param User $user
-     * @param Post[] $userPostList
+     * Affiche le profil de l'utilisateur avec ses informations et ses publications.
+     *
+     * @param User $user L'utilisateur dont le profil est affiché.
+     * @param Post[] $userPostList Un tableau de publications de l'utilisateur.
      * @return void
      */
     public function displayUserProfile(User $user, array $userPostList) : void{

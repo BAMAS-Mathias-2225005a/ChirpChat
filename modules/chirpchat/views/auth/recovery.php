@@ -1,10 +1,21 @@
 <?php
 
 namespace chirpchat\views\auth;
-
+/**
+ * Vue pour la page de récupération de mot de passe.
+ */
 class Recovery {
+/**
+ * Constructeur de la classe Recovery.
+ *
+ * @param string $errorMessage Message d'erreur affiché lors de la récupération de mot de passe.
+ */
     public function __construct(private string $errorMessage = '') {}
-
+/**
+ * Affiche le formulaire de récupération de mot de passe.
+ *
+ * @return void
+ */
     public function show() : void {
         ob_start();
         if(!empty($this->errorMessage)){?>
@@ -20,7 +31,7 @@ class Recovery {
             <input id="recoveryChamps" type="text" name="email" placeholder="E-mail de récuperation"> <br> <!-- L'utilisateur rentre son e-mail ici -->
 
             <br>
-            <input id="recoveryChamps" type="text" name="placeholder" placeholder="placeholder"> <br>
+            <input id="recoveryChamps" type="password" name="nouveauMotDePasse" placeholder="Nouveau mot de passe"> <br>
 
             <br>
             <input id="submitRecovery" type="submit" value="Réinitialiser mot de passe"><br> <!-- Bouton pour valider les champs -->

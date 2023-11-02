@@ -5,11 +5,22 @@ namespace ChirpChat\Model;
 use ChirpChat\Model\Post;
 use Includes\DatabaseConnection;
 use \ChirpChat\Model\Post as Comment;
-
+/**
+ * Repository de gestion des publications (posts) sur la plateforme.
+ */
 class PostRepository{
-
+    /**
+     * Crée une nouvelle instance de la classe PostRepository.
+     *
+     * @param \PDO $connection L'objet de connexion à la base de données.
+     */
     public function __construct(private \PDO $connection){ }
 
+    /**
+     * Récupère la liste des publications (posts) sur la plateforme.
+     *
+     * @return Post[] Un tableau d'objets Post représentant les publications.
+     */
     public function getPostList(int $limit = 5){
         $userRepo = new \ChirpChat\Model\UserRepository($this->connection);
         $catRepo = new \ChirpChat\Model\CategoryRepository($this->connection);
@@ -90,20 +101,32 @@ class PostRepository{
             $statement->execute([$post_id, $user_id]);
         }
     }
-
+    /**
+     * Supprime un "j'aime" d'une publication.
+     *
+     * @param int|null $post_id L'identifiant de la publication.
+     * @param string $user_id L'identifiant de l'utilisateur.
+     */
     public function removeLike(?int $post_id, string $user_id) : void {
         $statement = $this->connection->prepare("DELETE FROM LIKES WHERE POST_ID = ? AND USER_ID = ?");
         $statement->execute([$post_id, $user_id]);
     }
-
+    /**
+     * Supprime une publication.
+     *
+     * @param int|null $post_id L'identifiant de la publication à supprimer.
+     */
     public function deletePost(?int $post_id) : void {
         $statement = $this->connection->prepare("DELETE FROM Post WHERE Post.id_post = ?");
         $statement->execute([$post_id]);
     }
 
+
     /**
-     * @param string $filter
-     * @return Post array
+     * Recherche des publications en fonction d'un filtre donné.
+     *
+     * @param string $filter Le filtre de recherche.
+     * @return Post[] Un tableau d'objets Post représentant les publications correspondant au filtre.
      */
     public function searchPost(string $filter) : array{
         $filter = '%' . $filter . '%';

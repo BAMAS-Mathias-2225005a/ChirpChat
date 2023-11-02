@@ -1,9 +1,19 @@
 <?php
 
 namespace ChirpChat\Views;
-
+/**
+ * Class CategoryCreationView
+ *
+ * Cette classe gère l'affichage du formulaire de création de catégorie.
+ */
 class CategoryCreationView {
-
+    /**
+     * Affiche le formulaire de création de catégorie.
+     *
+     * Cette méthode génère et affiche le formulaire permettant de créer une nouvelle catégorie.
+     *
+     * @return void
+     */
     public function displayCategoryCreationForm() : void {
         ob_start();
         ?>

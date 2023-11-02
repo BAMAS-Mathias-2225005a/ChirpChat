@@ -391,6 +391,8 @@ ul li a:hover{
     font-weight: 400;
     font-size: 20px;
     letter-spacing: 1.6px;
+    margin: auto;
+    display: block;
   }
 
 #recoveryChamps input:focus {

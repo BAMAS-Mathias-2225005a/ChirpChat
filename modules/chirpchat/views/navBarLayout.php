@@ -3,11 +3,24 @@
 namespace ChirpChat\Views;
 
 use ChirpChat\Model\User;
-
+/**
+ * Classe NavBarLayout
+ *
+ * Cette classe gère la mise en page de la barre de navigation (navbar) sur le site.
+ */
 class NavBarLayout{
-
+    /**
+     * Constructeur de la classe NavBarLayout.
+     *
+     * @param User|null $user L'utilisateur connecté (ou null si non connecté).
+     */
     public function __construct(private ?User $user){ }
 
+    /**
+     * Affiche la barre de navigation.
+     *
+     * @return void
+     */
     function displayNavBar() : void{
         ?>
         <nav>

@@ -1,11 +1,21 @@
 <?php
 
 namespace Chirpchat\Views\auth;
-
+/**
+ * Vue pour la page de connexion.
+ */
 class LoginView {
-
+    /**
+     * Constructeur de la classe LoginView.
+     *
+     * @param string $errorMessage Message d'erreur affiché lors de la connexion.
+     */
     public function __construct(private string $errorMessage = '') {}
-
+    /**
+     * Affiche le formulaire de connexion.
+     *
+     * @return void
+     */
     public function show() : void {
         ob_start();
         if(!empty($this->errorMessage)){?>

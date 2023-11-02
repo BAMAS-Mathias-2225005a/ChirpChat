@@ -30,16 +30,24 @@ class PrivateMessageView {
     public function displayPrivateMessageWithUser() : PrivateMessageView {
         ?>
         <div id="privateMessagesContainer">
-            <h2><?= $this->targetUser->getUsername() ?></h2>
+            <header>
+                <img src="<?= $this->targetUser->getProfilPicPath() ?>">
+                <h2><?= $this->targetUser->getUsername() ?></h2>
+                <p><?= $this->targetUser->getDescription() ?></p>
+            </header>
             <div id="privateMessageList"> <?php
-            foreach ($this->privateMessageWithUserList as $message){
-                if ($message->getAuthor()->getUserID() == $_SESSION['ID']){
-                    echo '<div class="privateMessageSent privateMessage"><p>' .  $message->getMessage() . '</p></div>';
-                } else{
-                    echo '<div class="privateMessageReceived privateMessage"><p>' .  $message->getMessage() . '</p></div>';
+                foreach ($this->privateMessageWithUserList as $message){
+                    if ($message->getAuthor()->getUserID() == $_SESSION['ID']){
+                        echo '<div class="privateMessageSent privateMessage"><p>' .  $message->getMessage() . '</p></div>';
+                    } else{
+                        echo '<div class="privateMessageReceived privateMessage"><p>' .  $message->getMessage() . '</p></div>';
+                    }
                 }
-            }
-            ?></div>
+                ?></div>
+            <form id="privateMessageForm" action="index.php?action=sendMessageTo&id=<?= $this->targetUser->getUserID() ?> " method="post">
+                <input type="text" placeholder="Message" name="message" required>
+                <input type="submit" value="ENVOYER">
+            </form>
         </div>
         <?php
         return $this;
@@ -47,19 +55,6 @@ class PrivateMessageView {
 
     public function displayEmptyMessageBox(){
         echo '<div id="privateMessagesContainer"> </div>';
-    }
-
-    public function displaySendMessageForm(string $targetID) : PrivateMessageView {
-        ob_start();
-        ?>
-        <a href="index.php?action=privateMessage"><input type="button" id="retour" value="RETOUR"></a>
-        <form id="privateMessageForm" action="index.php?action=sendMessageTo&id=<?= $targetID ?> " method="post">
-            <input type="text" placeholder="Message" name="message" required>
-            <input type="submit" value="ENVOYER">
-        </form>
-        <?php
-        $this->pageContent .= ob_get_clean();
-        return $this;
     }
 
     /**

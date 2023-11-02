@@ -1,15 +1,21 @@
 <?php
 
 namespace ChirpChat\Views;
-
+/**
+ * Class PostView
+ *
+ * Cette classe gère l'affichage des détails d'un post.
+ */
 class PostView{
 
     /**
-     * @param \ChirpChat\Model\Post $post
+     * @param \ChirpChat\Model\Post $post Le post à afficher.
      */
     public function __construct(private \ChirpChat\Model\Post $post) {}
 
-
+    /**
+     * Affiche le contenu du post.
+     */
     public function show() : void{
         ob_start();
         ?>
@@ -90,8 +96,8 @@ class PostView{
         echo ob_get_clean();
     }
 
-    /** Return the like button with the correct image depending on the likes of the user
-     * @return string
+    /** Retourne le bouton "J'aime" avec l'image appropriée en fonction des likes de l'utilisateur.
+    *@return string
      */
     public function getLikeButtonSvg() : void
     {
@@ -108,7 +114,12 @@ class PostView{
             </svg>';
         }
     }
-
+    /**
+     * Convertit la date en une chaîne de texte relative à la date actuelle.
+     *
+     * @param string $date La date à formater au format 'Y-m-d H:i:s'.
+     * @return string La chaîne de texte relative à la date donnée.
+     */
     public function getDatePublicString(string $date) : string{
         $todayDate = strtotime(date('Y-m-d H:i:s'));
         $timeSincePostUpload = $todayDate - strtotime($date);

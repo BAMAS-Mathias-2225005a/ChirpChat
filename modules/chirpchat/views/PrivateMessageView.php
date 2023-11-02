@@ -31,7 +31,7 @@ class PrivateMessageView {
         ?>
         <div id="privateMessagesContainer">
             <header>
-                <img src="<?= $this->targetUser->getProfilPicPath() ?>">
+                <img class="profile-picture" src="<?= $this->targetUser->getProfilPicPath() ?>">
                 <h2><?= $this->targetUser->getUsername() ?></h2>
                 <p><?= $this->targetUser->getDescription() ?></p>
             </header>
@@ -68,7 +68,7 @@ class PrivateMessageView {
                 ?>
                 <a href="index.php?action=privateMessage&id=<?=$user->getUserID()?>">
                     <div class="user-container">
-                        <img alt='profile picture' src="<?= $user->getProfilPicPath(); ?>" >
+                        <img alt='profile picture' class="profile-picture" src="<?= $user->getProfilPicPath(); ?>" >
                         <h3><?= $user->getUsername(); ?></h3>
                     </div>
                 </a>

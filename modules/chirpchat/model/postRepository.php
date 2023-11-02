@@ -24,7 +24,7 @@ class PostRepository{
     public function getPostList(int $limit = 5){
         $userRepo = new \ChirpChat\Model\UserRepository($this->connection);
         $catRepo = new \ChirpChat\Model\CategoryRepository($this->connection);
-        $statement =  $this->connection->prepare("SELECT * FROM Post WHERE PARENT_ID IS NULL LIMIT " . $limit);
+        $statement =  $this->connection->prepare("SELECT * FROM Post WHERE PARENT_ID IS NULL ORDER BY date_publi DESC LIMIT " . $limit);
         $statement->execute([]);
 
         $postList = [];

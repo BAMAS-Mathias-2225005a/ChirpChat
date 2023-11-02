@@ -24,7 +24,7 @@ class CategoryRepository
         $statement->execute([$idCat]);
 
         if($row = $statement->fetch()){
-            return new Category($row['id_cat'], $row['libelle'], $row['description']);
+            return new Category($row['id_cat'], $row['libelle'], $row['description'], $row['color_code']);
         }
 
         return null;
@@ -98,9 +98,9 @@ class CategoryRepository
      * @param string $categoryName Le nom de la catégorie.
      * @param string $categoryDescription La description de la catégorie.
      */
-    public function createCategory(string $categoryName, string $categoryDescription) : void{
-        $statement = $this->connection->prepare('INSERT INTO Categorie (libelle, description) VALUE (?,?)');
-        $statement->execute([$categoryName, $categoryDescription]);
+    public function createCategory(string $categoryName, string $categoryDescription, string $colorCode) : void{
+        $statement = $this->connection->prepare('INSERT INTO Categorie (libelle, description, color_code) VALUE (?,?,?)');
+        $statement->execute([$categoryName, $categoryDescription, $colorCode]);
     }
 
     public function getNbPostForCategory($id_cat) : int{

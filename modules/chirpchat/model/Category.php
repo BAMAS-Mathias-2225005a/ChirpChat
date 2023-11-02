@@ -14,7 +14,7 @@ class Category
      * @param string $libelle Le libellé de la catégorie.
      * @param string $description La description de la catégorie.
      */
-    public function __construct(private int $idCat, private string $libelle, private string $description){}
+    public function __construct(private int $idCat, private string $libelle, private string $description, private string $colorCode){}
 
     /**
      * Obtient l'ID de la catégorie.
@@ -49,6 +49,14 @@ class Category
     public function getNbPostInCategory() : int{
         $catRepo = new CategoryRepository(Database::getInstance()->getConnection());
         return $catRepo->getNbPostForCategory($this->idCat);
+    }
+
+    /**
+     * @return string
+     */
+    public function getColorCode(): string
+    {
+        return $this->colorCode;
     }
 
 

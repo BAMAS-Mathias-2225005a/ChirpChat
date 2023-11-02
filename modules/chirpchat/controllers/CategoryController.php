@@ -22,8 +22,9 @@ class CategoryController{
         $categoriesRepo = new CategoryRepository(Database::getInstance()->getConnection());
         $categoryName = ucfirst($_POST['categoryName']);
         $categoryDescription = $_POST['categoryDescription'];
+        $categoryColor = $_POST['color'];
 
-        $categoriesRepo->createCategory($categoryName, $categoryDescription);
+        $categoriesRepo->createCategory($categoryName, $categoryDescription, $categoryColor);
         header('Location:index.php?action=categoryList');
     }
     /**

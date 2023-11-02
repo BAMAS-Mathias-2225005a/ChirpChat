@@ -1,73 +1,52 @@
-#zoneCreation {
-    text-align:center;
+#pageContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#titreCreation{
-    font-family: 'League Spartan';
-    font-weight: 500;
-    font-size: 2em;
-    text-align:center;
+#creation-category-form{
+    width: fit-content;
+    min-height: 100vh;
+    gap: 10px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
-#nomCategorie { /* Champs à remplir */
-    border-radius: 8px;
-    outline: none;
-    border: none;
-    border-bottom: 0px solid rgba(221, 221, 221, 0.33);
-    box-shadow: 0px 3px 3px 2px rgba(104, 135, 212, 0.25);
-    width: 27.5%;
-    height: 5vh;
-    padding-left: 2%;
-    background: rgba(221, 221, 221, 0.33);
-    font-family: League Spartan;
-    font-weight: 400;
-    font-size: 20px;
-    letter-spacing: 1.6px;
-}
-
-#nomCategorie input:focus {
-    border-color: transparent;
-    border-bottom: 4px solid #758cc9;
-    box-shadow: none;
-    transition: border-bottom-color 0.3s;
-}
-
-#descriptionCategorie { /* Champs à remplir */
-    border-radius: 8px;
-    outline: none;
-    border: none;
-    border-bottom: 0px solid rgba(221, 221, 221, 0.33);
-    box-shadow: 0px 3px 3px 2px rgba(104, 135, 212, 0.25);
-    width: 27.5%;
-    height: 5vh;
-    padding-left: 2%;
-    background: rgba(221, 221, 221, 0.33);
-    font-family: League Spartan;
-    font-weight: 400;
-    font-size: 20px;
-    letter-spacing: 1.6px;
-}
-
-#descriptionCategorie input:focus {
-    border-color: transparent;
-    border-bottom: 4px solid #758cc9;
-    box-shadow: none;
-    transition: border-bottom-color 0.3s;
-}
-
-#envoiCreation{
-    cursor: pointer;
-    right: 50px;
-    bottom: 10px;
-    color: #FFFFFF;
+#creation-category-form h2{
     font-family: League Spartan, serif;
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 1.8px;
-    border-radius: 10px;
-    background: #6887D4;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    border: none;
-    width: 100px;
-    height: 30px;
+    font-size: 2.2em;
+    padding: 100px 0 10px 0;
+}
+
+.red{
+    color: #ff3030;
+}
+
+#creation-category-form p{
+    font-family: League Spartan, serif;
+    font-weight: bold;
+    font-size: 2.3em;
+    padding-bottom: 50px;
+}
+
+#creation-category-form label{
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    font-family: "League Spartan", serif;
+    font-weight: 600;
+    font-size: 1.25em;
+}
+
+#creation-category-form textarea{
+    padding-top: 5px;
+}
+
+label:has(input[type=color]){
+    flex-direction: row !important;
+    justify-content: flex-start;
+    width: 100%;
+    align-items: center;
+    padding-bottom: 30px;
 }

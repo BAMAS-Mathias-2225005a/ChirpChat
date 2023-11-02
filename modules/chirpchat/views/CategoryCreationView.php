@@ -17,13 +17,21 @@ class CategoryCreationView {
     public function displayCategoryCreationForm() : void {
         ob_start();
         ?>
-        <h2 id="titreCreation">Création catégorie</h2>
-        <form id="zoneCreation" method="post" action="index.php?action=createCategory">
-            <input id="nomCategorie" type="text" placeholder="Nom de la catégorie" name="categoryName" required><br/>
-            <br/>
-            <textarea id="descriptionCategorie" placeholder="Description de la catégorie" name="categoryDescription" required></textarea><br/>
-            <br/>
-            <input id="envoiCreation" type="submit" value="VALIDER">
+        <form id="creation-category-form" method="post" action="index.php?action=createCategory">
+            <h2 id="titreCreation">CREATION DE CATÉGORIES</h2>
+            <p class="red">ADMIN</p>
+            <label>Libelle
+                <input class="inputField" type="text" placeholder="Nom de la catégorie" name="categoryName" required><br/>
+            </label>
+
+            <label>Description
+            <textarea class="inputField" placeholder="Description de la catégorie" name="categoryDescription" required></textarea><br/>
+            </label>
+
+            <label>Couleur
+                <input type="color" name="color">
+            </label>
+            <input class="authButtons" type="submit" value="VALIDER">
         </form>
         <?php
         $pageContent = ob_get_clean();

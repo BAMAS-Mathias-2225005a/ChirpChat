@@ -28,15 +28,7 @@ class UserView{
                         {
                             echo '<input type="button" value="Modifier Profil" onclick="openUserSettings()"></input>';
                         }
-                    /*if(isset($_SESSION['ID']) && $_SESSION['ID'] === $user->getUserID()) { ?>
-                        <form action="index.php?action=uploadProfilePicture" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="MAX_FILE_SIZE" value="2097152">
-                            <input type="hidden" name="user_id" value="<?php echo $_SESSION['ID']; ?>">
-                            <label>Votre fichier</label>
-                            <input type="file" name="img_upload"> <br>
-                            <input type="submit" name="img_submit">
-                        </form> <br>
-                    <?php } */?>
+                    ?>
                 </div>
 
                 <p><?= $user->getDescription() ?></p>
@@ -65,12 +57,13 @@ class UserView{
                 </form>
             </div>
 
+            <div id="postList">
             <?php
-
             foreach($userPostList as $post){
                 (new PostView($post))->show();
             }
         ?>
+            </div>
         </div>
         <?php
 

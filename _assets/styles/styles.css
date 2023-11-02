@@ -488,3 +488,7 @@ ul li a:hover{
     transition: background 0.2s ease-in;
 }
 
+.profile-picture{
+    object-fit: cover;
+    border-radius: 100%;
+}

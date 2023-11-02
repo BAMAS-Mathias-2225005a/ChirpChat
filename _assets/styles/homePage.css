@@ -134,6 +134,11 @@
     #categories svg{
         display: none;
     }
+
+    #see-more-button{
+        margin-bottom: 15vw;
+    }
+
 }
 
 @media screen and (max-width: 600px){
@@ -202,4 +207,15 @@
     position: absolute;
     color: rgba(255,255,255,0.25);
     left: 0;
+}
+
+#see-more-button{
+    width: 300px;
+    height: 50px;
+    justify-self: center;
+}
+
+a:has(#see-more-button){
+    display: flex;
+    justify-content: center;
 }

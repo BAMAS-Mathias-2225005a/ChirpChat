@@ -191,9 +191,7 @@
 #privateMessagesContainer img{
     width: 75px;
     height: 75px;
-    border-radius: 100%;
     padding-bottom: 5px;
-    object-fit: cover;
 }
 
 

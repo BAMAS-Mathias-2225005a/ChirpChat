@@ -49,7 +49,8 @@
 
 
 #loginForm label,
-#registerForm label{
+#registerForm label
+{
     display: flex;
     flex-direction: column;
     gap: 13px;

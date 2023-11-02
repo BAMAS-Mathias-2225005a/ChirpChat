@@ -36,7 +36,7 @@ class HomePageView {
             <div id="slider">
                 <script src="../../../_assets/js/categoriesCreation.js"></script>
                 <?php foreach ($categoriesList as $category){ ?>
-                    <a>
+                    <a style="background-color: <?= $category->getColorCode() ?>">
                         <h3><?= $category->getLibelle() ?></h3>
                         <p><?= $category->getNbPostInCategory()?><br> Posts</p>
                         <svg onload="placeStarElement(this)" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -66,7 +66,7 @@ class HomePageView {
         ?>
 
             <form action="index.php?action=sendPost" id="writePostSection" method="post">
-                <img alt="photo de profil" src="<?= $user->getProfilPicPath()?>">
+                <img alt="photo de profil" class="profile-picture" src="<?= $user->getProfilPicPath()?>">
                 <div id="userInputContent">
                     <input type="text" placeholder="Donnez un titre !" name="titre" required></input>
                     <textarea spellcheck="false" maxlength="160" placeholder="Envoyez un message !" name="message" required></textarea>
@@ -94,7 +94,7 @@ class HomePageView {
                 $lastPost = $post;
                 (new \ChirpChat\Views\PostView($post))->show();
         }
-        echo '<a href="index.php?page=' . $pageNb + 1 . '#' . $lastPost->idPost . '"><button>Voir Plus</button></a>';
+        echo '<a href="index.php?page=' . $pageNb + 1 . '#' . $lastPost->idPost . '"><button class="authButtons" id="see-more-button">Voir Plus</button></a>';
         ?>
         </div><?php
 

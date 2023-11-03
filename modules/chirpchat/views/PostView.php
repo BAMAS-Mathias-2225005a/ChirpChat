@@ -1,6 +1,9 @@
 <?php
 
 namespace ChirpChat\Views;
+use Chirpchat\Model\Database;
+use ChirpChat\Model\UserRepository;
+
 /**
  * Class PostView
  *
@@ -38,7 +41,9 @@ class PostView{
                         }?>
                     </div>
                 </div>
-                <?php if(isset($_SESSION['ID']) &&$this->post->getUser()->getUserID() === $_SESSION['ID']){ ?>
+                <?php
+                $userRepo = new UserRepository(Database::getInstance()->getConnection());
+                if(isset($_SESSION['ID']) && ($this->post->getUser()->getUserID() === $_SESSION['ID'] || $userRepo->getUser($_SESSION['ID'])->isAdmin())){ ?>
 
                     <div id="postSettings" onclick="openCloseUserMenu(this)">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -47,6 +52,7 @@ class PostView{
                         </svg>
                         <div id="postSettingsMenu" class="menuClose">
                             <ul>
+                                <?php if($this->post->getUser()->getUserID() === $_SESSION['ID']){ ?>
                                 <li>
                                     <a>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -55,6 +61,7 @@ class PostView{
                                         <p>Modifier</p>
                                     </a>
                                 </li>
+                                <?php } ?>
                                 <li>
                                     <a id="deletePost" href="index.php?action=deletepost&id=<?php echo $this->post->idPost?>">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

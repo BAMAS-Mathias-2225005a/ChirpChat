@@ -23,10 +23,12 @@ class UserView{
                 <h2><?= $user->getUsername() ?></h2>
 
                 <div id="profile-buttons">
-                    <a href="index.php?action=privateMessageWith&id=<?= $user->getUserID() ?>"><input id="send-message-button" type="button" value="Message"></a>
                     <?php if(isset($_SESSION['ID']) && $_SESSION['ID'] === $user->getUserID())
                         {
                             echo '<input type="button" value="Modifier Profil" onclick="openUserSettings()"></input>';
+                        } else
+                        {
+                            echo '<a href="index.php?action=privateMessage&id=' . $user->getUserID() . '"><input id="send-message-button" type="button" value="Message"></a>';
                         }
                     ?>
                 </div>

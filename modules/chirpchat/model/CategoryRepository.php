@@ -112,4 +112,9 @@ class CategoryRepository
         return 0;
     }
 
+    public function deleteCategory(string $idCat){
+        $statement = $this->connection->prepare("DELETE FROM Categorie WHERE id_cat = ?");
+        $statement->execute([$idCat]);
+    }
+
 }

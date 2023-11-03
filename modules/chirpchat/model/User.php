@@ -15,7 +15,12 @@ class User{
      * @param string $pseudo Pseudo de l'utilisateur.
      * @param string|null $description Description de l'utilisateur (peut être nulle).
      */
-    public function __construct(private readonly string $userID, private readonly string $username, private readonly string $email, private readonly string $pseudo, private readonly ?string $description){}
+    public function __construct(private readonly string $userID,
+                                private readonly string $username,
+                                private readonly string $email,
+                                private readonly string $pseudo,
+                                private readonly string $role,
+                                private readonly ?string $description){}
     /**
      * Récupère l'ID de l'utilisateur.
      *
@@ -68,6 +73,31 @@ class User{
             }
         }
         return  "_assets/images/user_pic/default.png";
+    }
+
+    /**
+     * Renvoie le role de l'utilisateur
+     *
+     * @return string
+     */
+    public function getRole() : string{
+        return $this->role;
+    }
+
+    public function isAdmin() : bool{
+        return $this->role === 'ADMIN';
+    }
+
+    public static function isSessionUserAdmin(){
+        if(!self::isUserConnected()) return false;
+        $userRepo = new UserRepository(Database::getInstance()->getConnection());
+        return $userRepo->getUser($_SESSION['ID'])->getRole() === 'ADMIN';
+
+    }
+
+    public static function isUserConnected() : bool{
+        if(isset($_SESSION['ID'])) return true;
+        return false;
     }
 
 

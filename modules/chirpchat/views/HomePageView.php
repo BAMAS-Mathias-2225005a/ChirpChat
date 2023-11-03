@@ -35,7 +35,7 @@ class HomePageView {
             <h3 class="sectionTitle">CATÉGORIES</h3><br/>
             <div id="slider">
                 <script src="../../../_assets/js/categoriesCreation.js"></script>
-                <?php for ($i = 0; $i < count($categoriesList) && $i < 7; $i++){
+                <?php for ($i = 0; $i < count($categoriesList) && $i < 5; $i++){
                     $category = $categoriesList[$i]?>
                     <a style="background-color: <?= $category->getColorCode() ?>">
                         <h3><?= $category->getLibelle() ?></h3>
@@ -45,7 +45,7 @@ class HomePageView {
                         </svg>
                     </a>
                 <?php } ?>
-                <a id="more-category">
+                <a id="more-category" href="index.php?action=categoryList">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                     </svg>

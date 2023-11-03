@@ -429,7 +429,7 @@ ul li a:hover{
 /* ------ Home Page ------ */
 #categories{ /* Zone des recommandations des catégories */
     width: 20vw;
-    height: 120vh;
+    height: fit-content;
     background: white;
     align-self: flex-start;
     font-family: 'League Spartan';

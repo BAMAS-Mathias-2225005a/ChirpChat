@@ -131,8 +131,8 @@ class PostRepository{
     public function searchPost(string $filter) : array{
         $filter = '%' . $filter . '%';
         $userRepo = new \ChirpChat\Model\UserRepository($this->connection);
-        $statement = $this->connection->prepare("SELECT * FROM Post WHERE message LIKE ? ");
-        $statement->execute([$filter]);
+        $statement = $this->connection->prepare("SELECT * FROM Post WHERE message LIKE ? OR titre LIKE ?");
+        $statement->execute([$filter, $filter]);
 
         $postList = [];
 

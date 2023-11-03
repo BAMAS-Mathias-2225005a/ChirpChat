@@ -73,11 +73,11 @@ class UserRepository{
      * @return User|null Un objet User si l'utilisateur existe, sinon null.
      */
     public function getUser(string $id) : ?user {
-        $statement = $this->connection->prepare("SELECT EMAIL, USERNAME, PSEUDONYME, DESCRIPTION FROM Utilisateur WHERE ID = ?");
+        $statement = $this->connection->prepare("SELECT EMAIL, USERNAME, PSEUDONYME, ROLE, DESCRIPTION FROM Utilisateur WHERE ID = ?");
         $statement->execute([$id]);
 
         if($row = $statement->fetch()){
-            return new User($id, $row['USERNAME'], $row['EMAIL'], $row['PSEUDONYME'], $row['DESCRIPTION']);
+            return new User($id, $row['USERNAME'], $row['EMAIL'], $row['PSEUDONYME'],$row['ROLE'], $row['DESCRIPTION']);
         }
         return null;
     }

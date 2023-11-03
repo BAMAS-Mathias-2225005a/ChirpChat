@@ -3,6 +3,7 @@
 namespace ChirpChat\Controllers;
 
 use \ChirpChat\Model\CategoryRepository;
+use ChirpChat\Model\UserRepository;
 use \ChirpChat\Views\CategoryListView;
 use \ChirpChat\Views\CategoryCreationView;
 use Chirpchat\Model\Database;
@@ -49,15 +50,24 @@ class CategoryController{
      */
     public function displayCategoryListPage() : void{
         $categoriesRepo = new CategoryRepository(Database::getInstance()->getConnection());
+        $userRepo = new UserRepository(Database::getInstance()->getConnection());
+
         $categoryListView = new CategoryListView();
         $categoriesList = $categoriesRepo->getAllCategories();
 
-        //TODO CHECK SI ADMIN
-        if(isset($_SESSION['ID'])) {
+        if(isset($_SESSION['ID']) && $userRepo->getUser($_SESSION['ID'])->isAdmin()) {
             $categoryListView->displayCreationButton();
         }
 
         $categoryListView->displayAllCategories($categoriesList);
+    }
+
+    public function deleteCategory(){
+        if(\ChirpChat\Model\User::isSessionUserAdmin() && isset($_GET['id'])){
+            $categoryRepo = new CategoryRepository(Database::getInstance()->getConnection());
+            $categoryRepo->deleteCategory($_GET['id']);
+        }
+        header("Location:index.php?action=categoryList");
     }
 
 }

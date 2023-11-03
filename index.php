@@ -21,6 +21,8 @@
             }
         }  else if ($_GET['action'] === 'search'){
             (new \ChirpChat\Controllers\Post())->searchPost();
+        } else if ($_GET['action'] === 'deleteCategory'){
+            (new \ChirpChat\Controllers\CategoryController())->deleteCategory();
         } else if ($_GET['action'] === 'categoryList'){
             (new \ChirpChat\Controllers\CategoryController())->displayCategoryListPage();
         } else if ($_GET['action'] === 'categoryCreation'){

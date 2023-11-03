@@ -41,6 +41,8 @@
 
 #creation-category-form textarea{
     padding-top: 5px;
+    height: 300px;
+    font-size: 0.8em;
 }
 
 label:has(input[type=color]){

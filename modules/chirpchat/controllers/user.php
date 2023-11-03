@@ -5,6 +5,7 @@ namespace ChirpChat\Controllers;
 use Chirpchat\Model\Database;
 use ChirpChat\Model\PostRepository;
 use ChirpChat\Model\UserRepository;
+use chirpchat\views\auth\RecoveryPageView;
 use ChirpChat\Views\UserView;
 /**
  * Contrôleur de gestion des utilisateurs.
@@ -177,6 +178,7 @@ class User {
         header('Location:index.php?action=profile&id=' . $_SESSION['ID']);
 
     }
+
     function uploadProfilePicture() : void{
         $user_id = $_SESSION['ID'];
         $file = $_FILES['img_upload'];
@@ -203,6 +205,46 @@ class User {
         } else {
             echo "Une erreur s'est produite lors de l'upload de l'image." . "<br>";
         }
+    }
+
+    public function sendVerificationMail() : void{
+        if(!isset($_POST['email'])) return;
+        $userEmail = $_POST['email'];
+        $code = substr(uniqid(),0,5);
+        $subject = '[ChirpChat] Recupération du mot de passe';
+        $message = 'Cliquez sur ce lien pour récupérer votre mot de passe : https://chirpchatdev.alwaysdata.net/index.php?action=changePasswordView&code=' . $code . '&email=' . $userEmail;
+
+        $userRepo = new UserRepository(Database::getInstance()->getConnection());
+        if($userRepo->doesUserExist($userEmail)){
+            mail($userEmail, $subject, $message);
+            $userRepo->addVerificationCode($userEmail,$code);
+        }else{
+            // SEND ERROR
+        }
+
+        header('Location:index.php');
+    }
+
+    public function displayChangePasswordPage() : void{
+        if(!isset($_GET['code'])) (new RecoveryPageView())->displayEmailSendView();
+        if(!isset($_GET['email'])) (new RecoveryPageView())->displayEmailSendView();
+        (new RecoveryPageView())->displayPasswordChangeView($_GET['code'],$_GET['email']);
+    }
+
+    public function changePassword() : void{
+        if(!isset($_POST['code'])) return;
+        if(!isset($_POST['password']) || !isset($_POST['passwordConfirm'])) return;
+        if(!isset($_POST['email'])) return;
+
+        if($_POST['password'] != $_POST['passwordConfirm']) return;
+
+        $userRepo = new UserRepository(Database::getInstance()->getConnection());
+
+        if($userRepo->isRecuperationCodeValid($_POST['email'], $_POST['code'])){
+            $userRepo->updateUserPassword($_POST['email'], $_POST['password']);
+        }
+
+        header('Location:index.php?action=connexion');
     }
 
 

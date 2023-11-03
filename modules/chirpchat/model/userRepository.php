@@ -102,8 +102,28 @@ class UserRepository{
         $statement->execute([$newDescription, $user->getUserID()]);
     }
 
+    public function addVerificationCode(string $email, string $code){
+        $statement = $this->connection->prepare("INSERT INTO RECUPERATION VALUES (?,?,NOW())");
+        $statement->execute([$email,$code]);
+    }
 
-    /**
+    public function isRecuperationCodeValid(string $email, string $code) : bool{
+        $statement = $this->connection->prepare("SELECT * FROM RECUPERATION WHERE EMAIL = ? AND CODE = ? AND DATE < DATE_SUB(NOW(), INTERVAL 10 MINUTE )");
+        $statement->execute([$email, $code]);
+        if($statement->fetch()) return true;
+        return false;
+    }
+
+    public function updateUserPassword($email, $newPassword) : void{
+        $statement = $this->connection->prepare('UPDATE Utilisateur SET password = ? WHERE email = ?');
+        $statement->execute([password_hash($newPassword,PASSWORD_BCRYPT), $email]);
+    }
+
+
+
+
+
+/**
      * Obtient le nom d'utilisateur à partir de l'UUID.
      *
      * @param $uuid

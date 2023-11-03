@@ -14,6 +14,6 @@ class Recovery {
      * @return void
      */
     public function execute() : void {
-        (new \chirpchat\views\auth\Recovery())->show();
+        (new \chirpchat\views\auth\RecoveryPageView())->displayEmailSendView();
     }
 }

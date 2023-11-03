@@ -15,7 +15,13 @@
             (new \ChirpChat\Controllers\User)->register();
         } else if ($_GET['action'] === 'loginUser') {
             (new \ChirpChat\Controllers\User)->login();
-        }  else if ($_GET['action'] === 'comment'){
+        }  else if ($_GET['action'] === 'sendVerificationMail') {
+            (new \ChirpChat\Controllers\User())->sendVerificationMail();
+        } else if ($_GET['action'] === 'changePasswordView') {
+            (new \ChirpChat\Controllers\User())->displayChangePasswordPage();
+        }else if ($_GET['action'] === 'changePassword') {
+            (new \ChirpChat\Controllers\User())->changePassword();
+        }else if ($_GET['action'] === 'comment'){
             if(isset($_GET['id'])){
                 (new \ChirpChat\Controllers\Comment())->displayComment();
             }

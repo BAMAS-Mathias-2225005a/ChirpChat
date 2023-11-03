@@ -68,6 +68,12 @@
         else if($_GET['action'] === 'modifyProfile'){
             (new \ChirpChat\Controllers\User())->modifyProfile();
         }
+        else if($_GET['action'] === 'updateCategory'){
+            (new \ChirpChat\Controllers\CategoryController())->updateCategory();
+        }else if($_GET['action'] === 'updateCategoryPage'){
+            (new \ChirpChat\Controllers\CategoryController())->displayCategoryUpdatePage();
+        }
+
     }
     else {
         if(isset($_GET['page']) && $_GET['page'] > 0){

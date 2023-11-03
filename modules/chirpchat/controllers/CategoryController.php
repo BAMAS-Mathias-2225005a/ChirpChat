@@ -7,6 +7,8 @@ use ChirpChat\Model\UserRepository;
 use \ChirpChat\Views\CategoryListView;
 use \ChirpChat\Views\CategoryCreationView;
 use Chirpchat\Model\Database;
+use ChirpChat\Views\HomePageView;
+
 /**
  * Contrôleur de gestion des catégories.
  */
@@ -40,6 +42,20 @@ class CategoryController{
 
         $categoryCreationView->displayCategoryCreationForm();
     }
+
+    public function displayCategoryUpdatePage() : void{
+        if(!isset($_GET['id'])) return;
+        if(!\ChirpChat\Model\User::isSessionUserAdmin()){
+            (new HomePageView())->displayHomePageView(null);
+        }
+
+        $idCat = $_GET['id'];
+        $categoryRepo = new CategoryRepository(Database::getInstance()->getConnection());
+
+        if(!$categoryRepo->isCategoryExist($idCat)) return;
+
+        (new CategoryCreationView())->displayCategoryModificationForm($categoryRepo->getCategory($idCat));
+    }
     /**
      * Affiche la liste des catégories.
      *
@@ -67,6 +83,32 @@ class CategoryController{
             $categoryRepo = new CategoryRepository(Database::getInstance()->getConnection());
             $categoryRepo->deleteCategory($_GET['id']);
         }
+        header("Location:index.php?action=categoryList");
+    }
+
+    public function updateCategory(){
+        if(!isset($_GET['id'])) return;
+        if(!\ChirpChat\Model\User::isSessionUserAdmin()) return;
+
+        $idCat = $_GET['id'];
+        $categoryRepo = new CategoryRepository(Database::getInstance()->getConnection());
+
+        $libelle = $_POST['categoryName'];
+        $description = $_POST['categoryDescription'];
+        $categoryColor = $_POST['color'];
+
+        if(!empty($libelle)){
+            $categoryRepo->setLibelle($idCat, $libelle);
+        }
+
+        if(!empty($description)){
+            $categoryRepo->setDescription($idCat, $description);
+        }
+
+        if(!empty($categoryColor)){
+            $categoryRepo->setColorCode($idCat, $categoryColor);
+        }
+
         header("Location:index.php?action=categoryList");
     }
 

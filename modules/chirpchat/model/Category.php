@@ -59,6 +59,5 @@ class Category
         return $this->colorCode;
     }
 
-
 }
 

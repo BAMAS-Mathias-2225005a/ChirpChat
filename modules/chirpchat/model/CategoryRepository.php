@@ -117,4 +117,27 @@ class CategoryRepository
         $statement->execute([$idCat]);
     }
 
+    public function setLibelle(string $idCat, string $newLibelle){
+        $statement = $this->connection->prepare("UPDATE Categorie SET libelle = ? WHERE id_cat = ?");
+        $statement->execute([$newLibelle, $idCat]);
+    }
+
+    public function setDescription(string $idCat, string $newDescription){
+        $statement = $this->connection->prepare("UPDATE Categorie SET description = ? WHERE id_cat = ?");
+        $statement->execute([$newDescription, $idCat]);
+    }
+
+    public function setColorCode(string $idCat, string $newColorCode){
+        $statement = $this->connection->prepare("UPDATE Categorie SET color_code = ? WHERE id_cat = ?");
+        $statement->execute([$newColorCode, $idCat]);
+    }
+
+    public function isCategoryExist(string $idCat) : bool{
+        $statement = $this->connection->prepare("SELECT * FROM Categorie WHERE id_cat = ?");
+        $statement->execute([$idCat]);
+        if($row = $statement->fetch()){
+            return true;
+        }return false;
+    }
+
 }

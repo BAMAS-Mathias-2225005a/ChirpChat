@@ -377,4 +377,37 @@
     font-size: 1.4em;
 }
 
+#postSettingsMenu{
+    margin-top: 40px;
+    padding: 10px 25px 10px 5px;
+    background-color: white;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+#postSettingsMenu ul{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#postSettingsMenu ul li:hover > p{
+    transform: translateX(20px);
+    transition: all 0.1s ease-in;
+}
+#postSettingsMenu ul li{
+    display: flex;
+    position: relative;
+    align-items: center;
+    gap: 15px;
+    font-family: "League Spartan", serif;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+#postSettingsMenu ul li a{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
 

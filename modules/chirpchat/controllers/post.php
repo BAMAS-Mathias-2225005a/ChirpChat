@@ -55,7 +55,7 @@ class Post{
         $homePageView = new HomePageView();
 
         if(!empty($postList)) {
-            $homePageView->setPostListView($postList, $categorieList);
+            $homePageView->setPostListView($postList, $categorieList, 1, false);
         }else{
             $homePageView->displayNoPostFoundError();
         }
@@ -94,7 +94,7 @@ class Post{
     public function displayEditPostPage() : void{
         if(!isset($_SESSION['ID']) || !isset($_GET['id'])) return;
         $postRepo = new PostRepository(Database::getInstance()->getConnection());
-        $post = $postRepo->getPost($_GET['id']);
+        $post = $postRepo->getComment($_GET['id']);
         if($post->getUser()->getUserID() !== $_SESSION['ID']) return;
 
         (new PostView($post))->showPostEditView();

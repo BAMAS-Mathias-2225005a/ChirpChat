@@ -30,6 +30,9 @@ class UserView{
                         {
                             echo '<a href="index.php?action=privateMessage&id=' . $user->getUserID() . '"><input id="send-message-button" type="button" value="Message"></a>';
                         }
+                        if(User::isSessionUserAdmin()){
+                            echo '<a class="ban-button" href="index.php?action=banUser&id=' . $user->getUserID() . '">Bannir</a>';
+                        }
                     ?>
                 </div>
 
@@ -62,7 +65,7 @@ class UserView{
             <div id="postList">
             <?php
             foreach($userPostList as $post){
-                (new PostView($post))->show();
+                (new \ChirpChat\Views\PostView($post))->show();
             }
         ?>
             </div>

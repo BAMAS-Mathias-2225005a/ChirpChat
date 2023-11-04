@@ -65,12 +65,13 @@ class HomePageView {
      * @param $pageNb
      * @return $this
      */
-    public function setPostListView($postList, $categories, $pageNb = 1) : HomePageView {
+    public function setPostListView($postList, $categories, $pageNb = 1, $showPostCreation = true) : HomePageView {
         ob_start();
         ?><div id="postList">
         <?php if(isset($_SESSION['ID'])){
             $user = (new UserRepository(Database::getInstance()->getConnection()))->getUser($_SESSION['ID']);
-        ?>
+            if($showPostCreation){
+            ?>
 
             <form action="index.php?action=sendPost" id="writePostSection" method="post">
                 <img alt="photo de profil" class="profile-picture" src="<?= $user->getProfilPicPath()?>">
@@ -91,17 +92,12 @@ class HomePageView {
                     </script>
                     <input type="submit" value="POSTER">
                 </div>
-
-
             </form>
 
-        <?php }
+        <?php }}
         $lastPost = $postList[0];
             foreach($postList as $post){
                 $lastPost = $post;
-                if(isset($_GET['id']) && $_GET['action'] == 'editPost' && $_GET['id'] == $post->idPost){
-                    (new \ChirpChat\Views\PostView($post))->show(true);
-                }
                 (new \ChirpChat\Views\PostView($post))->show();
         }
         echo '<a href="index.php?page=' . $pageNb + 1 . '#' . $lastPost->idPost . '"><button class="authButtons" id="see-more-button">Voir Plus</button></a>';

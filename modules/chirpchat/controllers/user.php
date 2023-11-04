@@ -79,7 +79,6 @@ class User {
         $postRepo = new PostRepository(Database::getInstance()->getConnection());
 
         $userPost = $postRepo->getUserPost($userID);
-
         (new UserView())->displayUserProfile($userRepo->getUser($userID), $userPost);
     }
     /**
@@ -247,6 +246,12 @@ class User {
         header('Location:index.php?action=connexion');
     }
 
+    public function banUser() : void{
+        if(!\ChirpChat\Model\User::isSessionUserAdmin()) return;
+        if(!isset($_GET['id'])) return;
+        (new UserRepository(Database::getInstance()->getConnection()))->deleteUser($_GET['id']);
+        header('Location:index.php');
+    }
 
 
 

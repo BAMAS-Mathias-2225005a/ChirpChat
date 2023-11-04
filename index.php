@@ -84,6 +84,8 @@
             }else{
                 (new \ChirpChat\Controllers\Post())->displayEditPostPage();
             }
+        } else if($_GET['action'] === 'banUser'){
+            (new \ChirpChat\Controllers\User())->banUser();
         }
 
     }

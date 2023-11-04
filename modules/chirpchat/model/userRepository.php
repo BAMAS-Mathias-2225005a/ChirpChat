@@ -119,18 +119,16 @@ class UserRepository{
         $statement->execute([password_hash($newPassword,PASSWORD_BCRYPT), $email]);
     }
 
-
-
-
-
-/**
-     * Obtient le nom d'utilisateur à partir de l'UUID.
-     *
-     * @param $uuid
-     */
-    public function getUserName($uuid){
-
+    public function deleteUser(string $userID){
+        $statement = $this->connection->prepare('DELETE FROM Utilisateur WHERE ID = ?');
+        $statement->execute([$userID]);
     }
+
+
+
+
+
+
 
 
 

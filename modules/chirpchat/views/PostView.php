@@ -54,7 +54,7 @@ class PostView{
                             <ul>
                                 <?php if($this->post->getUser()->getUserID() === $_SESSION['ID']){ ?>
                                 <li>
-                                    <a>
+                                    <a href="index.php?action=editPost&id=<?=$this->post->idPost?>#<?=$this->post->idPost?>">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
                                         </svg>
@@ -78,10 +78,10 @@ class PostView{
                 <span id="separator"></span>
 
                 <div id="postContent">
-                    <h3><?php if($this->post->getTitre() != null) echo $this->post->getTitre() ?> </h3>
-                        <p>
-                            <?php echo $this->post->message?>
-                        </p>
+                        <h3><?php if($this->post->getTitre() != null) echo $this->post->getTitre() ?> </h3>
+                            <p type="text">
+                                <?php echo $this->post->message?>
+                            </p>
                 </div>
                 <div id="postFooter">
                     <div>
@@ -145,5 +145,45 @@ class PostView{
         else{
             return explode(' ', $date)[0];
         }
+    }
+
+    public function showPostEditView() : void{
+        ob_start();
+        ?>
+        <div class="post" id="postEdit">
+            <a id="<?= $this->post->idPost?>" href="index.php?action=profile&id=<?= $this->post->getUser()->getUserID() ?>">
+                <img alt="author profile picture" class="profile-picture" src="<?=$this->post->getUser()->getProfilPicPath()?>" />
+            </a>
+                <div id="postHeader">
+                    <div id="authorInfo">
+                        <?php
+                        echo '<h2>' . $this->post->getUser()->getPseudo() . '</h2>';
+                        echo '<h3>' . $this->getDatePublicString($this->post->getDatePubli()) . '</h3>';
+                        ?>
+                    </div>
+
+                    <div id="postCategories">
+                        <?php foreach ($this->post->getCategories() as $cat){
+                            echo '<p class="category" style="background-color:' . $cat->getColorCode() . '">' . strtoupper($cat->getLibelle()) . '</p>';
+                        }?>
+                    </div>
+                </div>
+
+                <span id="separator"></span>
+
+                <div id="postContent">
+                    <form action="index.php?action=editPost&id=<?=$this->post->idPost?>" method="post">
+                        <input type="text" name="title" value="<?= $this->post->getTitre()?>">
+                        <textarea name="message"><?= $this->post->message?></textarea>
+                        <input type="submit" class="authButtons" value="Modifier">
+                    </form>
+                </div>
+                <div id="postFooter">
+
+                </div>
+        </div>
+        <?php
+        $content = ob_get_clean();
+        (new \ChirpChat\Views\MainLayout('Modification du post', $content))->show(['styles.css','post.css']);
     }
 }

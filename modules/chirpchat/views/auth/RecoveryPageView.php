@@ -25,7 +25,7 @@ class RecoveryPageView {
         }
         ?>
 
-    <form id="loginForm" action="index.php?action=sendVerificationMail" method="post">
+    <form id="passwordRecupForm" action="index.php?action=sendVerificationMail" method="post">
         <h2>RECUPERATION DU MOT DE PASSE</h2>
         <label>Email
             <input class="inputField" type="text" name="email" placeholder="E-mail de récuperation"> <!-- L'utilisateur rentre son e-mail ici -->
@@ -41,13 +41,13 @@ class RecoveryPageView {
 
     public function displayPasswordChangeView(string $code, string $email) : void{
         ob_start(); ?>
-        <form id="loginForm" action="index.php?action=changePassword" method="post">
+        <form id="passwordChangeForm" action="index.php?action=changePassword" method="post">
             <h2>CHANGER LE MOT DE PASSE</h2>
             <label>
-                <input class="inputField" type="text" name="code" value="<?= $code ?>"><!-- L'utilisateur rentre son e-mail ici -->
+                <input class="inputField" type="text" name="code" value="<?= $code ?>" readonly><!-- L'utilisateur rentre son e-mail ici -->
             </label>
 
-            <label>
+            <label style="display: none">
                 <input type="hidden" name="email" value="<?= $email ?>">
             </label>
             <label>
@@ -58,7 +58,7 @@ class RecoveryPageView {
                 <input class="inputField" type="password" name="passwordConfirm" placeholder="Confirmer mot de passe"><!-- L'utilisateur rentre son e-mail ici -->
             <label>
 
-            <input class="authButtons" type="submit" value="CHANGER LE MOT DE PASSE"> <!-- Bouton pour valider les champs -->
+            <input id="recupPasswordButton" class="authButtons" type="submit" value="CHANGER LE MOT DE PASSE"> <!-- Bouton pour valider les champs -->
         </form>
         <?php
         $content = ob_get_clean();

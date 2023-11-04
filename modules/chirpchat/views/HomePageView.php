@@ -99,6 +99,9 @@ class HomePageView {
         $lastPost = $postList[0];
             foreach($postList as $post){
                 $lastPost = $post;
+                if(isset($_GET['id']) && $_GET['action'] == 'editPost' && $_GET['id'] == $post->idPost){
+                    (new \ChirpChat\Views\PostView($post))->show(true);
+                }
                 (new \ChirpChat\Views\PostView($post))->show();
         }
         echo '<a href="index.php?page=' . $pageNb + 1 . '#' . $lastPost->idPost . '"><button class="authButtons" id="see-more-button">Voir Plus</button></a>';

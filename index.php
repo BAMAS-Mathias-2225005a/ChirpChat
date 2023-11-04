@@ -78,6 +78,12 @@
             (new \ChirpChat\Controllers\CategoryController())->updateCategory();
         }else if($_GET['action'] === 'updateCategoryPage'){
             (new \ChirpChat\Controllers\CategoryController())->displayCategoryUpdatePage();
+        }else if($_GET['action'] === 'editPost'){
+            if(isset($_POST['message'])){
+                (new \ChirpChat\Controllers\Post())->updatePost();
+            }else{
+                (new \ChirpChat\Controllers\Post())->displayEditPostPage();
+            }
         }
 
     }

@@ -224,7 +224,7 @@ a:has(#see-more-button){
     }
 
     #see-more-button{
-        margin-bottom: 15vw;
+        margin-bottom: 10vh;
     }
 
     #more-category{
@@ -233,6 +233,7 @@ a:has(#see-more-button){
     }
     #more-category svg{
         display: flex;
+        padding: 0;
     }
 }
 

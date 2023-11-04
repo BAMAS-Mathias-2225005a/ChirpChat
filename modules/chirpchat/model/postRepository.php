@@ -162,4 +162,16 @@ class PostRepository{
         return $postList;
     }
 
+    public function setPostTitle(string $postID, string $title) : void{
+        $statement = $this->connection->prepare('UPDATE Post SET titre = ? WHERE id_post = ?');
+        $statement->execute([$title, $postID]);
+    }
+
+    public function setPostMessage(string $postID, string $message) : void{
+        $statement = $this->connection->prepare('UPDATE Post SET message = ? WHERE id_post = ?');
+        $statement->execute([$message, $postID]);
+
+    }
+
+
 }

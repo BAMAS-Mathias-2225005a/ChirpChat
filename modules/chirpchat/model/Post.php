@@ -62,6 +62,7 @@ class Post{
     public function isLikedByUser($userId) : bool{
         $postRepo = new \ChirpChat\Model\PostRepository(Database::getInstance()->getConnection());
         return $postRepo->isAlreadyLiked($this->idPost, $userId);
-
     }
+
+
 }

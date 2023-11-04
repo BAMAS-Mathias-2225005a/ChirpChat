@@ -6,6 +6,8 @@ use ChirpChat\Model\CategoryRepository;
 use Chirpchat\Model\Database;
 use ChirpChat\Model\PostRepository;
 use ChirpChat\Views\HomePageView;
+use ChirpChat\Views\PostView;
+
 /**
  * Contrôleur de gestion des publications (posts).
  */
@@ -74,5 +76,27 @@ class Post{
         $postRepo = new PostRepository(Database::getInstance()->getConnection());
         $postRepo->deletePost($postID);
         header('Location:index.php'); // Redirection vers la page d'accueil
+    }
+
+    public function updatePost() : void{
+        if(!isset($_SESSION['ID']) || !isset($_GET['id'])) return;
+        if(!isset($_POST['title']) || !isset($_POST['message'])) return;
+        $postRepo = new PostRepository(Database::getInstance()->getConnection());
+
+        if($postRepo->getPost($_GET['id'])->getUser()->getUserID() !== $_SESSION['ID']) return;
+
+        $postRepo->setPostTitle($_GET['id'],$_POST['title']);
+        $postRepo->setPostMessage($_GET['id'],$_POST['message']);
+
+        header("Location:index.php");
+    }
+
+    public function displayEditPostPage() : void{
+        if(!isset($_SESSION['ID']) || !isset($_GET['id'])) return;
+        $postRepo = new PostRepository(Database::getInstance()->getConnection());
+        $post = $postRepo->getPost($_GET['id']);
+        if($post->getUser()->getUserID() !== $_SESSION['ID']) return;
+
+        (new PostView($post))->showPostEditView();
     }
 }

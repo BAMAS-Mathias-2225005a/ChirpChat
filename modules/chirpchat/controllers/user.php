@@ -119,7 +119,7 @@ class User {
     {
         //a vérifier
         if (strlen($password) < 8) {
-            throw new \Exception("Le mot de passe doit contenir au moins 8 caractères.");
+            Notification::createErrorMessage("Le mot de passe doit contenir au moins 8 caractères.");
         }
 
         $containsUppercase = false;

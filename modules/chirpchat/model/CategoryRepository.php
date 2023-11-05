@@ -142,7 +142,7 @@ class CategoryRepository
 
     public function searchCategory(string $filter) : array{
         $filter = '%' . $filter . '%';
-        $statement = $this->connection->prepare("SELECT * FROM Categorie WHERE libelle LIKE ? OR description LIKE ?");
+        $statement = $this->connection->prepare("SELECT * FROM Categorie WHERE libelle LIKE ? OR description LIKE ? LIMIT 15");
         $statement->execute([$filter, $filter]);
 
         $categoryList = [];

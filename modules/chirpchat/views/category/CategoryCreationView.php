@@ -2,6 +2,7 @@
 
 namespace chirpchat\views\category;
 use ChirpChat\Model\Category;
+use ChirpChat\Utils\Background;
 
 /**
  * Class CategoryCreationView
@@ -35,11 +36,18 @@ class CategoryCreationView {
             </label>
             <input class="authButtons" type="submit" value="VALIDER">
         </form>
+
         <?php
+        Background::displayBackgroundShapes();
         $pageContent = ob_get_clean();
         (new \chirpchat\views\layout\MainLayout("Creation catégorie", $pageContent))->show(['categoryCreation.css']);
     }
 
+
+    /** Affiche le formulaire pour modifier des catégories
+     * @param Category $category
+     * @return void
+     */
     public function displayCategoryModificationForm(Category $category) : void{
         ob_start();
         ?>
@@ -60,6 +68,7 @@ class CategoryCreationView {
             <input class="authButtons" type="submit" value="MODIFIER">
         </form>
         <?php
+        Background::displayBackgroundShapes();
         $pageContent = ob_get_clean();
         (new \chirpchat\views\layout\MainLayout("Creation catégorie", $pageContent))->show(['categoryCreation.css']);
     }

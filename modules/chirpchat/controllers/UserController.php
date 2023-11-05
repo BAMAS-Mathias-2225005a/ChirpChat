@@ -42,8 +42,9 @@ class UserController {
             $this->createUserSession($ID);
             Notification::createSuccessMessage("Connecté avec succès");
             header('Location:index.php');
+            return;
         }else{
-            Notification::createErrorMessage("Identifiants incorrectes");
+            Notification::createErrorMessage("Les identifiants sont incorrectes");
             header('Location:index.php?action=connexion');
         }
     }
@@ -231,7 +232,7 @@ class UserController {
         $userEmail = $_POST['email'];
         $code = substr(uniqid(),0,5);
         $subject = '[ChirpChat] Recupération du mot de passe';
-        $message = 'Cliquez sur ce lien pour récupérer votre mot de passe : https://chirpchatdev.alwaysdata.net/index.php?action=changePasswordView&code=' . $code . '&email=' . $userEmail;
+        $message = 'Cliquez sur ce lien pour récupérer votre mot de passe : https://chirpchat.alwaysdata.net/index.php?action=changePasswordView&code=' . $code . '&email=' . $userEmail;
 
         $userRepo = new UserRepository(Database::getInstance()->getConnection());
         if($userRepo->doesUserExist($userEmail)){

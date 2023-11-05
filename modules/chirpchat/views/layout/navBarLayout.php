@@ -26,7 +26,7 @@ class NavBarLayout{
         ?>
         <nav>
             <script src="/_assets/js/navBarSearch.js"></script>
-
+            <a id="top"></a>
             <!-- TOP NAV BAR -->
             <div id="topNavBar">
                 <div id="logoDiv">
@@ -36,7 +36,7 @@ class NavBarLayout{
 
                 <!-- BARRE DE RECHERCHE ORDINATEUR/TABLETTE -->
                 <form action="index.php?action=search" method="post">
-                    <button>
+                    <button type="submit" aria-label="recherche">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                         </svg>
@@ -50,16 +50,17 @@ class NavBarLayout{
             <!-- NAVBAR MOBILE -->
             <div id="mobileViewBottomBar">
                 <?php $this->displayActionIconsList() ?>
-                <a>
-                    <div id="addPostButtonContainer">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16"> <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/> </svg>
-                    </div>
-                </a>
+                <div id="addPostButtonContainer">
+                    <a href="index.php#top" aria-label="haut de page" class="link"></a>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm.53 5.47a.75.75 0 00-1.06 0l-3 3a.75.75 0 101.06 1.06l1.72-1.72v5.69a.75.75 0 001.5 0v-5.69l1.72 1.72a.75.75 0 101.06-1.06l-3-3z" clip-rule="evenodd" />
+                    </svg>
+                </div>
             </div>
 
             <!-- BARRE DE RECHERCHE MOBILE-->
             <form id="searchBar" action="index.php?action=search" method="post">
-                <button type="submit">
+                <button type="submit" aria-label="rechercher">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                     </svg>

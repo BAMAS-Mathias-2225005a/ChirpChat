@@ -134,7 +134,7 @@ class PostRepository{
         $filter = '%' . $filter . '%';
         $userName = '%' . $userName . '%';
         $userRepo = new \ChirpChat\Model\UserRepository($this->connection);
-        $statement = $this->connection->prepare("SELECT * FROM Post JOIN Utilisateur ON Post.id_utilisateur = Utilisateur.ID WHERE (message LIKE ? OR titre LIKE ?) AND Utilisateur.pseudonyme LIKE ?");
+        $statement = $this->connection->prepare("SELECT * FROM Post JOIN Utilisateur ON Post.id_utilisateur = Utilisateur.ID WHERE (message LIKE ? OR titre LIKE ?) AND Utilisateur.pseudonyme LIKE ? LIMIT 15");
         $statement->execute([$filter, $filter, $userName]);
 
         $postList = [];
@@ -154,7 +154,7 @@ class PostRepository{
     }
 
     public function getUserPost(string $userID) : array{
-        $statement = $this->connection->prepare('SELECT id_post FROM Post WHERE id_utilisateur = ? AND PARENT_ID IS NULL ORDER BY date_publi DESC');
+        $statement = $this->connection->prepare('SELECT id_post FROM Post WHERE id_utilisateur = ? AND PARENT_ID IS NULL ORDER BY date_publi DESC LIMIT 15');
         $statement->execute([$userID]);
         $postList = [];
 

@@ -3,6 +3,7 @@
 namespace chirpchat\views\post;
 use ChirpChat\Model\Post;
 use ChirpChat\Model\User;
+use ChirpChat\Utils\Background;
 
 /**
  * Class PostCommentView
@@ -53,6 +54,7 @@ class PostCommentView{
             }?>
         </div>
         <?php
+        Background::displayBackgroundShapes();
         $this->commentListView = ob_get_clean();
         return $this;
     }
@@ -65,7 +67,6 @@ class PostCommentView{
             $this->mainPostView .
             $this->commentListView .
             '</div>';
-
         (new \chirpchat\views\layout\MainLayout("Commentaire", $this->content))->show(['postComment.css', 'post.css']);
     }
 }

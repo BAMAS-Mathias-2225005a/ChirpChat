@@ -66,13 +66,4 @@ form label
     padding-top: 0px;
 }
 
-.backgroundShapes{
-    display: inline-block;
-    width: 20%;
-    height: auto;
-    position: absolute;
-    opacity: 0.15;
-    filter: blur(12px);
-    pointer-events: none;
-    animation: backgroundShapeAppear ease 2s forwards;
-}
+

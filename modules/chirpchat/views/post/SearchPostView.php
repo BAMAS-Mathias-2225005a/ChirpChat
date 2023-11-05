@@ -4,6 +4,7 @@ namespace chirpchat\views\post;
 
 use ChirpChat\Model\Category;
 use ChirpChat\Model\Post;
+use ChirpChat\Utils\Background;
 use chirpchat\views\category\CategoryView;
 use chirpchat\views\layout\MainLayout;
 
@@ -48,6 +49,7 @@ class SearchPostView{
         </section>
 
         <?php
+        Background::displayBackgroundShapes();
         $content = ob_get_clean();
         (new MainLayout('Recherche',$content))->show(['styles.css', 'searchPage.css', 'post.css']);
     }

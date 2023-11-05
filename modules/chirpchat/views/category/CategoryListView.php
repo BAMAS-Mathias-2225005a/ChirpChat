@@ -40,13 +40,20 @@ class CategoryListView{
         echo '<div id="category-list">';
             foreach($categories as $category){
                 ?><div class="category" style="background-color: <?= $category->getColorCode() ?>">
+
+                    <!-- Partie avant de la catégorie -->
                     <div class="category-front">
                         <h3> <?=$category->getLibelle() ?> </h3>
                         <h4> <?= $category->getNbPostInCategory() ?> Posts </h4>
                     </div>
+
+                    <!-- Partie arrière de la catégorie -->
                     <div class="category-back">
                         <p> <?=$category->getDescription() ?> </p>
+                        <a aria-label="Decouvrez la catégorie <?=$category->getLibelle()?>" href="index.php?action=searchPostInCategory&id=<?=$category->getIdCat()?>" style="font-family: 'League Spartan', serif; font-size: 1.8em; font-weight: 600">Découvrir</a>
                     </div>
+
+                    <!-- Boutons d'administration -->
                     <?php $userRepo = new UserRepository(Database::getInstance()->getConnection());
                     if(isset($_SESSION['ID']) && $userRepo->getUser($_SESSION['ID'])->isAdmin())
                     { ?>

@@ -6,6 +6,7 @@ use ChirpChat\Model\Category;
 use Chirpchat\Model\Database;
 use ChirpChat\Model\Post;
 use ChirpChat\Model\UserRepository;
+use ChirpChat\Utils\Background;
 
 /**
  * Class HomePageView
@@ -46,7 +47,7 @@ class HomePageView {
                         </svg>
                     </div>
                 <?php } ?>
-                <a id="more-category" href="index.php?action=categoryList" aria-label="Page des catégories">
+                <a id="more-category" href="index.php?action=categoryList" aria-label="Plus de catégories">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                     </svg>
@@ -96,12 +97,17 @@ class HomePageView {
             </form>
 
         <?php }}
-        $lastPost = $postList[0];
-            foreach($postList as $post){
+        if(count($postList) > 1){
+            $lastPost = $postList[0];
+        }
+            foreach($postList as $post) {
                 $lastPost = $post;
                 (new \chirpchat\views\post\PostView($post))->show();
+            }
+        if(count($postList) >= 5) {
+            echo '<a href="index.php?page=' . $pageNb + 1 . '#' . $lastPost->idPost . '" class="authButtons" id="see-more-button">Voir Plus</a>';
         }
-        echo '<a href="index.php?page=' . $pageNb + 1 . '#' . $lastPost->idPost . '" class="authButtons" id="see-more-button">Voir Plus</a>';
+
         ?>
         </div><?php
 
@@ -151,7 +157,6 @@ class HomePageView {
         <?= $this->bestPostView ?>
         </div>
         <?php
-
         $content = ob_get_clean();
         (new layout\mainLayout("Accueil", $content))->show(['homePage.css', 'post.css']);
     }

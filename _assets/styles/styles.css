@@ -31,7 +31,7 @@
 @keyframes notificationAppear {
     0%{
         top: -100px;
-        opacity: 0.9;
+        opacity: 1;
     }
     20%{
         top: 100px;
@@ -58,9 +58,6 @@
 
 /* ----------CSS Général----------*/
 
-html{
-    scroll-behavior: smooth;
-}
 * {
     margin: 0;
     padding: 0;
@@ -83,6 +80,7 @@ body{
     width: 100%;
     height: 100%;
     position: absolute;
+    z-index: 1;
 }
 
 .black{
@@ -94,7 +92,7 @@ body{
     min-width: 100vw;
     position: relative;
     min-height: 88vh;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 /* ------ Error Message ------ */
@@ -189,7 +187,8 @@ body{
 
 @media screen and (max-width: 500px){
     #loginForm h2{
-        font-size: 55px;
+        font-size: 48px;
+        width: 300px;
     }
     #submitRecovery{
         width: 315px;
@@ -269,15 +268,18 @@ body{
 
 .notification{
     display: flex;
+    text-align: center;
     align-items: center;
     justify-content: center;
     position: absolute;
     top: 100px;
-    left: calc(50vw - 300px);
-    opacity: 0.8;
+    left: calc(50vw - 150px);
+    opacity: 1;
     border-radius: 10px;
-    width: 600px;
-    height: 75px;
+    width: 300px;
+    max-width: 90vw;
+    height: fit-content;
+    padding: 15px 15px;
     font-family: 'League Spartan', serif;
     font-size: 1.8em;
     animation: notificationAppear 3s forwards;

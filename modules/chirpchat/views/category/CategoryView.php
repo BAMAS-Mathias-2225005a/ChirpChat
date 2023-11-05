@@ -8,6 +8,9 @@ class CategoryView{
 
     public function __construct(private Category $category){}
 
+    /** Affiche une catégorie dans la barre de recherche
+     * @return void
+     */
     public function show(){
         ?>
         <div class="category-search" style="background-color: <?=$this->category->getColorCode()?>">

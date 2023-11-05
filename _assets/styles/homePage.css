@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 275px;
+    width: 325px;
     height: 120vh;
     background: white;
     align-self: flex-start;
@@ -21,7 +21,7 @@
     position: sticky;
     display: flex;
     flex-direction: column;
-    width: 275px;
+    width: 325px;
     padding-bottom: 15px;
     background: white;
     align-self: flex-start;
@@ -174,6 +174,7 @@
 }
 
 .bestPost{
+    position: relative;
     display: grid;
     grid-template-areas:
         "photo-profil pseudo likes"
@@ -296,7 +297,7 @@ div[role=combobox]{
 @media screen and (max-width: 600px){
     #catContainer #categories a{
         width: 120px;
-        height: 35px;
+        height: 45px;
     }
 
     #catContainer #categories h3{

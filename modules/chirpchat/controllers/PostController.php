@@ -93,9 +93,12 @@ class PostController{
         if(!isset($_SESSION['ID'])) return;
 
         /* Verification que le post est supprimé par un admin ou celui qui l'a posté */
-        if($_SESSION['ID'] === $postRepo->getPost($postID)->getUser()->getUserID() || \ChirpChat\Model\User::isSessionUserAdmin()){
+        if($_SESSION['ID'] === $postRepo->getComment($postID)->getUser()->getUserID() || \ChirpChat\Model\User::isSessionUserAdmin()){
             $postRepo->deletePost($postID);
         }
+
+        Notification::createSuccessMessage("Post supprimé avec succès");
+
         header('Location:index.php'); // Redirection vers la page d'accueil
     }
 
@@ -104,7 +107,7 @@ class PostController{
         if(!isset($_POST['title']) || !isset($_POST['message'])) return;
         $postRepo = new PostRepository(Database::getInstance()->getConnection());
 
-        if($postRepo->getPost($_GET['id'])->getUser()->getUserID() !== $_SESSION['ID']) return;
+        if($postRepo->getComment($_GET['id'])->getUser()->getUserID() !== $_SESSION['ID']) return;
 
         $postRepo->setPostTitle($_GET['id'],$_POST['title']);
         $postRepo->setPostMessage($_GET['id'],$_POST['message']);

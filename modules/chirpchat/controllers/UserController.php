@@ -182,7 +182,10 @@ class UserController {
         $description = $_POST['description'];
 
         if(!empty($_FILES['img_upload']['name'])){
-            $this->uploadProfilePicture();
+            if(!$this->uploadProfilePicture()){
+                header('Location:index.php');
+                return;
+            };
         }
 
         if(!empty($username)){
@@ -199,7 +202,7 @@ class UserController {
 
     }
 
-    function uploadProfilePicture() : void{
+    function uploadProfilePicture() : bool{
         $user_id = $_SESSION['ID'];
         $file = $_FILES['img_upload'];
         $fileName = $_FILES['img_upload']['name'];
@@ -210,21 +213,25 @@ class UserController {
         $ActualFileExtension = strtolower(end($fileExtension));
 
         if($fileSize > 2097152) {
-            echo "L'image est trop volumineuse. La taille maximale autorisée est 2 Mo.";
-            exit();
+            Notification::createErrorMessage("L'image doit faire moins de 2Mo.");
+            header('Location:index.php');
+            return false;
         }
+
         if($ActualFileExtension !== 'jpg'){
-            echo "L'image doit être sous format jpg.";
-            exit();
+            Notification::createErrorMessage("L'image doit être sous format jpg.");
+            header('Location:index.php');
+            return false;
         }
 
         $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/_assets/images/user_pic/';
 
         if (move_uploaded_file($fileTmpName, $uploadDir . $newFileName)) {
-            echo "Image de profile changée !";
+            return true;
         } else {
             echo "Une erreur s'est produite lors de l'upload de l'image." . "<br>";
         }
+        return false;
     }
 
     public function sendVerificationMail() : void{

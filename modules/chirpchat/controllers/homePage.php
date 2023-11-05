@@ -25,7 +25,8 @@ class HomePage {
      * @return void
      */
     public function execute() : void{
-        $postList = (new \ChirpChat\Model\PostRepository(Database::getInstance()->getConnection()))->getPostList($this->pageNb * 5);
+        $postRepo = new \ChirpChat\Model\PostRepository(Database::getInstance()->getConnection());
+        $postList = $postRepo->getPostList($this->pageNb * 5);
         $categoriesList = (new \ChirpChat\Model\CategoryRepository(Database::getInstance()->getConnection()))->getAllCategories();
         if(isset($_SESSION['ID'])) {
             $user = (new \ChirpChat\Model\UserRepository(Database::getInstance()->getConnection()))->getUser($_SESSION['ID']);
@@ -33,11 +34,12 @@ class HomePage {
         else{
             $user = null;
         }
+        $bestPostList = $postRepo->getTopOfTheWeek();
         $homePageView = new \ChirpChat\Views\HomePageView();
         $homePageView
             ->setCategoriesView($categoriesList)
             ->setPostListView($postList, $categoriesList, $this->pageNb)
-            ->setBestPostView()
+            ->setBestPostView($bestPostList)
             ->displayHomePageView($user);
     }
 

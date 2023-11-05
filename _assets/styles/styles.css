@@ -20,6 +20,15 @@ body{
     overflow-x: hidden;
 }
 
+*:has(.link){
+    position: relative;
+}
+
+.link{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
 #pageContent {
     background-color: #F0F0F0;
     min-width: 100vw;
@@ -476,7 +485,6 @@ ul li a:hover{
 
 /* ------ Home Page ------ */
 #categories{ /* Zone des recommandations des catégories */
-    width: 20vw;
     height: fit-content;
     background: white;
     align-self: flex-start;
@@ -485,8 +493,6 @@ ul li a:hover{
 }
 
 #bestPost{ /* */
-    width: 20vw;
-    height: 120vh;
     background: white;
     align-self: flex-start;
     font-family: 'League Spartan';

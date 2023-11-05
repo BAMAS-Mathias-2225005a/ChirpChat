@@ -4,6 +4,8 @@ namespace ChirpChat\Controllers;
 
 use Chirpchat\Model\Database;
 use Chirpchat\Model\PostRepository;
+use ChirpChat\Model\UserRepository;
+
 /**
  * Classe Comment pour la gestion des commentaires.
  */
@@ -20,6 +22,12 @@ class Comment{
     public function displayComment() : void {
         if(!isset($_GET['id'])) return;
 
+        $user = null;
+
+        if(isset($_SESSION['ID'])){
+            $user = (new UserRepository(Database::getInstance()->getConnection()))->getUser($_SESSION['ID']);
+        }
+
         $postRepository = new PostRepository(Database::getInstance()->getConnection());
         $postID = $_GET['id'];
         $commentList = $postRepository->getPostComment($postID);
@@ -32,7 +40,7 @@ class Comment{
 
 
         $commentPage
-            ->setMainPost($post)
+            ->setMainPost($post, $user)
             ->setPostComments($commentList)
             ->displayCommentPage();
     }

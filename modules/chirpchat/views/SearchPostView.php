@@ -25,7 +25,7 @@ class SearchPostView{
         </header>
         <section id="post-commentaire-list">
             <?php if(!empty($filter)){ ?>
-                <form action="index.php?action=search" method="post">
+                <form id="user-filter-form" action="index.php?action=search" method="post">
                     <label>Filtrer par utilisateur
                         <input class="inputField" type="text" name="username" placeholder="Nom d'Utilisateur ">
                     </label>

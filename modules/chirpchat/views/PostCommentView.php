@@ -2,6 +2,8 @@
 
 namespace ChirpChat\Views;
 use ChirpChat\Model\Post;
+use ChirpChat\Model\User;
+
 /**
  * Class PostCommentView
  *
@@ -20,12 +22,15 @@ class PostCommentView{
      * @param Post $post Le post principal.
      * @return PostCommentView $this pour permettre la chaîne d'appels.
      */
-    public function setMainPost($post) : PostCommentView{
+    public function setMainPost($post, ?User $user) : PostCommentView{
         ob_start();
         ?> <h2 id="commentSectionTitle">Répondre à <?php echo $post->getUser()->getUsername()?></h2>
             <?php (new \ChirpChat\Views\PostView($post))->show(); ?>
             <form id="ChampReponse" action="index.php?action=addComment&id=<?php echo $post->idPost?>" method="post">
-                <img alt="profilePicture" src="https://cdn-icons-png.flaticon.com/512/168/168724.png">
+
+                <?php if($user != null){ ?><img alt="profilePicture" src="<?=$user->getProfilPicPath()?>"> <?php }
+                else{ ?> <img alt="profilePicture" src="https://cdn-icons-png.flaticon.com/512/168/168724.png"> <?php } ?>
+
                 <textarea type="text" name="comment" placeholder="Donnez votre avis !"></textarea>
                 <input type="submit" name"ENVOYER">
             </form>

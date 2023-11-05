@@ -3,8 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    width: 20vw;
+    width: 275px;
     height: 120vh;
     background: white;
     align-self: flex-start;
@@ -12,12 +11,18 @@
     border-radius: 10px;
 }
 
+#pageContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #bestPost{
     position: sticky;
     display: flex;
     flex-direction: column;
-    width: 20vw;
-    height: 120vh;
+    width: 275px;
+    padding-bottom: 15px;
     background: white;
     align-self: flex-start;
     font-family: 'League Spartan';
@@ -69,7 +74,7 @@
 
 #catContainer{
     display: flex;
-    justify-content: space-around;
+    gap: 30px;
     padding: 30px 0;
 }
 
@@ -93,15 +98,18 @@
 }
 
 .sectionTitle{
+    text-align: center;
     align-self: center;
     justify-self: center;
     padding-top: 30px;
     font-size: 2.8em;
     font-weight: 900;
+    padding-bottom: 20px;
     font-family: "League Spartan", serif;
 }
 
-#categories a{
+#categories .cat-container,
+#more-category{
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -115,12 +123,12 @@
     position: relative;
 }
 
-#categories a h3{
+#categories h3{
     font-size: 1.8em;
     font-weight: 600;
 }
 
-#categories a h3:after{
+#categories h3:after{
     content: " ";
     width: 20px;
     height: 2px;
@@ -130,7 +138,7 @@
     bottom: -25%;
 }
 
-#categories a p{
+#categories p{
     font-size: 1.8em;
     margin-top: 2px;
     margin-left: 25px;
@@ -139,7 +147,7 @@
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-#categories a p:after{
+#categories p:after{
     content: " ";
     position: absolute;
     background-color: rgba(255,255,255,0.3);
@@ -149,10 +157,10 @@
     left: 55%;
     top: -25%;
 }
-#categories a svg:not(#more-category svg) {
+#categories svg:not(#more-category svg) {
     position: absolute;
 }
-#categories a svg{
+#categories svg{
     width: 30%;
     height: auto;
     color: rgba(255,255,255,0.25);
@@ -169,6 +177,58 @@ a:has(#see-more-button){
     display: flex;
     justify-content: center;
 }
+
+#best-post-list{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.bestPost{
+    display: grid;
+    grid-template-areas:
+        "photo-profil pseudo likes"
+        "photo-profil titre titre";
+    font-family: League Spartan, serif;
+    padding: 0 10px;
+    grid-template-columns: 1fr 3fr 1fr;
+}
+
+.bestPost img{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    grid-area: photo-profil;
+    border-radius: 100%;
+}
+
+.bestPost h4{
+    grid-area: pseudo;
+    font-size: 1.3em;
+    font-weight: 400;
+}
+
+.bestPost > p{
+    grid-area: titre;
+    font-size: 0.9em;
+    overflow: hidden;
+}
+
+.bestPost .likes{
+    grid-area: likes;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1.6em;
+}
+
+.bestPost .likes svg{
+    width: 30px;
+    height: 30px;
+    color: #ff3030;
+}
+
+
 
 @media screen and (max-width: 1200px){
 
@@ -209,7 +269,8 @@ a:has(#see-more-button){
         padding-right: 60px;
     }
 
-    #catContainer #categories #slider a{
+    #catContainer #categories #slider .cat-container,
+    #more-category{
         width: 170px;
         height: 45px;
     }

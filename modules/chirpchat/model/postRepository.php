@@ -188,5 +188,18 @@ class PostRepository{
         return $postList;
     }
 
+    public function getTopOfTheWeek() : array{
+        $statement = $this->connection->prepare('SELECT * FROM Post WHERE date_publi > DATE_SUB(NOW(), INTERVAL 7 DAY ) AND PARENT_ID IS NULL ORDER BY likeAmount DESC LIMIT 10');
+        $statement->execute([]);
+
+        $postList = [];
+
+        while($row = $statement->fetch()){
+            $postList[] = $this->getPost($row['id_post']);
+        }
+
+        return $postList;
+    }
+
 
 }

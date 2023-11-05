@@ -32,18 +32,19 @@ class HomePageView {
     public function setCategoriesView(array $categoriesList) : HomePageView{
         ob_start();
         ?> <div id="categories">
-            <h3 class="sectionTitle">CATÉGORIES</h3><br/>
+            <h3 class="sectionTitle">Catégories</h3><br/>
             <div id="slider">
                 <script src="../../../_assets/js/categoriesCreation.js"></script>
                 <?php for ($i = 0; $i < count($categoriesList) && $i < 5; $i++){
                     $category = $categoriesList[$i]?>
-                    <a style="background-color: <?= $category->getColorCode() ?>">
+                    <div class="cat-container" style="background-color: <?= $category->getColorCode() ?>">
+                        <a class="link" href="index.php?action=searchPostInCategory&id=<?=$category->getIdCat()?>"></a>
                         <h3><?= $category->getLibelle() ?></h3>
                         <p><?= $category->getNbPostInCategory()?><br> Posts</p>
                         <svg onload="placeStarElement(this)" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                         </svg>
-                    </a>
+                    </div>
                 <?php } ?>
                 <a id="more-category" href="index.php?action=categoryList">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -111,13 +112,31 @@ class HomePageView {
     /**
      * Définit la vue des publications populaires.
      *
+     * @param Post[] $bestPostList
      * @return HomePageView
      */
-    public function setBestPostView() : HomePageView {
+    public function setBestPostView(array $bestPostList) : HomePageView {
         ob_start();
         ?>
-        <div id="bestPost" style="background: linear-gradient(to bottom, #2980b9, #6dd5fa, #ffffff);">
-            <h3 class="sectionTitle"> Les plus likés </h3><br/>
+        <div id="bestPost">
+            <h3 class="sectionTitle">Top de la semaine</h3><br/>
+            <div id="best-post-list">
+                <?php foreach ($bestPostList as $post){
+                    ?>
+                    <div class="bestPost">
+                        <a class="link" href="index.php?action=comment&id=<?=$post->idPost?>"></a>
+                        <img src="<?=$post->getUser()->getProfilPicPath()?>">
+                        <h4><?= $post->getUser()->getPseudo() ?></h4>
+                        <p><?= $post->getTitre() ?></p>
+                        <div class="likes">
+                            <p><?= $post->likeAmount?></p>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                                <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+                            </svg>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
         </div>
         <?php
         $this->bestPostView = ob_get_clean();

@@ -39,14 +39,14 @@ section{
     font-family: League Spartan, serif;
 }
 
-#post-commentaire-list form{
+#post-commentaire-list #user-filter-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
     padding-bottom: 20px;
-
 }
+
 #post-commentaire-list label{
     display: flex;
     gap: 10px;

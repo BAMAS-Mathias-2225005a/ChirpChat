@@ -53,6 +53,14 @@ class Post{
     public function getDatePubli() : string{
         return $this->datePubli;
     }
+
+    /**
+     * @return int
+     */
+    public function getLikeAmount(): int
+    {
+        return $this->likeAmount;
+    }
     /**
      * Vérifie si le post est déjà "aimé" par un utilisateur donné.
      *

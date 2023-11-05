@@ -38,6 +38,8 @@ class PostRepository{
     }
 
     public function add(?string $titre, string $message, string $userID, string $parent_id=null) : void {
+        if($titre == null) $titre = "";
+
         $statement = $this->connection->prepare("INSERT INTO Post (titre, message, date_publi, id_utilisateur, PARENT_ID)VALUES (?,?,?,?,?)");
         $statement->execute([$titre, $message,date('Y-m-d H:i:s'), $userID, $parent_id]);
 
@@ -128,16 +130,17 @@ class PostRepository{
      * @param string $filter Le filtre de recherche.
      * @return Post[] Un tableau d'objets Post représentant les publications correspondant au filtre.
      */
-    public function searchPost(string $filter) : array{
+    public function searchPostOrComment(string $filter, string $userName = "") : array{
         $filter = '%' . $filter . '%';
+        $userName = '%' . $userName . '%';
         $userRepo = new \ChirpChat\Model\UserRepository($this->connection);
-        $statement = $this->connection->prepare("SELECT * FROM Post WHERE message LIKE ? OR titre LIKE ?");
-        $statement->execute([$filter, $filter]);
+        $statement = $this->connection->prepare("SELECT * FROM Post JOIN Utilisateur ON Post.id_utilisateur = Utilisateur.ID WHERE (message LIKE ? OR titre LIKE ?) AND Utilisateur.pseudonyme LIKE ?");
+        $statement->execute([$filter, $filter, $userName]);
 
         $postList = [];
 
         while ($row = $statement->fetch()){
-            $post = $this->getPost($row['id_post']);
+            $post = $this->getComment($row['id_post']);
             $postList[] = $post;
         }
 
@@ -151,7 +154,7 @@ class PostRepository{
     }
 
     public function getUserPost(string $userID) : array{
-        $statement = $this->connection->prepare('SELECT id_post FROM Post WHERE id_utilisateur = ? ORDER BY date_publi DESC');
+        $statement = $this->connection->prepare('SELECT id_post FROM Post WHERE id_utilisateur = ? AND PARENT_ID IS NULL ORDER BY date_publi DESC');
         $statement->execute([$userID]);
         $postList = [];
 
@@ -170,7 +173,19 @@ class PostRepository{
     public function setPostMessage(string $postID, string $message) : void{
         $statement = $this->connection->prepare('UPDATE Post SET message = ? WHERE id_post = ?');
         $statement->execute([$message, $postID]);
+    }
 
+    public function getPostListInCategory(string $catId) : array{
+        $statement = $this->connection->prepare('SELECT * FROM PostCategory WHERE id_cat = ?');
+        $statement->execute([$catId]);
+
+        $postList = [];
+
+        while($row = $statement->fetch()){
+            $postList[] = $this->getPost($row['id_post']);
+        }
+
+        return $postList;
     }
 
 

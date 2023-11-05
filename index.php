@@ -4,6 +4,15 @@
 
     session_start();
 
+    /** VERIFIE SI LA SESSION DE L'UTILISATEUR EST TOUJOURS VALIDE */
+    if(isset($_SESSION['ID'])) {
+        $userRepository = new \ChirpChat\Model\UserRepository(\Chirpchat\Model\Database::getInstance()->getConnection());
+        $userRepository->setNewConnectionDate($_SESSION['ID']);
+        if (!$userRepository->isUserSessionValid($_SESSION['ID'])) { /* LE COMPTE N'EXISTE PLUS*/
+            session_destroy();
+        }
+    }
+
     if(filter_input(INPUT_GET, 'action')) {
         if ($_GET['action'] === 'inscription') {
             (new \ChirpChat\Controllers\Inscription())->execute();
@@ -26,7 +35,7 @@
                 (new \ChirpChat\Controllers\Comment())->displayComment();
             }
         }  else if ($_GET['action'] === 'search'){
-            (new \ChirpChat\Controllers\Post())->searchPost();
+            (new \ChirpChat\Controllers\SearchBarController())->search();
         } else if ($_GET['action'] === 'deleteCategory'){
             (new \ChirpChat\Controllers\CategoryController())->deleteCategory();
         } else if ($_GET['action'] === 'categoryList'){
@@ -39,6 +48,8 @@
             if(isset($_GET['id'])){
                 (new \ChirpChat\Controllers\User())->displayUserProfile($_GET['id']);
             }
+        } else if($_GET['action'] === 'searchPostInCategory'){
+            (new \ChirpChat\Controllers\SearchBarController())->searchPostInCategorie();
         }
 
         // ---- A BESOIN QUE L'UTILISATEUR SOIT CONNECTÉ ----
@@ -96,6 +107,23 @@
                 ->execute();
         }else{
             (new \ChirpChat\Controllers\HomePage)->execute();
+        }
+    }
+
+    if(isset($_SESSION['notification']) && $_SESSION['notification']['show']){
+        if(isset($_SESSION['notification']['type'])) {
+            switch ($_SESSION['notification']['type']) {
+                case 'ERROR':
+                    echo '<p class="error notification">' . $_SESSION['notification']['message'] . '</p>';
+                    break;
+                case 'SUCCESS':
+                    echo '<p class="success notification">' . $_SESSION['notification']['message'] . '</p>';
+                    break;
+                case 'INFO':
+                    echo '<p class="info notification">' . $_SESSION['notification']['message'] . '</p>';
+                    break;
+            }
+            unset($_SESSION['notification']);
         }
     }
 

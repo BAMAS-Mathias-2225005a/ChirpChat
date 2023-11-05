@@ -45,10 +45,15 @@ class UserRepository{
      * @param string $password Le mot de passe.
      * @param string $birthdate La date de naissance.
      */
-    public function register($username, $pseudonyme, $email, $password, $birthdate) : void{
-        if($this->doesUserExist($email)); //ERREUR
+    public function register($username, $pseudonyme, $email, $password, $birthdate) : bool{
+        if($this->doesUserExist($email)) return false;
         $statement = $this->connection->prepare("INSERT INTO Utilisateur VALUES (?, ?, ?, ?, ?, ?, NULL, ?, ?, ?)" );
-        $statement->execute([uniqid(),$email,$username, $pseudonyme, password_hash($password,PASSWORD_BCRYPT), $birthdate,  date('Y-m-d H:i:s'),  date('Y-m-d H:i:s'),'USER']);
+        try{
+            $statement->execute([uniqid(),$email,$username, $pseudonyme, password_hash($password,PASSWORD_BCRYPT), $birthdate,  date('Y-m-d H:i:s'),  date('Y-m-d H:i:s'),'USER']);
+            return true;
+        }catch (\Exception $e){
+            return false;
+        }
     }
     /**
      * Obtient l'ID de l'utilisateur à partir de l'adresse e-mail et du mot de passe.
@@ -122,6 +127,18 @@ class UserRepository{
     public function deleteUser(string $userID){
         $statement = $this->connection->prepare('DELETE FROM Utilisateur WHERE ID = ?');
         $statement->execute([$userID]);
+    }
+
+    public function isUserSessionValid(string $userId){
+        $statement = $this->connection->prepare('SELECT * FROM Utilisateur WHERE ID = ?');
+        $statement->execute([$userId]);
+        if($statement->fetch()) return true;
+        return false;
+    }
+
+    public function setNewConnectionDate(string $userId){
+        $statement = $this->connection->prepare('UPDATE Utilisateur SET derniere_connexion = ?');
+        $statement->execute([date('Y-m-d H:i:s')]);
     }
 
 

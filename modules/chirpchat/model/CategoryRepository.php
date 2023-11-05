@@ -140,4 +140,18 @@ class CategoryRepository
         }return false;
     }
 
+    public function searchCategory(string $filter) : array{
+        $filter = '%' . $filter . '%';
+        $statement = $this->connection->prepare("SELECT * FROM Categorie WHERE libelle LIKE ? OR description LIKE ?");
+        $statement->execute([$filter, $filter]);
+
+        $categoryList = [];
+
+        while($row = $statement->fetch()){
+            $categoryList[] = $this->getCategory($row['id_cat']);
+        }
+
+        return $categoryList;
+    }
+
 }

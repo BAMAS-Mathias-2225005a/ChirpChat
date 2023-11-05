@@ -56,6 +56,9 @@ class MainLayout {
         }else{
             (new \ChirpChat\Views\NavBarLayout(null))->displayNavBar();
         }
+
+        $_SESSION['notification']['show'] = true;
+
         ?>
 
         <!-- CONTENU DE LA PAGE -->

@@ -5,6 +5,7 @@ namespace ChirpChat\Controllers;
 use Chirpchat\Model\Database;
 use ChirpChat\Model\PostRepository;
 use ChirpChat\Model\UserRepository;
+use chirpchat\utils\Notification;
 use chirpchat\views\auth\RecoveryPageView;
 use ChirpChat\Views\UserView;
 /**
@@ -36,6 +37,7 @@ class User {
         if($user->isUserIdValid($_POST['email'], $_POST['password'])){
             $ID = $user->getID($_POST['email'], $_POST['password']);
             $this->createUserSession($ID);
+            Notification::createSuccessMessage("Connecté avec succès");
             header('Location:index.php');
         }else{
             header('Location:index.php?action=connexion&error=wrongID');
@@ -51,7 +53,13 @@ class User {
      */
     public function register() : void{
         if(!$this->isRegisterValid($_POST['username'],$_POST['pseudonyme'], $_POST['email'], $_POST['password'], $_POST['birthdate'])) return;
-        (new \ChirpChat\Model\UserRepository(Database::getInstance()->getConnection()))->register($_POST['username'],$_POST['pseudonyme'],$_POST['email'],$_POST['password'],$_POST['birthdate']);
+        if((new \ChirpChat\Model\UserRepository(Database::getInstance()->getConnection()))->register($_POST['username'],$_POST['pseudonyme'],$_POST['email'],$_POST['password'],$_POST['birthdate'])){
+            $userRepo = new \ChirpChat\Model\UserRepository(Database::getInstance()->getConnection());
+            $ID = $userRepo->getID($_POST['email'], $_POST['password']);
+            $this->createUserSession($ID);
+
+            Notification::createSuccessMessage("Inscription validée");
+        }
         header("Location:index.php");
     }
     /**
@@ -162,7 +170,7 @@ class User {
         $username = $_POST['username'];
         $description = $_POST['description'];
 
-        if(isset($_POST['img_submit'])){
+        if(!empty($_FILES['img_upload']['name'])){
             $this->uploadProfilePicture();
         }
 
@@ -173,6 +181,8 @@ class User {
         if(!empty($description)){
             $userRepo->setDescription($user, $description);
         }
+
+        Notification::createSuccessMessage("Profil modifié avec succès");
 
         header('Location:index.php?action=profile&id=' . $_SESSION['ID']);
 
@@ -221,6 +231,8 @@ class User {
             // SEND ERROR
         }
 
+        Notification::createInformationMessage("Email envoyé - Merci de consulter votre boite mail");
+
         header('Location:index.php');
     }
 
@@ -242,6 +254,8 @@ class User {
         if($userRepo->isRecuperationCodeValid($_POST['email'], $_POST['code'])){
             $userRepo->updateUserPassword($_POST['email'], $_POST['password']);
         }
+
+        Notification::createSuccessMessage("Mot de passe changé avec succès");
 
         header('Location:index.php?action=connexion');
     }

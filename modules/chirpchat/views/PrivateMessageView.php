@@ -29,7 +29,15 @@ class PrivateMessageView {
      */
     public function displayPrivateMessageWithUser() : PrivateMessageView {
         ?>
+        <script src="/_assets/js/togglePrivateMessageUserList.js"></script>
+
         <div id="privateMessagesContainer">
+            <button id="toggle-user-btn" onclick="toggleMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+            </button>
+
             <header>
                 <img class="profile-picture" src="<?= $this->targetUser->getProfilPicPath() ?>">
                 <h2><?= $this->targetUser->getUsername() ?></h2>
@@ -63,7 +71,7 @@ class PrivateMessageView {
      */
     public function displayUserList(array $userList) : void{
         ?>
-        <div id="all-users-container">
+        <div id="all-users-container" <?php if(isset($_GET['id'])) echo 'class="close"' ?> >
             <?php foreach ($userList as $user){
                 ?>
                 <a href="index.php?action=privateMessage&id=<?=$user->getUserID()?>">

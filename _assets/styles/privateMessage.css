@@ -194,6 +194,61 @@
     padding-bottom: 5px;
 }
 
+#toggle-user-btn{
+    display: none;
+}
+
+@media screen and (max-width: 1000px){
+
+    #pageContent{
+        overflow: auto !important;
+    }
+
+    .close{
+        left: -100vw;
+    }
+
+    .open{
+        left: 0;
+    }
+
+    #all-users-container{
+        overflow: scroll;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding-top: 60px;
+        align-items: flex-start;
+        transition: all 0.5s ease;
+    }
+
+    #privateMessagesContainer{
+        width: 100vw;
+        margin: 0;
+    }
+
+    #private-message-container{
+        justify-content: center;
+        width: 100%;
+        padding-top: 20px;
+    }
+
+    #privateMessageForm{
+        width: 90%;
+    }
+
+    #toggle-user-btn{
+        display: block;
+        position: absolute;
+        top: 5vh;
+        left: 6vw;
+        width: 40px;
+        border: none;
+        background: none;
+    }
+}
+
 
 
 

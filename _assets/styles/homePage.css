@@ -206,6 +206,7 @@ a:has(#see-more-button){
         overflow-x: auto;
         align-items: flex-start;
         align-self: flex-start;
+        padding-right: 60px;
     }
 
     #catContainer #categories #slider a{

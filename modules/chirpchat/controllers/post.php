@@ -5,6 +5,7 @@ namespace ChirpChat\Controllers;
 use ChirpChat\Model\CategoryRepository;
 use Chirpchat\Model\Database;
 use ChirpChat\Model\PostRepository;
+use chirpchat\utils\Notification;
 use ChirpChat\Views\HomePageView;
 use ChirpChat\Views\PostView;
 
@@ -37,6 +38,8 @@ class Post{
                $categoryRepo->addPostToCategory($postRepo->getLastPostID(), $catId);
             }
         }
+
+        Notification::createSuccessMessage("Post crée avec succès");
 
         header("Location:index.php");
     }
@@ -87,6 +90,8 @@ class Post{
 
         $postRepo->setPostTitle($_GET['id'],$_POST['title']);
         $postRepo->setPostMessage($_GET['id'],$_POST['message']);
+
+        Notification::createSuccessMessage("Post modifié avec succès");
 
         header("Location:index.php");
     }

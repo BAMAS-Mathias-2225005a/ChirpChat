@@ -14,7 +14,7 @@
     }
 
 }
-form{
+form:not(nav form){
     height: fit-content;
     display: flex;
     flex-direction: column;

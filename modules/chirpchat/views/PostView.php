@@ -1,6 +1,7 @@
 <?php
 
 namespace ChirpChat\Views;
+
 use Chirpchat\Model\Database;
 use ChirpChat\Model\UserRepository;
 

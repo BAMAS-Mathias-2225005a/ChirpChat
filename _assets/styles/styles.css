@@ -52,6 +52,23 @@ body{
     }
 }
 
+@keyframes notificationAppear {
+    0%{
+        top: -100px;
+        opacity: 0.9;
+    }
+    20%{
+        top: 100px;
+    }
+    60%{
+        opacity: 0.9;
+    }
+    100%{
+        opacity: 0;
+        display: none;
+    }
+}
+
 nav #topNavBar{
     position: fixed;
     z-index: 1;
@@ -522,6 +539,36 @@ ul li a:hover{
 .profile-picture{
     object-fit: cover;
     border-radius: 100%;
+}
+
+.notification{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 100px;
+    left: calc(50vw - 300px);
+    opacity: 0.8;
+    border-radius: 10px;
+    width: 600px;
+    height: 75px;
+    font-family: League Spartan, serif;
+    font-size: 1.8em;
+    text-wrap: normal;
+    animation: notificationAppear 3s forwards;
+    color: #ffffff;
+}
+
+.error{
+    background-color: #ff3030;
+}
+
+.success{
+    background-color: #07dc00;
+}
+
+.info{
+    background-color: #ffd342;
 }
 
 

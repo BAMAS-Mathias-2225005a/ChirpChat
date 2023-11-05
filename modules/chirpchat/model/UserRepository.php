@@ -47,7 +47,7 @@ class UserRepository{
      */
     public function register($username, $pseudonyme, $email, $password, $birthdate) : bool{
         if($this->doesUserExist($email)) return false;
-        $statement = $this->connection->prepare("INSERT INTO Utilisateur VALUES (?, ?, ?, ?, ?, ?, NULL, ?, ?, ?)" );
+        $statement = $this->connection->prepare("INSERT INTO Utilisateur VALUES (?, ?, ?, ?, ?, ?, '', ?, ?, ?)" );
         try{
             $statement->execute([uniqid(),$email,$username, $pseudonyme, password_hash($password,PASSWORD_BCRYPT), $birthdate,  date('Y-m-d H:i:s'),  date('Y-m-d H:i:s'),'USER']);
             return true;

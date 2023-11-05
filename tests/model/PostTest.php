@@ -9,7 +9,7 @@ final class PostTest extends TestCase
     private $post;
 
     public function setUp() : void {
-        $this->user = new \ChirpChat\Model\User("651841813ee15", "toto", "toto@gmail.com", "supertoto", "hahahaha");
+        $this->user = new \ChirpChat\Model\User("651841813ee15", "toto", "toto@gmail.com", "supertoto", "USER", "description trop cool");
         $this->post = new \ChirpChat\Model\Post("13", "Test Titre", "Lorem ipsum dolor sit amet.", "2023-10-25 15:12:43", [], $this->user, 25, 123);
     }
 

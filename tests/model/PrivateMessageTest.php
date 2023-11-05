@@ -10,8 +10,8 @@ final class PrivateMessageTest extends TestCase
     private $pm;
 
     public function setUp() : void {
-        $this->expediteur = new \ChirpChat\Model\User("651841813ee15", "toto", "toto@gmail.com", "supertoto", "hahahaha");
-        $this->recepteur = new \ChirpChat\Model\User("651841813ee20", "tata", "tata@gmail.com", "supertata", "hihihihi");
+        $this->expediteur = new \ChirpChat\Model\User("651841813ee15", "toto", "toto@gmail.com", "supertoto", "USER", null);
+        $this->recepteur = new \ChirpChat\Model\User("651841813ee20", "tata", "tata@gmail.com", "supertata", "USER", null);
         $this->message = "Ceci est un message privé.";
         $this->pm = new \ChirpChat\Model\PrivateMessage($this->expediteur, $this->recepteur, $this->message);
     }

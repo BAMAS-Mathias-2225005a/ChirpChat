@@ -137,8 +137,8 @@ class UserRepository{
     }
 
     public function setNewConnectionDate(string $userId){
-        $statement = $this->connection->prepare('UPDATE Utilisateur SET derniere_connexion = ?');
-        $statement->execute([date('Y-m-d H:i:s')]);
+        $statement = $this->connection->prepare('UPDATE Utilisateur SET derniere_connexion = ? WHERE ID = ?');
+        $statement->execute([date('Y-m-d H:i:s'), $userId]);
     }
 
 

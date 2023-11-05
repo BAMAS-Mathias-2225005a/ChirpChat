@@ -31,7 +31,7 @@ class Comment{
         $postRepository = new PostRepository(Database::getInstance()->getConnection());
         $postID = $_GET['id'];
         $commentList = $postRepository->getPostComment($postID);
-        $commentPage = (new \ChirpChat\Views\PostCommentView());
+        $commentPage = (new \chirpchat\views\post\PostCommentView());
 
         $post = $postRepository->getPost($postID);
         if($post == null){ //Reponse a un commentaire

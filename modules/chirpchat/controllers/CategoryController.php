@@ -2,11 +2,11 @@
 
 namespace ChirpChat\Controllers;
 
-use \ChirpChat\Model\CategoryRepository;
-use ChirpChat\Model\UserRepository;
-use \ChirpChat\Views\CategoryListView;
-use \ChirpChat\Views\CategoryCreationView;
+use ChirpChat\Model\CategoryRepository;
 use Chirpchat\Model\Database;
+use ChirpChat\Model\UserRepository;
+use chirpchat\views\category\CategoryCreationView;
+use chirpchat\views\category\CategoryListView;
 use ChirpChat\Views\HomePageView;
 
 /**

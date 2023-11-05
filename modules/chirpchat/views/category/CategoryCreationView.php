@@ -1,6 +1,6 @@
 <?php
 
-namespace ChirpChat\Views;
+namespace chirpchat\views\category;
 use ChirpChat\Model\Category;
 
 /**
@@ -30,14 +30,14 @@ class CategoryCreationView {
             <textarea class="inputField" placeholder="Description de la catégorie" name="categoryDescription" required></textarea><br/>
             </label>
 
-            <label>Couleur
+            <label id="color-label">Couleur
                 <input type="color" name="color">
             </label>
             <input class="authButtons" type="submit" value="VALIDER">
         </form>
         <?php
         $pageContent = ob_get_clean();
-        (new \ChirpChat\Views\MainLayout("Creation catégorie", $pageContent))->show(['categoryCreation.css']);
+        (new \chirpchat\views\layout\MainLayout("Creation catégorie", $pageContent))->show(['categoryCreation.css']);
     }
 
     public function displayCategoryModificationForm(Category $category) : void{
@@ -61,7 +61,7 @@ class CategoryCreationView {
         </form>
         <?php
         $pageContent = ob_get_clean();
-        (new \ChirpChat\Views\MainLayout("Creation catégorie", $pageContent))->show(['categoryCreation.css']);
+        (new \chirpchat\views\layout\MainLayout("Creation catégorie", $pageContent))->show(['categoryCreation.css']);
     }
 
 }

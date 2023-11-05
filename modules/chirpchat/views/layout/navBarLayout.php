@@ -1,8 +1,9 @@
 <?php
 
-namespace ChirpChat\Views;
+namespace chirpchat\views\layout;
 
 use ChirpChat\Model\User;
+
 /**
  * Classe NavBarLayout
  *
@@ -100,7 +101,7 @@ class NavBarLayout{
                 </li>
 
                 <!-- SECTION RECHERCHE -->
-                <li id="search" onclick="openNavBarSearch()">
+                <li onclick="openNavBarSearch()">
                     <a>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
@@ -121,15 +122,15 @@ class NavBarLayout{
                         </a>
 
                         <!-- MENU SCROLL PROFILE -->
-                        <div id="scrolledProfile" class="menuClose">
+                        <div class="menuClose scrolledProfile">
                             <ul>
-                                <li id="profilMenu">
+                                <li>
                                     <a href="index.php?action=profile&id=<?= $_SESSION['ID'] ?>">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M8 7a4 4 0 1 1 8 0a4 4 0 0 1-8 0Zm0 6a5 5 0 0 0-5 5a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3a5 5 0 0 0-5-5H8Z" clip-rule="evenodd"/></svg>
                                         <p>Profil</p>
                                     </a>
                                 </li>
-                                <li id="logoutMenu">
+                                <li class="logoutMenu">
                                     <a href="index.php?action=logout">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><path fill="currentColor" d="M23 4H7a2 2 0 0 0-2 2v24a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6h-9.37a1 1 0 0 1-1-1a1 1 0 0 1 1-1H25V6a2 2 0 0 0-2-2Z" class="clr-i-solid clr-i-solid-path-1"/><path fill="currentColor" d="M28.16 17.28a1 1 0 0 0-1.41 1.41L30.13 22H25v2h5.13l-3.38 3.46a1 1 0 1 0 1.41 1.41l5.84-5.8Z" class="clr-i-solid clr-i-solid-path-2"/><path fill="none" d="M0 0h36v36H0z"/></svg>
                                         <p>Se déconnecter</p>
@@ -146,9 +147,9 @@ class NavBarLayout{
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
                         </svg>
                         <p>Connexion</p>
+                    </a>
                         <?php
                         }?>
-                    </a>
                 </li>
             </ul>
         <?php

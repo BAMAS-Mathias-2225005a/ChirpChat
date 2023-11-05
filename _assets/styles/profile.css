@@ -27,7 +27,7 @@
 
 #profile-page-header p{
     grid-area: description;
-    font-family: League Spartan, serif;
+    font-family: 'League Spartan', serif;
     width: 90%;
     padding-top: 20px;
     line-break: anywhere;
@@ -35,7 +35,7 @@
 
 #profile-page-header h2{
     grid-area: username;
-    font-family: League Spartan, serif;
+    font-family: 'League Spartan', serif;
     font-size: 2.4em;
 
 }
@@ -52,7 +52,7 @@
     border: none;
     padding: 7px 20px;
     color: white;
-    font-family: League Spartan, serif;
+    font-family: 'League Spartan', serif;
     font-size: 1.1em;
     font-weight: 600;
     background-size: 1px 250px;
@@ -92,7 +92,7 @@
 
 #profile-settings-menu form h3{
     font-size: 2.1em;
-    font-family: League Spartan, serif;
+    font-family: 'League Spartan', serif;
     padding-bottom: 20px;
 }
 #profile-settings-menu form{
@@ -139,7 +139,7 @@
     font-weight: 600;
     background-color: #ff3030;
     color: white;
-    font-family: League Spartan, serif;
+    font-family: 'League Spartan', serif;
     font-size: 1.1em;
 }
 

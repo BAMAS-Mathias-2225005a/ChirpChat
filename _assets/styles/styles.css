@@ -1,52 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
 
+/* -----------ANIMATIONS---------- */
 
-* {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style: none
-}
-
-a {
-    padding: 0;
-    text-decoration: none;
-    color: inherit;
-}
-
-body{
-    padding-top: 75px;
-    overflow-x: hidden;
-}
-
-*:has(.link){
-    position: relative;
-}
-
-.link{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-}
-#pageContent {
-    background-color: #F0F0F0;
-    min-width: 100vw;
-    position: relative;
-    min-height: 88vh;
-    overflow: hidden;
-}
-
-/* ------ NAVBAR ------ */
-
-@keyframes searchBarAppear {
+@keyframes backgroundShapeAppear {
     0%{
-        width: 0;
+        transform: translateY(-20%);
         opacity: 0;
     }
+    50%{
+        opacity: 0.05;
+    }
     100%{
-        width: 70vw;
-        opacity: 1;
+        transform: translateY(10%);
+        opacity: 0.15;
     }
 }
 
@@ -78,303 +45,56 @@ body{
     }
 }
 
-nav #topNavBar{
-    position: fixed;
-    z-index: 1;
-    background: white;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100vw;
-    height: 75px;
+@keyframes searchBarAppear {
+    0%{
+        width: 0;
+        opacity: 0;
+    }
+    100%{
+        width: 70vw;
+        opacity: 1;
+    }
 }
 
-nav #topNavBar ul {
-    max-width: 350px;
+/* ----------CSS Général----------*/
+
+html{
+    scroll-behavior: smooth;
 }
-
-nav #topNavBar input[type=text]{
-    width: calc(30vw - 100px);
-    padding-left: 5px;
-    height: 100%;
-    border: none;
-    font-family: League Spartan, serif;
-    font-size: 1.3em;
-    background-color: #F0F0F0;
-    outline: none;
-}
-
-
-nav #topNavBar form{
-    display: flex;
-    align-items: center;
-    width: 30vw;
-    height: 40px;
-    border: none;
-    border-radius: 30px;
-    background-color: #F0F0F0;
-}
-
-nav #topNavBar button{
-    width: 25px;
-    height: 25px;
-    border: none;
-    background: none;
-    margin-left: 10px;
-}
-
-nav #topNavBar #logoDiv{
-    display: flex;
-    align-items: center;
-    width: 20vw;
-    gap: 20px;
-}
-
-nav #topNavBar #logoDiv h1{
-    font-family: League Spartan, serif;
-    font-weight: 700;
-    font-size: 2.1em;
-    padding-bottom: 5px;
-}
-
-nav #desktopViewBottomBar h1{
-    color: #3D3D3D;
-    font-family: League Spartan, Arial Black, serif;
-    font-size: 42px;
-    font-weight: 700;
-    margin-right: 5vw;
-}
-
-nav #logo{
-    width: auto;
-    height: 45px;
-}
-
-nav #mobileViewBottomBar{
-    display: none;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    background-color: white;
-    width: 100vw;
-    height: 80px;
-    z-index: 1;
-    border-radius: 10px 10px 0 0;
-}
-
-nav #mobileViewBottomBar #scrolledProfile{
-    position: absolute;
-    right: -0px;
-    top: -100px;
-    z-index: 2;
-}
-
-nav ul{
-    display: flex;
-    justify-content: space-evenly;
-    height: 100%;
-    width: 100%;
-    align-items: center;
-}
-
-nav #topNavBar ul li:nth-child(3){
-    display: none;
-}
-
-nav ul li{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    opacity: 0;
-    width: 20%;
-    animation: iconAppearAnimation 0.5s forwards ease;
-}
-
-nav ul li:nth-child(2){
-    margin-right: 10px;
-}
-
-nav ul li:nth-child(3){
-    margin-left: 10px;
-}
-
-nav ul li:nth-child(1){animation-delay: 0.15s}
-nav ul li:nth-child(2){animation-delay: 0.30s}
-nav ul li:nth-child(3){animation-delay: 0.45s}
-nav ul li:nth-child(4){animation-delay: 0.60s}
-
-
-nav ul li a{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-nav ul li svg{
-    width: 35px;
-    height: 30px;
-}
-
-nav ul li p{
-    font-family: League Spartan, serif;
-    font-size: 0.9em;
-}
-
-nav #topNavBar ul li{
+* {
     margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none
 }
 
-ul li a:hover{
-    color: #5A88FF;
-    cursor: pointer;
-    transform: translateY(-5px) scale(1.1);
-    transition: transform 0.2s ease;
+a {
+    padding: 0;
+    text-decoration: none;
+    color: inherit;
 }
 
-#searchBar{
-    position: fixed;
-    align-items: center;
-    justify-content: space-evenly;
-    display: none;
-    width: 100vw;
-    background: white;
-    height: 80px;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
+body{
+    padding-top: 75px;
+    overflow-x: hidden;
 }
 
-#searchBar input{
-    width: 70vw;
-    height: 45%;
-    animation: searchBarAppear 0.5s ease forwards;
-    border: solid #bababa 2px;
-    border-radius: 10px;
-    padding-left: 5px;
-    font-family: League Spartan, serif;
-    font-size: 1.4em;
-}
-#searchBar svg{
-    width: 30px;
-    height: 30px
-}
-
-#searchBar button{
-    border: none;
-    background: none;
-}
-
-#addPostButtonContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60px;
-    height: 60px;
-    background-color: #F0F0F0;
-    position: fixed;
-    border-radius: 100%;
-    bottom: 50px;
-    left: calc(50% - 30px);
-}
-
-#addPostButtonContainer svg{
-    width: 40px;
-    height: 40px;
-    background-color: #5A88FF;
-    border-radius: 100%;
-    color: white;
-}
-
-#scrolledProfile{
-    width: 70%;
-    right: 0;
-    height: fit-content;
-    background-color: white;
-    box-shadow: 0 4px 10px 0 rgba(0,0,0,.1);
-    border-top: 0;
-    position: absolute;
-    top: 95px;
-    z-index: 1;
-}
-
-.menuOpen{
-    transition: transform 0.2s ease-in, opacity 0.3s ease-in;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.menuClose{
-    transition: transform 0.1s ease-in, opacity 0.1s ease-in;
-    opacity: 0;
-    transform: translateY(-30%);
-}
-
-#scrolledProfile{
-    width: 200px;
-    display: flex;
-    justify-content: flex-start;
-    padding: 5px 10px 10px 10px;
-}
-
-#scrolledProfile ul{
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin:0;
-    width: 200px;
-}
-
-#scrolledProfile li{
+.link{
     width: 100%;
-    align-items: flex-start;
-}
-#scrolledProfile ul li a{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-
+    height: 100%;
+    position: absolute;
 }
 
-#scrolledProfile #logoutMenu:hover > a > svg,
-#scrolledProfile #logoutMenu:hover > a > p{
-    color:red;
+.black{
+    color: #191919;
+    font-family: League Spartan, serif;
 }
-
-#scrolledProfile ul li svg{
-    width: 35px;
-    height: 35px;
-    color: black;
-}
-
-@media screen and (max-width: 1200px){
-
-    nav #mobileViewBottomBar{
-        display: flex;
-    }
-
-    nav #topNavBar ul{
-        display: none;
-    }
-
-    nav #topNavBar form{
-        display: none;
-    }
-
-    nav #logoDiv img{
-        display: none;
-    }
-
-    nav #logoDiv{
-        justify-content: center;
-    }
-
-    nav #logoDiv a{
-        font-size: 1.6em;
-    }
-
+#pageContent {
+    background-color: #F0F0F0;
+    min-width: 100vw;
+    position: relative;
+    min-height: 88vh;
+    overflow: hidden;
 }
 
 /* ------ Error Message ------ */
@@ -407,13 +127,12 @@ ul li a:hover{
     border-radius: 8px;
     outline: none;
     border: none;
-    border-bottom: 0px solid rgba(221, 221, 221, 0.33);
     box-shadow: 0px 3px 3px 2px rgba(104, 135, 212, 0.25);
     width: 27.5%;
     height: 5vh;
     padding-left: 2%;
     background: rgba(221, 221, 221, 0.33);
-    font-family: League Spartan;
+    font-family: 'League Spartan', serif;
     font-weight: 400;
     font-size: 20px;
     letter-spacing: 1.6px;
@@ -436,10 +155,9 @@ ul li a:hover{
     height: 6vh;
     border-radius: 5px;
     color: white;
-    font-family: League Spartan;
+    font-family: 'League Spartan', serif;
     font-weight: 700;
     letter-spacing: 1.8px;
-    margin-top: 3vh;
     font-size: 1.7em;
     cursor: pointer;
     display:block;
@@ -532,12 +250,14 @@ ul li a:hover{
     height: 6vh;
     border-radius: 5px;
     color: white;
-    font-family: League Spartan, serif;
+    font-family: 'League Spartan', serif;
     font-weight: 500;
     letter-spacing: 1.8px;
     font-size: 1.4em;
     cursor: pointer;
-    display:block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align:center;
     transition: background 0.2s ease-in;
 }
@@ -558,9 +278,8 @@ ul li a:hover{
     border-radius: 10px;
     width: 600px;
     height: 75px;
-    font-family: League Spartan, serif;
+    font-family: 'League Spartan', serif;
     font-size: 1.8em;
-    text-wrap: normal;
     animation: notificationAppear 3s forwards;
     color: #ffffff;
 }

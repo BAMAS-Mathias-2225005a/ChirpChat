@@ -58,7 +58,7 @@ class InscriptionView{
         <?php
 
         $content = ob_get_clean();
-        (new \ChirpChat\Views\MainLayout("Inscription", $content))->show(['authentification.css']);
+        (new \chirpchat\views\layout\MainLayout("Inscription", $content))->show(['authentification.css']);
     }
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace ChirpChat\Views;
+namespace chirpchat\views\post;
 use ChirpChat\Model\Post;
 use ChirpChat\Model\User;
 
@@ -25,14 +25,14 @@ class PostCommentView{
     public function setMainPost($post, ?User $user) : PostCommentView{
         ob_start();
         ?> <h2 id="commentSectionTitle">Répondre à <?php echo $post->getUser()->getUsername()?></h2>
-            <?php (new \ChirpChat\Views\PostView($post))->show(); ?>
+            <?php (new \chirpchat\views\post\PostView($post))->show(); ?>
             <form id="ChampReponse" action="index.php?action=addComment&id=<?php echo $post->idPost?>" method="post">
 
                 <?php if($user != null){ ?><img alt="profilePicture" src="<?=$user->getProfilPicPath()?>"> <?php }
                 else{ ?> <img alt="profilePicture" src="https://cdn-icons-png.flaticon.com/512/168/168724.png"> <?php } ?>
 
-                <textarea type="text" name="comment" placeholder="Donnez votre avis !"></textarea>
-                <input type="submit" name"ENVOYER">
+                <textarea name="comment" placeholder="Donnez votre avis !"></textarea>
+                <input type="submit" value="ENVOYER">
             </form>
         <?php
         $this->mainPostView = ob_get_clean();
@@ -49,7 +49,7 @@ class PostCommentView{
         ?><div id="commentList">
             <?php
             foreach ($commentList as $comment){
-                (new \ChirpChat\Views\PostView($comment))->show();
+                (new \chirpchat\views\post\PostView($comment))->show();
             }?>
         </div>
         <?php
@@ -61,11 +61,11 @@ class PostCommentView{
      */
     public function displayCommentPage() : void {
         $this->content =
-            '<main id="commentPage">' .
+            '<div id="commentPage">' .
             $this->mainPostView .
             $this->commentListView .
-            '</main>';
+            '</div>';
 
-        (new \ChirpChat\Views\MainLayout("Commentaire", $this->content))->show(['postComment.css', 'post.css']);
+        (new \chirpchat\views\layout\MainLayout("Commentaire", $this->content))->show(['postComment.css', 'post.css']);
     }
 }

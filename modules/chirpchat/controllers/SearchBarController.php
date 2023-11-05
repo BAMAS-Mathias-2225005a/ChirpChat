@@ -6,7 +6,7 @@ use ChirpChat\Model\CategoryRepository;
 use Chirpchat\Model\Database;
 use ChirpChat\Model\PostRepository;
 use ChirpChat\Views\HomePageView;
-use ChirpChat\Views\SearchPostView;
+use chirpchat\views\post\SearchPostView;
 
 class SearchBarController{
 

@@ -19,7 +19,7 @@
         'footer footer footer';
 }
 
-#postSettings svg{
+.postSettings svg{
     width: 35px;
     height: 35px;
 }
@@ -41,7 +41,7 @@
     grid-area: profile-picture;
 }
 
-#authorInfo{
+.authorInfo{
     padding-left: 22px;
     display: flex;
     grid-area: post-infos;
@@ -50,7 +50,7 @@
     font-family: "League Spartan", serif;
 }
 
-#authorInfo h3{
+.authorInfo h3{
     color: #9b9b9b;
     font-weight: 400;
 }
@@ -60,43 +60,43 @@
     height: fit-content;
 }
 
-.post #postContent h3{
+.post .postContent h3{
     font-size: 2.1em;
     font-family: "League Spartan", serif;
 }
 
-.post #postContent p{
+.post .postContent p{
     overflow-wrap: anywhere;
     font-family: "League Spartan", serif;
     padding-top: 25px;
     font-size: 1.2em;
 }
 
-#postSettings{
+.postSettings{
     grid-area: settings;
     width: fit-content;
     height: fit-content;
     z-index: 2;
 }
 
-#postSettingsMenu{
+.postSettingsMenu{
     position: absolute;
 }
 
-#postContent{
+.postContent{
     grid-area: content;
     padding-top: 30px;
     padding-left: 10px;
     padding-bottom: 10px;
 }
 
-.post #postFooter svg{
+.post .postFooter svg{
     width: 30px;
     height: 30px;
     cursor: pointer;
 }
 
-.post #postFooter button{
+.post .postFooter button{
     background: none;
     border: none;
 }
@@ -107,7 +107,7 @@
     gap: 20px;
 }
 
-#postFooter{
+.postFooter{
     display: flex;
     align-items: center;
     grid-area: footer;
@@ -118,17 +118,21 @@
     font-size: 1.1em;
 }
 
-.post #postHeader h2{
+.postHeader{
+    box-sizing: border-box;
+}
+
+.post .postHeader h2{
     font-size: 1.9em;
 }
 
-#postFooter > div{
+.postFooter > div{
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
-#postCategories{
+.postCategories{
     padding-left: 20px;
     grid-area: categories;
     display: flex;
@@ -136,7 +140,7 @@
     gap: 5px;
 }
 
-#postCategories .category{
+.postCategories .category{
     width: fit-content;
     padding: 5px 20px;
     font-weight: 600;
@@ -181,7 +185,7 @@
     padding-left: 10px;
     background-color: #EAEBF8;
     border-radius: 10px;
-    font-family: League Spartan, serif;
+    font-family: 'League Spartan', serif;
     font-size: 1.7em;
     font-weight: 600;
 }
@@ -190,7 +194,7 @@
     align-self: flex-end;
     width: 180px;
     height: 40px;
-    font-family: League Spartan, serif;
+    font-family: 'League Spartan', serif;
     font-weight: bold;
     font-size: 1.45em;
     letter-spacing: 3px;
@@ -213,7 +217,7 @@
     padding-top: 5px;
     padding-left: 10px;
     font-size: 1.1em;
-    font-family: League Spartan, serif;
+    font-family: 'League Spartan', serif;
     border-radius: 10px;
 }
 
@@ -253,11 +257,11 @@
         width: 95vw;
     }
 
-    #postContent{
+    .postContent{
         padding-left: 10px;
     }
 
-    #postFooter{
+    .postFooter{
         padding-left: 10px;
     }
 
@@ -265,13 +269,13 @@
         font-size: 1.3em;
     }
 
-    #authorInfo{
+    .authorInfo{
         flex-direction: column;
         align-items: flex-start;
         gap: 0;
     }
 
-    #separator{
+    .separator{
         padding: 0px 10px;
         margin-left: -10px;
     }
@@ -310,7 +314,7 @@
     right: 50px;
     bottom: 10px;
     color: #FFFFFF;
-    font-family: League Spartan, serif;
+    font-family: 'League Spartan', serif;
     font-size: 15px;
     font-weight: 700;
     letter-spacing: 1.8px;
@@ -345,14 +349,18 @@
     padding: 10px 0 0 10px;
 }
 
-#pageContent:has(#postEdit){
+#pageContent{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
-#postEdit #postContent form {
+#postEdit{
+    align-self: center;
+    justify-self: center;
+    margin-top: 10vh;
+}
+
+#postEdit .postContent form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -377,7 +385,7 @@
     font-size: 1.4em;
 }
 
-#postSettingsMenu{
+.postSettingsMenu{
     margin-left: -110px;
     margin-top: 20px;
     padding: 10px 25px 10px 5px;
@@ -386,17 +394,17 @@
     z-index: 2;
 }
 
-#postSettingsMenu ul{
+.postSettingsMenu ul{
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-#postSettingsMenu ul li:hover > p{
+.postSettingsMenu ul li:hover > p{
     transform: translateX(20px);
     transition: all 0.1s ease-in;
 }
-#postSettingsMenu ul li{
+.postSettingsMenu ul li{
     display: flex;
     position: relative;
     align-items: center;
@@ -406,7 +414,7 @@
     cursor: pointer;
 }
 
-#postSettingsMenu ul li a{
+.postSettingsMenu ul li a{
     position: absolute;
     width: 100%;
     height: 100%;

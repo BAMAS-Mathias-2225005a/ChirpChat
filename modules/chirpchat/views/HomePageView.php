@@ -5,8 +5,8 @@ namespace ChirpChat\Views;
 use ChirpChat\Model\Category;
 use Chirpchat\Model\Database;
 use ChirpChat\Model\Post;
-use ChirpChat\Model\User;
 use ChirpChat\Model\UserRepository;
+
 /**
  * Class HomePageView
  *
@@ -32,15 +32,15 @@ class HomePageView {
     public function setCategoriesView(array $categoriesList) : HomePageView{
         ob_start();
         ?> <div id="categories">
-            <h3 class="sectionTitle">Catégories</h3><br/>
+            <h3 class="sectionTitle">Catégories</h3>
             <div id="slider">
                 <script src="../../../_assets/js/categoriesCreation.js"></script>
                 <?php for ($i = 0; $i < count($categoriesList) && $i < 5; $i++){
                     $category = $categoriesList[$i]?>
                     <div class="cat-container" style="background-color: <?= $category->getColorCode() ?>">
-                        <a class="link" href="index.php?action=searchPostInCategory&id=<?=$category->getIdCat()?>"></a>
-                        <h3><?= $category->getLibelle() ?></h3>
-                        <p><?= $category->getNbPostInCategory()?><br> Posts</p>
+                        <a class="link" aria-label="Decouvrez la catégorie <?=$category->getLibelle()?>" href="index.php?action=searchPostInCategory&id=<?=$category->getIdCat()?>"></a>
+                        <h4><?= $category->getLibelle() ?></h4>
+                        <p><?= $category->getNbPostInCategory()?> Posts</p>
                         <svg onload="placeStarElement(this)" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                         </svg>
@@ -77,16 +77,16 @@ class HomePageView {
             <form action="index.php?action=sendPost" id="writePostSection" method="post">
                 <img alt="photo de profil" class="profile-picture" src="<?= $user->getProfilPicPath()?>">
                 <div id="userInputContent">
-                    <input type="text" placeholder="Donnez un titre !" name="titre" required></input>
+                    <input type="text" placeholder="Donnez un titre !" name="titre" required>
                     <textarea spellcheck="false" maxlength="160" placeholder="Envoyez un message !" name="message" required></textarea>
-                    <select id="category" multiple name="categories[]" required>
+                    <select id="category" multiple name="categories[]">
                         <?php $this->getCategoriesList($categories) ?>
                     </select>
                     <script>
                         new SlimSelect({
                             select: '#category',
                             settings: {
-                                placeholderText: 'Choisir une catégorie',
+                                placeholderText: '<p class="black">Choisir une catégorie</p>',
                                 searchPlaceholder: 'Rechercher',
                             }
                         })
@@ -99,9 +99,9 @@ class HomePageView {
         $lastPost = $postList[0];
             foreach($postList as $post){
                 $lastPost = $post;
-                (new \ChirpChat\Views\PostView($post))->show();
+                (new \chirpchat\views\post\PostView($post))->show();
         }
-        echo '<a href="index.php?page=' . $pageNb + 1 . '#' . $lastPost->idPost . '"><button class="authButtons" id="see-more-button">Voir Plus</button></a>';
+        echo '<a href="index.php?page=' . $pageNb + 1 . '#' . $lastPost->idPost . '" class="authButtons" id="see-more-button">Voir Plus</a>';
         ?>
         </div><?php
 
@@ -119,13 +119,13 @@ class HomePageView {
         ob_start();
         ?>
         <div id="bestPost">
-            <h3 class="sectionTitle">Top de la semaine</h3><br/>
+            <h3 class="sectionTitle">Top de la semaine</h3>
             <div id="best-post-list">
                 <?php foreach ($bestPostList as $post){
                     ?>
                     <div class="bestPost">
-                        <a class="link" href="index.php?action=comment&id=<?=$post->idPost?>"></a>
-                        <img src="<?=$post->getUser()->getProfilPicPath()?>">
+                        <a class="link" aria-label="Post de <?=$post->getUser()->getPseudo()?>" href="index.php?action=comment&id=<?=$post->idPost?>"></a>
+                        <img alt="profile picture" src="<?=$post->getUser()->getProfilPicPath()?>">
                         <h4><?= $post->getUser()->getPseudo() ?></h4>
                         <p><?= $post->getTitre() ?></p>
                         <div class="likes">
@@ -153,7 +153,7 @@ class HomePageView {
         <?php
 
         $content = ob_get_clean();
-        (new \ChirpChat\Views\mainLayout("Accueil", $content))->show(['homePage.css', 'post.css']);
+        (new layout\mainLayout("Accueil", $content))->show(['homePage.css', 'post.css']);
     }
     /**
      * Affiche un message d'erreur lorsque aucune publication n'est trouvée.
@@ -172,7 +172,6 @@ class HomePageView {
      * @return void
      */
     public function getCategoriesList(array $categoriesList) : void{
-        echo sizeof($categoriesList);
         foreach($categoriesList as $category){
             echo '<option>' . $category->getLibelle() . '</option>';
         }

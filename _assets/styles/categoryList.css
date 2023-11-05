@@ -8,7 +8,7 @@
     display: flex;
     align-self: center;
     align-content: center;
-    font-family: League Spartan, serif;
+    font-family: 'League Spartan', serif;
     background: radial-gradient(circle at -1% 57.5%, rgb(19, 170, 82) 0%, rgb(0, 102, 43) 90%);    font-weight: 500;
     font-size: 1.3em;
     letter-spacing: 1.8px;
@@ -35,7 +35,7 @@
     width: 225px;
     height: 325px;
     padding: 0 25px;
-    font-family: League Spartan, serif;
+    font-family: 'League Spartan', serif;
     justify-content: center;
     gap: 20px;
     color: #eaeaea;
@@ -56,28 +56,20 @@
     height: 80%;
     left: 25px;
     top: 25px;
-    transition: transform 0.5s;
+    transition: opacity 0.25s ease;
 }
 
 .category .category-back{
-    transform: rotateY(180deg);
     opacity: 0;
-    transition: opacity 0.25s;
 }
 
-#category-list .category:hover:not(:has(.admin-buttons:hover)){
-    transform: rotateY(180deg);
+
+#category-list .category:hover .category-front{
+    opacity: 0;
 }
 
-#category-list .category:hover:not(:has(.admin-buttons:hover)) .category-back{
+#category-list .category:hover .category-back{
     opacity: 1;
-    transition-delay: 0.25s;
-    backface-visibility: visible;
-}
-
-#category-list .category:hover:not(:has(.admin-buttons:hover)) .category-front
-{
-    transform: rotateY(180deg);
 }
 
 #category-list p{
@@ -93,7 +85,7 @@
     font-size: 2.3em;
 }
 
-.category-front svg{
+.admin-buttons svg{
     width: 30px;
     transition: all 0.3s;
 }
@@ -104,15 +96,15 @@
     position: absolute;
     justify-content: flex-end;
     gap: 20px;
-    right: 0px;
-    bottom: -30px;
+    right: 20px;
+    bottom: 10px;
     z-index: 1;
 }
 
-.admin-buttons a:nth-child(1):hover{
+.admin-buttons a:nth-child(2):hover{
     color: red;
 }
 
-.admin-buttons a:nth-child(2):hover{
+.admin-buttons a:nth-child(1):hover{
     color: dodgerblue;
 }

@@ -1,19 +1,6 @@
-/* ------ PAGE LOGIN ------ */
+/* Animation d'Apparition des forme en arrière plan */
 
-@keyframes backgroundShapeAppear {
-    0%{
-        transform: translateY(-20%);
-        opacity: 0;
-    }
-    50%{
-        opacity: 0.05;
-    }
-    100%{
-        transform: translateY(10%);
-        opacity: 0.15;
-    }
 
-}
 form:not(nav form){
     height: fit-content;
     display: flex;
@@ -22,6 +9,7 @@ form:not(nav form){
     justify-content: center;
     padding-top: 50px;
     position: relative;
+    gap: 10px;
 }
 
 #registerForm,
@@ -33,7 +21,7 @@ form:not(nav form){
 
 form h2{
     color: #383838;
-    font-family: League Spartan, serif;
+    font-family: 'League Spartan', serif;
     font-size: 70px;
     font-weight: 700;
     padding-bottom: 50px;
@@ -87,9 +75,4 @@ form label
     filter: blur(12px);
     pointer-events: none;
     animation: backgroundShapeAppear ease 2s forwards;
-}
-
-form label:has(#recupPasswordButton){
-    font-size: 1em;
-    padding-top: 10px;
 }

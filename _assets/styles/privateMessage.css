@@ -124,7 +124,7 @@
     right: 50px;
     bottom: 10px;
     color: #FFFFFF;
-    font-family: League Spartan, serif;
+    font-family: 'League Spartan', serif;
     font-size: 15px;
     font-weight: 700;
     letter-spacing: 1.8px;
@@ -165,7 +165,7 @@
 }
 .user-container h3{
     padding-top: 5px;
-    font-family: League Spartan, serif;
+    font-family: 'League Spartan', serif;
     grid-area: username;
     font-size: 1.8em;
     text-align: left;

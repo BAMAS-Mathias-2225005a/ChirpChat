@@ -14,7 +14,7 @@
 }
 
 #creation-category-form h2{
-    font-family: League Spartan, serif;
+    font-family: 'League Spartan', serif;
     font-size: 2.2em;
     padding: 100px 0 10px 0;
 }
@@ -24,7 +24,7 @@
 }
 
 #creation-category-form p{
-    font-family: League Spartan, serif;
+    font-family: 'League Spartan', serif;
     font-weight: bold;
     font-size: 2.3em;
     padding-bottom: 50px;
@@ -45,7 +45,7 @@
     font-size: 0.8em;
 }
 
-label:has(input[type=color]){
+#color-label input[type=color]{
     flex-direction: row !important;
     justify-content: flex-start;
     width: 100%;

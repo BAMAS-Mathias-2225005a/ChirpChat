@@ -7,7 +7,8 @@ use ChirpChat\Model\PostRepository;
 use ChirpChat\Model\UserRepository;
 use chirpchat\utils\Notification;
 use chirpchat\views\auth\RecoveryPageView;
-use ChirpChat\Views\UserView;
+use chirpchat\views\user\UserView;
+
 /**
  * Contrôleur de gestion des utilisateurs.
  */

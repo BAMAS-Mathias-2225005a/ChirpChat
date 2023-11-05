@@ -1,9 +1,10 @@
 <?php
 
-namespace ChirpChat\Views;
+namespace chirpchat\views\privatemessage;
 
 use ChirpChat\Model\PrivateMessage;
-use \ChirpChat\Model\User;
+use ChirpChat\Model\User;
+use ChirpChat\Views\layout;
 
 class PrivateMessageView {
 
@@ -39,7 +40,7 @@ class PrivateMessageView {
             </button>
 
             <header>
-                <img class="profile-picture" src="<?= $this->targetUser->getProfilPicPath() ?>">
+                <img alt='profile picture' class="profile-picture" src="<?= $this->targetUser->getProfilPicPath() ?>">
                 <h2><?= $this->targetUser->getUsername() ?></h2>
                 <p><?= $this->targetUser->getDescription() ?></p>
             </header>
@@ -74,12 +75,11 @@ class PrivateMessageView {
         <div id="all-users-container" <?php if(isset($_GET['id'])) echo 'class="close"' ?> >
             <?php foreach ($userList as $user){
                 ?>
-                <a href="index.php?action=privateMessage&id=<?=$user->getUserID()?>">
                     <div class="user-container">
+                        <a class="link" href="index.php?action=privateMessage&id=<?=$user->getUserID()?>"></a>
                         <img alt='profile picture' class="profile-picture" src="<?= $user->getProfilPicPath(); ?>" >
                         <h3><?= $user->getUsername(); ?></h3>
                     </div>
-                </a>
             <?php } ?>
         </div>
         <?php
@@ -95,9 +95,9 @@ class PrivateMessageView {
         }else{
             $this->displayPrivateMessageWithUser();
         }
-        $pageContent = ob_get_clean();
+        $pageContent = ob_get_clean() . '</div>';
 
-        (new \ChirpChat\Views\MainLayout('Private message', $pageContent))->show(['privateMessage.css']);
+        (new layout\MainLayout('Private message', $pageContent))->show(['privateMessage.css']);
     }
 
 }

@@ -1,10 +1,11 @@
 <?php
 
-namespace ChirpChat\Views;
+namespace chirpchat\views\post;
 
 use ChirpChat\Model\Category;
 use ChirpChat\Model\Post;
-use ChirpChat\Views\CategoryView;
+use chirpchat\views\category\CategoryView;
+use chirpchat\views\layout\MainLayout;
 
 class SearchPostView{
 

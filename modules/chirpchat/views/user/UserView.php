@@ -1,6 +1,6 @@
 <?php
 
-namespace ChirpChat\Views;
+namespace chirpchat\views\user;
 
 use ChirpChat\Model\Post;
 use ChirpChat\Model\User;
@@ -25,7 +25,7 @@ class UserView{
                 <div id="profile-buttons">
                     <?php if(isset($_SESSION['ID']) && $_SESSION['ID'] === $user->getUserID())
                         {
-                            echo '<input type="button" value="Modifier Profil" onclick="openUserSettings()"></input>';
+                            echo '<input type="button" value="Modifier Profil" onclick="openUserSettings()">';
                         } else
                         {
                             echo '<a href="index.php?action=privateMessage&id=' . $user->getUserID() . '"><input id="send-message-button" type="button" value="Message"></a>';
@@ -65,7 +65,7 @@ class UserView{
             <div id="postList">
             <?php
             foreach($userPostList as $post){
-                (new \ChirpChat\Views\PostView($post))->show();
+                (new \chirpchat\views\post\PostView($post))->show();
             }
         ?>
             </div>
@@ -73,6 +73,6 @@ class UserView{
         <?php
 
         $content = ob_get_clean();
-        (new \ChirpChat\Views\MainLayout("Profil de " . $user->getUsername(), $content))->show(['profile.css', 'post.css']);
+        (new \chirpchat\views\layout\MainLayout("Profil de " . $user->getUsername(), $content))->show(['profile.css', 'post.css']);
     }
 }

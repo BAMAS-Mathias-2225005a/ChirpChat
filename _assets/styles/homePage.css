@@ -61,6 +61,7 @@
     letter-spacing: 1.8px;
     padding-top: 40px;
 }
+
 #slider{
     display: flex;
     flex-direction: column;
@@ -71,6 +72,8 @@
     height: fit-content;
     overflow-x: scroll;
 }
+
+
 
 #catContainer{
     display: flex;
@@ -118,24 +121,14 @@
     border-radius: 10px;
     background-color: red;
     color: white;
-    font-family: League Spartan, serif;
+    font-family: 'League Spartan', serif;
     overflow: hidden;
     position: relative;
 }
 
-#categories h3{
+#categories h4{
     font-size: 1.8em;
     font-weight: 600;
-}
-
-#categories h3:after{
-    content: " ";
-    width: 20px;
-    height: 2px;
-    background-color: white;
-    position: absolute;
-    left: 0;
-    bottom: -25%;
 }
 
 #categories p{
@@ -168,15 +161,11 @@
 }
 
 #see-more-button{
-    width: 300px;
+    width: 100%;
     height: 50px;
     justify-self: center;
 }
 
-a:has(#see-more-button){
-    display: flex;
-    justify-content: center;
-}
 
 #best-post-list{
     display: flex;
@@ -189,7 +178,7 @@ a:has(#see-more-button){
     grid-template-areas:
         "photo-profil pseudo likes"
         "photo-profil titre titre";
-    font-family: League Spartan, serif;
+    font-family: 'League Spartan', serif;
     padding: 0 10px;
     grid-template-columns: 1fr 3fr 1fr;
 }
@@ -226,6 +215,11 @@ a:has(#see-more-button){
     width: 30px;
     height: 30px;
     color: #ff3030;
+}
+
+div[role=combobox]{
+    color: black;
+    font-family: League Spartan, serif;
 }
 
 

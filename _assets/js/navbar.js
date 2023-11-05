@@ -1,17 +1,19 @@
 function openCloseUserMenu(menu){
     var menuDeroulant = menu.children[1];
-    if(menuDeroulant.className === 'menuOpen'){
-        menuDeroulant.className = 'menuClose';
+    if(menuDeroulant.classList.contains('menuOpen')){
+        menuDeroulant.classList.add('menuClose');
+        menuDeroulant.classList.remove('menuOpen');
     }else{
         closeAllOtherMenu()
-        menuDeroulant.className = 'menuOpen'
+        menuDeroulant.classList.add('menuOpen');
+        menuDeroulant.classList.remove('menuClose');
     }
 }
 
 function closeAllOtherMenu(){
     const allMenu = document.getElementsByClassName("menuOpen");
     for(const m of allMenu){
-        m.className = 'menuClose';
+        m.classList.remove('menuClose');
     }
 }
 

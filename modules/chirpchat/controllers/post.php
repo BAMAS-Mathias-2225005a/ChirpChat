@@ -7,7 +7,7 @@ use Chirpchat\Model\Database;
 use ChirpChat\Model\PostRepository;
 use chirpchat\utils\Notification;
 use ChirpChat\Views\HomePageView;
-use ChirpChat\Views\PostView;
+use chirpchat\views\post\PostView;
 
 /**
  * Contrôleur de gestion des publications (posts).

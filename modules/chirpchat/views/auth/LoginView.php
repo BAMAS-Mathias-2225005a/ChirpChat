@@ -34,7 +34,7 @@ class LoginView {
             </label>
 
             <input class="authButtons" type="submit" value="Se connecter"><br> <!-- Bouton pour valider la connexion -->
-            <a href="index.php?action=inscription"><button type="button" class="authButtons">S'inscrire</button></a>
+            <a href="index.php?action=inscription" class="authButtons">S'inscrire</a>
 
             <a href="index.php?action=recuperation" id="lienForgetPassword">Mot de passe oublié?</a> <!-- Bouton pour aller vers la page pour récupérer le mot de passe -->
         </form>
@@ -54,7 +54,7 @@ class LoginView {
 
         <?php
         $content = ob_get_clean();
-        (new \ChirpChat\Views\MainLayout("Connexion", $content))->show(['authentification.css']);
+        (new \chirpchat\views\layout\MainLayout("Connexion", $content))->show(['authentification.css']);
     }
 }
 ?>

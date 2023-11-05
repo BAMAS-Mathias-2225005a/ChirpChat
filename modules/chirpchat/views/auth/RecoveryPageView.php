@@ -36,33 +36,34 @@ class RecoveryPageView {
         <?php
         $content = ob_get_clean();
 
-        (new \ChirpChat\Views\MainLayout("Mot de passe oublié", $content))->show(['styles.css','authentification.css']);
+        (new \chirpchat\views\layout\MainLayout("Mot de passe oublié", $content))->show(['styles.css','authentification.css']);
     }
 
     public function displayPasswordChangeView(string $code, string $email) : void{
         ob_start(); ?>
         <form id="passwordChangeForm" action="index.php?action=changePassword" method="post">
             <h2>CHANGER LE MOT DE PASSE</h2>
-            <label>
+            <label>Code
                 <input class="inputField" type="text" name="code" value="<?= $code ?>" readonly><!-- L'utilisateur rentre son e-mail ici -->
             </label>
 
-            <label style="display: none">
+            <label style="display: none">Email
                 <input type="hidden" name="email" value="<?= $email ?>">
             </label>
-            <label>
+
+            <label>Mot de passe
                 <input class="inputField" type="password" name="password" placeholder="Mot de passe"><!-- L'utilisateur rentre son e-mail ici -->
             </label>
 
-            <label>
+            <label>Confirmer mot de passe
                 <input class="inputField" type="password" name="passwordConfirm" placeholder="Confirmer mot de passe"><!-- L'utilisateur rentre son e-mail ici -->
-            <label>
+            </label>
 
-            <input id="recupPasswordButton" class="authButtons" type="submit" value="CHANGER LE MOT DE PASSE"> <!-- Bouton pour valider les champs -->
+            <input id="forget-password-button" class="authButtons" type="submit" value="CHANGER LE MOT DE PASSE"> <!-- Bouton pour valider les champs -->
         </form>
         <?php
         $content = ob_get_clean();
-        (new \ChirpChat\Views\MainLayout("Mot de passe oublié", $content))->show(['styles.css','authentification.css']);
+        (new \chirpchat\views\layout\MainLayout("Mot de passe oublié", $content))->show(['styles.css','authentification.css']);
     }
 }
 ?>

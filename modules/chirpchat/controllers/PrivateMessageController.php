@@ -3,9 +3,9 @@
 namespace ChirpChat\Controllers;
 
 use Chirpchat\Model\Database;
-use \ChirpChat\Model\PrivateMessageRepository;
+use ChirpChat\Model\PrivateMessageRepository;
 use ChirpChat\Model\UserRepository;
-use ChirpChat\Views\PrivateMessageView;
+use chirpchat\views\privatemessage\PrivateMessageView;
 
 class PrivateMessageController{
 

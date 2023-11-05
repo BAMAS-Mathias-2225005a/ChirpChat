@@ -32,7 +32,7 @@ class PostCommentView{
                 else{ ?> <img alt="profilePicture" src="https://cdn-icons-png.flaticon.com/512/168/168724.png"> <?php } ?>
 
                 <textarea type="text" name="comment" placeholder="Donnez votre avis !"></textarea>
-                <input type="submit" name"ENVOYER">
+                <input type="submit" name"ENVOYER" value="Envoyer">
             </form>
         <?php
         $this->mainPostView = ob_get_clean();

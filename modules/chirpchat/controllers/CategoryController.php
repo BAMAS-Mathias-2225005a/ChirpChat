@@ -4,6 +4,7 @@ namespace ChirpChat\Controllers;
 
 use ChirpChat\Model\CategoryRepository;
 use Chirpchat\Model\Database;
+use ChirpChat\Model\User;
 use ChirpChat\Model\UserRepository;
 use chirpchat\views\category\CategoryCreationView;
 use chirpchat\views\category\CategoryListView;
@@ -27,7 +28,10 @@ class CategoryController{
         $categoryDescription = $_POST['categoryDescription'];
         $categoryColor = $_POST['color'];
 
-        $categoriesRepo->createCategory($categoryName, $categoryDescription, $categoryColor);
+        if(User::isSessionUserAdmin()){
+            $categoriesRepo->createCategory($categoryName, $categoryDescription, $categoryColor);
+        }
+
         header('Location:index.php?action=categoryList');
     }
     /**
@@ -39,10 +43,16 @@ class CategoryController{
      */
     public function displayCategoryCreationPage() : void{
         $categoryCreationView = new CategoryCreationView();
-
-        $categoryCreationView->displayCategoryCreationForm();
+        if(User::isSessionUserAdmin()){
+            $categoryCreationView->displayCategoryCreationForm();
+        }else{
+            (new HomePageView())->displayHomePageView(null);
+        }
     }
 
+    /** Cette methode affiche la page de modification des catégories
+     * @return void
+     */
     public function displayCategoryUpdatePage() : void{
         if(!isset($_GET['id'])) return;
         if(!\ChirpChat\Model\User::isSessionUserAdmin()){
@@ -56,6 +66,8 @@ class CategoryController{
 
         (new CategoryCreationView())->displayCategoryModificationForm($categoryRepo->getCategory($idCat));
     }
+
+
     /**
      * Affiche la liste des catégories.
      *
@@ -78,6 +90,10 @@ class CategoryController{
         $categoryListView->displayAllCategories($categoriesList);
     }
 
+
+    /** Supprime une catégorie
+     * @return void
+     */
     public function deleteCategory(){
         if(\ChirpChat\Model\User::isSessionUserAdmin() && isset($_GET['id'])){
             $categoryRepo = new CategoryRepository(Database::getInstance()->getConnection());
@@ -86,6 +102,10 @@ class CategoryController{
         header("Location:index.php?action=categoryList");
     }
 
+
+    /** Met a jour une catégorie
+     * @return void
+     */
     public function updateCategory(){
         if(!isset($_GET['id'])) return;
         if(!\ChirpChat\Model\User::isSessionUserAdmin()) return;

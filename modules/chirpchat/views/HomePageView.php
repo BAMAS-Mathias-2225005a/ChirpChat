@@ -46,7 +46,7 @@ class HomePageView {
                         </svg>
                     </div>
                 <?php } ?>
-                <a id="more-category" href="index.php?action=categoryList">
+                <a id="more-category" href="index.php?action=categoryList" aria-label="Page des catégories">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                     </svg>
@@ -146,22 +146,14 @@ class HomePageView {
     public function displayHomePageView($user) : void {
         ob_start();
         ?><div id="catContainer">
-            <?= $this->categoriesView ?>
-            <?= $this->postListView ?>
-            <?= $this->bestPostView ?>
+        <?= $this->categoriesView ?>
+        <?= $this->postListView ?>
+        <?= $this->bestPostView ?>
         </div>
         <?php
 
         $content = ob_get_clean();
         (new layout\mainLayout("Accueil", $content))->show(['homePage.css', 'post.css']);
-    }
-    /**
-     * Affiche un message d'erreur lorsque aucune publication n'est trouvée.
-     *
-     * @return void
-     */
-    public function displayNoPostFoundError() : void {
-        echo '<p> Aucun Post Trouvé </p>';
     }
 
     /**

@@ -6,11 +6,15 @@ use chirpchat\model\Database;
 /**
  * Contrôleur de la page d'accueil.
  */
-class HomePage {
+class HomepageController {
 
     private int $pageNb = 1;
 
-    public function setPageNb(int $newNbPage) : HomePage{
+    /** Permet de choisir le numero de page (5 posts par page)
+     * @param int $newNbPage
+     * @return $this
+     */
+    public function setPageNb(int $newNbPage) : HomepageController{
         $this->pageNb = $newNbPage;
         return $this;
     }

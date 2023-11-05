@@ -10,6 +10,10 @@ use chirpchat\views\post\SearchPostView;
 
 class SearchBarController{
 
+    /** Recherche des post, commentaire et catégorie en fonction du filtre ($_POST['filter)
+     *
+     * @return void
+     */
     public function search(){
         if(!isset($_POST['filter'])){
             (new HomePageView())->displayHomePageView(null);
@@ -32,6 +36,7 @@ class SearchBarController{
         (new SearchPostView())->show($postCommentList, $categoryList, $_POST['filter']);
     }
 
+    /** Recherche des post dans la catégorie précisé dans le $_GET['id'] */
     public function searchPostInCategorie(){
         if(!isset($_GET['id'])){
             (new HomePageView())->displayHomePageView(null);

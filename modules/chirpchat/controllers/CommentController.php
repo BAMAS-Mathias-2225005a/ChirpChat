@@ -5,11 +5,12 @@ namespace ChirpChat\Controllers;
 use Chirpchat\Model\Database;
 use Chirpchat\Model\PostRepository;
 use ChirpChat\Model\UserRepository;
+use ChirpChat\Views\HomePageView;
 
 /**
  * Classe Comment pour la gestion des commentaires.
  */
-class Comment{
+class CommentController{
 
     /**
      * Affiche tous les commentaires d'un message à partir de l'identifiant du message dans l'URL.
@@ -34,7 +35,7 @@ class Comment{
         $commentPage = (new \chirpchat\views\post\PostCommentView());
 
         $post = $postRepository->getPost($postID);
-        if($post == null){ //Reponse a un commentaire
+        if($post == null){ //Réponse a un commentaire
             $post = $postRepository->getComment($postID);
         }
 
@@ -55,7 +56,10 @@ class Comment{
      */
     public function addComment() : void {
         $comment = $_POST['comment'];
-        if(!isset($_GET['id'])) return;
+        if(!isset($_GET['id'])) {
+            (new HomePageView())->displayHomePageView(null);
+            return;
+        }
 
         $parentId = $_GET['id'];
         (new \ChirpChat\Model\PostRepository(Database::getInstance()->getConnection()))->add(null, $comment, $_SESSION['ID'], $parentId);

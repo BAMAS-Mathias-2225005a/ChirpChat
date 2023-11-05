@@ -169,7 +169,7 @@ nav ul li:nth-child(3){animation-delay: 0.45s}
 nav ul li:nth-child(4){animation-delay: 0.60s}
 
 
-nav ul li a{
+nav ul li{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -186,13 +186,17 @@ nav ul li p{
 }
 
 nav #topNavBar ul li{
+    position: relative;
     margin: 0;
+    height: fit-content;
 }
 
-ul li a:hover{
+ul li:not(.scrolledProfile ul li):hover > svg,
+ul li:not(.scrolledProfile ul li):hover > p{
+
     color: #5A88FF;
     cursor: pointer;
-    transform: translateY(-5px) scale(1.1);
+    transform: translateY(-2px) scale(1.05);
     transition: transform 0.2s ease;
 }
 
@@ -242,6 +246,7 @@ ul li a:hover{
     transition: transform 0.1s ease-in, opacity 0.1s ease-in;
     opacity: 0;
     transform: translateY(-30%);
+    pointer-events: none;
 }
 
 .scrolledProfile{
@@ -264,7 +269,7 @@ ul li a:hover{
     width: 100%;
     align-items: flex-start;
 }
-.scrolledProfile ul li a{
+.scrolledProfile ul li{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -306,7 +311,7 @@ ul li a:hover{
         justify-content: center;
     }
 
-    nav #logoDiv a{
+    nav #logoDiv{
         font-size: 1.6em;
     }
 

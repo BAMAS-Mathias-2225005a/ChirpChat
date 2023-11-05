@@ -12,7 +12,7 @@ use chirpchat\views\post\PostView;
 /**
  * Contrôleur de gestion des publications (posts).
  */
-class Post{
+class PostController{
     /**
      * Ajoute une nouvelle publication (post) avec des catégories associées.
      *
@@ -30,12 +30,21 @@ class Post{
         $message = htmlspecialchars($_POST['message']);
         $categoriesNames = $_POST['categories'];
 
+
+        /* Erreur si le post est vide */
+        if(empty($titre) || empty($message)){
+            Notification::createErrorMessage("Le message ne peut pas être vide");
+            header("Location:index.php");
+            return;
+        }
+
         $postRepo->add($titre, $message, $_SESSION['ID']);
 
+        /* Verification que la catégorie existe bien */
         foreach ($categoriesNames as $category){
             $catId = $categoryRepo->getCategoryId($category);
             if($catId != -1){
-               $categoryRepo->addPostToCategory($postRepo->getLastPostID(), $catId);
+                $categoryRepo->addPostToCategory($postRepo->getLastPostID(), $catId);
             }
         }
 
@@ -43,6 +52,8 @@ class Post{
 
         header("Location:index.php");
     }
+
+
     /**
      * Recherche des publications (posts) en fonction du filtre.
      *
@@ -65,6 +76,8 @@ class Post{
 
         $homePageView->displayHomePageView(null);
     }
+
+
     /**
      * Supprime une publication (post) en fonction de son identifiant.
      *
@@ -77,7 +90,12 @@ class Post{
      */
     public function deletePost(string $postID) : void {
         $postRepo = new PostRepository(Database::getInstance()->getConnection());
-        $postRepo->deletePost($postID);
+        if(!isset($_SESSION['ID'])) return;
+
+        /* Verification que le post est supprimé par un admin ou celui qui l'a posté */
+        if($_SESSION['ID'] === $postRepo->getPost($postID)->getUser()->getUserID() || \ChirpChat\Model\User::isSessionUserAdmin()){
+            $postRepo->deletePost($postID);
+        }
         header('Location:index.php'); // Redirection vers la page d'accueil
     }
 
@@ -96,6 +114,7 @@ class Post{
         header("Location:index.php");
     }
 
+    /* Affiche la page d'édition d'un post */
     public function displayEditPostPage() : void{
         if(!isset($_SESSION['ID']) || !isset($_GET['id'])) return;
         $postRepo = new PostRepository(Database::getInstance()->getConnection());

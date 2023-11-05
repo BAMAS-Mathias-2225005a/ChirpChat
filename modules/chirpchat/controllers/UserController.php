@@ -12,7 +12,7 @@ use chirpchat\views\user\UserView;
 /**
  * Contrôleur de gestion des utilisateurs.
  */
-class User {
+class UserController {
 
     /**
      * Connecte l'utilisateur et gère la session.
@@ -26,12 +26,14 @@ class User {
         $user = new \ChirpChat\Model\UserRepository(Database::getInstance()->getConnection());
 
         if($_POST['email'] == ""){
-            header('Location:index.php?action=connexion&error=emptyEmail');
+            Notification::createErrorMessage("L'email ne doit pas être vide");
+            header('Location:index.php?action=connexion');
             return;
         }
 
         if($_POST['password'] == ""){
-            header('Location:index.php?action=connexion&error=emptyPassword');
+            Notification::createErrorMessage("Le mot de passe ne doit pas être vide");
+            header('Location:index.php?action=connexion');
             return;
         }
 
@@ -41,7 +43,8 @@ class User {
             Notification::createSuccessMessage("Connecté avec succès");
             header('Location:index.php');
         }else{
-            header('Location:index.php?action=connexion&error=wrongID');
+            Notification::createErrorMessage("Identifiants incorrectes");
+            header('Location:index.php?action=connexion');
         }
     }
     /**
@@ -53,7 +56,11 @@ class User {
      * @return void
      */
     public function register() : void{
-        if(!$this->isRegisterValid($_POST['username'],$_POST['pseudonyme'], $_POST['email'], $_POST['password'], $_POST['birthdate'])) return;
+        if(!$this->isRegisterValid($_POST['username'],$_POST['pseudonyme'], $_POST['email'], $_POST['password'], $_POST['birthdate'])){
+            header('Location:index.php?action=inscription');
+            return;
+        }
+
         if((new \ChirpChat\Model\UserRepository(Database::getInstance()->getConnection()))->register($_POST['username'],$_POST['pseudonyme'],$_POST['email'],$_POST['password'],$_POST['birthdate'])){
             $userRepo = new \ChirpChat\Model\UserRepository(Database::getInstance()->getConnection());
             $ID = $userRepo->getID($_POST['email'], $_POST['password']);
@@ -113,27 +120,26 @@ class User {
      * @param string $password Le mot de passe.
      * @param string $birthdate La date de naissance.
      * @return bool True si les informations sont valides, false sinon.
-     * @throws \Exception En cas d'informations non valides.
      */
-    public function isRegisterValid($username, $pseudonyme, $email, $password, $birthdate)
+    public function isRegisterValid(string $username, string $pseudonyme, string $email, string $password, string $birthdate) : bool
     {
-        //a vérifier
         if (strlen($password) < 8) {
             Notification::createErrorMessage("Le mot de passe doit contenir au moins 8 caractères.");
+            return false;
         }
 
         $containsUppercase = false;
         $containsLowercase = false;
         $containsSpecialCharacter = false;
         $containsNumber = false;
+        $specialCharacters = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 
         for ($i = 0; $i < strlen($password); ++$i) {
             if (ctype_upper($password[$i])) {
                 $containsUppercase = true;
             } elseif (ctype_lower($password[$i])) {
                 $containsLowercase = true;
-            } elseif ($password[$i] == '~' || $password[$i] == '@' || $password[$i] == '_' || $password[$i] == '/' || $password[$i] == '+' ||
-                $password[$i] == ':' || $password[$i] == '*' || $password[$i] == '!') {
+            } elseif (str_contains($specialCharacters, $password[$i])) {
                 $containsSpecialCharacter = true;
             } elseif (ctype_digit($password[$i])) {
                 $containsNumber = true;
@@ -145,15 +151,18 @@ class User {
         }
 
         if (!$containsUppercase || !$containsLowercase) {
-            throw new \Exception("Le mot de passe doit contenir au moins une lettre majuscule et une lettre minuscule.");
+            Notification::createErrorMessage("Le mot de passe doit contenir des minuscules et des majuscules.");
+            return false;
         }
         if (!$containsSpecialCharacter) {
-            throw new \Exception("Le mot de passe doit contenir au moins un caractère spécial parmi : \"~ , @ , _ , / , + , : , * , !\".");
+            Notification::createErrorMessage("Le mot de passe doit contenir un caractère spécial.");
+            return false;
         }
         if (!$containsNumber) {
-            throw new \Exception("Le mot de passe doit contenir au moins un chiffre.");
+            Notification::createErrorMessage("Le mot de passe doit contenir un chiffre.");
+            return false;
         }
-        //...
+
         return true;
     }
     /**

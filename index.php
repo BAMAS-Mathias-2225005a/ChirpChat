@@ -15,24 +15,24 @@
 
     if(filter_input(INPUT_GET, 'action')) {
         if ($_GET['action'] === 'inscription') {
-            (new \ChirpChat\Controllers\Inscription())->execute();
+            (new \ChirpChat\Controllers\AuthentificationController())->displayRegisterPage();
         } else if ($_GET['action'] === 'connexion') {
-            (new \ChirpChat\Controllers\ConnectionPage())->execute();
+            (new \ChirpChat\Controllers\AuthentificationController())->displayLoginPage();
         } else if ($_GET['action'] === 'recuperation') {
-            (new \ChirpChat\Controllers\Recovery())->execute();
+            (new \ChirpChat\Controllers\AuthentificationController())->displayPasswordForgetPage();
         } else if ($_GET['action'] === 'registerUser') {
-            (new \ChirpChat\Controllers\User)->register();
+            (new \ChirpChat\Controllers\UserController())->register();
         } else if ($_GET['action'] === 'loginUser') {
-            (new \ChirpChat\Controllers\User)->login();
+            (new \ChirpChat\Controllers\UserController())->login();
         }  else if ($_GET['action'] === 'sendVerificationMail') {
-            (new \ChirpChat\Controllers\User())->sendVerificationMail();
+            (new \ChirpChat\Controllers\UserController())->sendVerificationMail();
         } else if ($_GET['action'] === 'changePasswordView') {
-            (new \ChirpChat\Controllers\User())->displayChangePasswordPage();
+            (new \ChirpChat\Controllers\UserController())->displayChangePasswordPage();
         }else if ($_GET['action'] === 'changePassword') {
-            (new \ChirpChat\Controllers\User())->changePassword();
+            (new \ChirpChat\Controllers\UserController())->changePassword();
         }else if ($_GET['action'] === 'comment'){
             if(isset($_GET['id'])){
-                (new \ChirpChat\Controllers\Comment())->displayComment();
+                (new \ChirpChat\Controllers\CommentController())->displayComment();
             }
         }  else if ($_GET['action'] === 'search'){
             (new \ChirpChat\Controllers\SearchBarController())->search();
@@ -46,7 +46,7 @@
             (new \ChirpChat\Controllers\CategoryController())->createCategory();
         } else if ($_GET['action'] === 'profile'){
             if(isset($_GET['id'])){
-                (new \ChirpChat\Controllers\User())->displayUserProfile($_GET['id']);
+                (new \ChirpChat\Controllers\UserController())->displayUserProfile($_GET['id']);
             }
         } else if($_GET['action'] === 'searchPostInCategory'){
             (new \ChirpChat\Controllers\SearchBarController())->searchPostInCategorie();
@@ -58,13 +58,13 @@
             header("Location:index.php?action=connexion");
         }
         else if ($_GET['action'] === 'sendPost') {
-            (new \ChirpChat\Controllers\Post)->addPost();
+            (new \ChirpChat\Controllers\PostController())->addPost();
         } else if ($_GET['action'] === 'like'){
             (new \ChirpChat\Model\PostRepository(\Chirpchat\Model\Database::getInstance()->getConnection()))->addLike($_GET['id'],$_SESSION['ID']);
             header("Location:index.php#" . $_GET['id']);
         }
         else if ($_GET['action'] === 'addComment') {
-            (new \ChirpChat\Controllers\Comment())->addComment();
+            (new \ChirpChat\Controllers\CommentController())->addComment();
         } else if ($_GET['action'] === 'privateMessage'){
             (new \ChirpChat\Controllers\PrivateMessageController())->displayPrivateMessagePage($_SESSION['ID']);
         }
@@ -75,15 +75,15 @@
         }
         else if ($_GET['action'] === 'deletepost'){
             if(isset($_GET['id'])){
-                (new \ChirpChat\Controllers\Post())->deletePost($_GET['id']);
+                (new \ChirpChat\Controllers\PostController())->deletePost($_GET['id']);
             }
         }
         else if ($_GET['action'] === 'logout'){
-            (new \ChirpChat\Controllers\User())->logout();
+            (new \ChirpChat\Controllers\UserController())->logout();
         }
 
         else if($_GET['action'] === 'modifyProfile'){
-            (new \ChirpChat\Controllers\User())->modifyProfile();
+            (new \ChirpChat\Controllers\UserController())->modifyProfile();
         }
         else if($_GET['action'] === 'updateCategory'){
             (new \ChirpChat\Controllers\CategoryController())->updateCategory();
@@ -91,22 +91,22 @@
             (new \ChirpChat\Controllers\CategoryController())->displayCategoryUpdatePage();
         }else if($_GET['action'] === 'editPost'){
             if(isset($_POST['message'])){
-                (new \ChirpChat\Controllers\Post())->updatePost();
+                (new \ChirpChat\Controllers\PostController())->updatePost();
             }else{
-                (new \ChirpChat\Controllers\Post())->displayEditPostPage();
+                (new \ChirpChat\Controllers\PostController())->displayEditPostPage();
             }
         } else if($_GET['action'] === 'banUser'){
-            (new \ChirpChat\Controllers\User())->banUser();
+            (new \ChirpChat\Controllers\UserController())->banUser();
         }
 
     }
     else {
         if(isset($_GET['page']) && $_GET['page'] > 0){
-            (new \ChirpChat\Controllers\HomePage)
+            (new \ChirpChat\Controllers\HomepageController())
                 ->setPageNb($_GET['page'])
                 ->execute();
         }else{
-            (new \ChirpChat\Controllers\HomePage)->execute();
+            (new \ChirpChat\Controllers\HomepageController())->execute();
         }
     }
 

@@ -155,6 +155,12 @@ nav ul li{
     animation: iconAppearAnimation 0.5s forwards ease;
 }
 
+nav ul a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 nav ul li:nth-child(2){
     margin-right: 10px;
 }

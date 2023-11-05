@@ -235,12 +235,26 @@
     z-index: 0;
 }
 
+#commentPage #ChampReponse{
+    display: flex;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 10px 30px;
+    margin-top: 20px;
+    width: 490px;
+}
+
 @media screen and (max-width: 600px){
 
     .post, #writePostSection{
         box-sizing: border-box;
         max-width: 100%;
+        width: 95vw;
         padding: 10px 10px;
+    }
+
+    #commentPage #ChampReponse{
+        width: 95vw;
     }
 
     #writePostSection #userInputContent input[type=text]{
@@ -327,14 +341,6 @@
     height: 30px;
 }
 
-#commentPage #ChampReponse{
-    display: flex;
-    gap: 20px;
-    background: rgba(255, 255, 255, 0.7);
-    padding: 10px 30px;
-    margin-top: 20px;
-    width: 490px;
-}
 
 #commentPage form img{
     width: 40px;

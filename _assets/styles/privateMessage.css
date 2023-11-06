@@ -148,6 +148,7 @@
 }
 .user-container{
     display: grid;
+    position: relative;
     grid-template-areas:
             "profile-picture username"
             "profile-picture last-message";
